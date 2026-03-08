@@ -196,29 +196,6 @@ export default function Refill() {
           </p>
         </section>
 
-        {/* EVOLUTION */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-8">Evolution of ReFill and the Team</h2>
-
-          <p className="mb-10">
-            Early development of <span className="font-semibold">ReFill</span> began with
-            <span className="font-semibold"> Devin Bangayan, Marilyn Bangayan, Chinomso Augustine,</span>
-            and <span className="font-semibold">Luc Maho</span>, who presented the first prototype
-            as a final class project. The initial build, engineered by Devin as a square wooden
-            model, allowed the team to demonstrate the core vision and validate future improvements.
-            In the second stage, Devin, Marilyn, and Chinomso presented ReFill at the 26th UC Davis
-            Research Conference in 2025, where the concept evolved through significant refinements
-            in form, materials, and constructability.
-          </p>
-
-          <p className="mb-10">
-            As the project continues to grow, ReFill has welcomed a new team member,
-            <span className="font-semibold"> Crow Raya</span>, to support graphic design and
-            communication as the team moves forward with grant applications and broader deployment
-            planning.
-          </p>
-
-        </section>
       </div>
     </div>
   );
