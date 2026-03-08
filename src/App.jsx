@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-const profileImageUrl = `${import.meta.env.BASE_URL}PP.JPG`;
+const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
+const fountainImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Fountain Graphic.png");
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
+    <div className="min-h-screen bg-gradient-to-l from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
       <Hero />
 
       <div className="grid md:grid-cols-3 gap-12 mt-8">
@@ -220,7 +221,7 @@ function GroupProject() {
         className="block h-44 rounded-lg overflow-hidden relative group ring-1 ring-sky-300/70"
       >
         <img
-          src={profileImageUrl}
+          src={fountainImageUrl}
           alt="Re-Fill group project preview"
           className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
         />

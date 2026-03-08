@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const profileImageUrl = `${import.meta.env.BASE_URL}PP.JPG`;
+const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
 
 function Section({ id, title, children }) {
   return (
@@ -371,13 +371,6 @@ export default function Case1() {
               </table>
             </div>
 
-            <div className="rounded-xl border border-violet-200 bg-violet-50/70 p-4">
-              <h3 className="font-semibold text-violet-900">Key Insight</h3>
-              <p className="mt-2">
-                Students do not lack service providers. They lack an easy way to find them.
-                CampusConnect solves this by creating a centralized marketplace for student services.
-              </p>
-            </div>
           </Section>
 
           <Section id="14" title="Feature Breakdown">
