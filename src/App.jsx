@@ -162,18 +162,15 @@ function Tools() {
 
       <div className="grid md:grid-cols-3 gap-4">
         {tools.map((tool, index) => (
-          <div
-            key={index}
-            className="bg-white border border-blue-200 rounded-lg p-4"
-          >
+          <div key={index} className="bg-white border border-blue-200 rounded-lg p-4">
             <p className="font-medium">{tool.name}</p>
 
             <span
-              className={`inline-block mt-2 text-xs px-2 py-1 rounded 
-              ${tool.level === "Expert"
-                  ? "bg-blue-700 text-white"
-                  : "bg-blue-100 text-blue-800"
-                }`}
+              className={
+                tool.level === "Expert"
+                  ? "inline-block mt-2 text-xs px-2 py-1 rounded bg-blue-700 text-white"
+                  : "inline-block mt-2 text-xs px-2 py-1 rounded bg-blue-100 text-blue-800"
+              }
             >
               {tool.level}
             </span>
