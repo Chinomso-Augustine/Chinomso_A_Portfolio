@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+const resumePreviewUrl = `${import.meta.env.BASE_URL}chinomso-augustine-resume-preview.png`;
+const resumePdfUrl = `${import.meta.env.BASE_URL}chinomso-augustine-resume.pdf`;
+
 export default function Resume() {
   const [zoom, setZoom] = useState(100);
 
@@ -29,7 +32,7 @@ export default function Resume() {
             </div>
 
             <a
-              href="/chinomso-augustine-resume.pdf"
+              href={resumePdfUrl}
               download
               className="w-fit px-4 py-2 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 transition text-sm"
             >
@@ -62,7 +65,7 @@ export default function Resume() {
           <div className="rounded-lg border border-blue-200 overflow-hidden bg-blue-50">
             <div className="md:hidden overflow-auto">
               <img
-                src="/chinomso-augustine-resume-preview.png"
+                src={resumePreviewUrl}
                 alt="Chinomso Augustine resume preview"
                 className="w-full h-auto"
                 style={{
@@ -73,7 +76,7 @@ export default function Resume() {
             </div>
 
             <iframe
-              src={`/chinomso-augustine-resume.pdf#zoom=${zoom}`}
+              src={`${resumePdfUrl}#zoom=${zoom}`}
               title="Chinomso Augustine Resume"
               className="hidden md:block w-full h-[75vh]"
             />
@@ -81,7 +84,7 @@ export default function Resume() {
 
           <div className="mt-4 md:hidden">
             <a
-              href="/chinomso-augustine-resume.pdf"
+              href={resumePdfUrl}
               target="_blank"
               rel="noreferrer"
               className="text-sm text-neutral-500 hover:text-neutral-900 transition"

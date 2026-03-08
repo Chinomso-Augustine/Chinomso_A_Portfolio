@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+const profileImageUrl = `${import.meta.env.BASE_URL}PP.JPG`;
+
 export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
@@ -34,7 +37,7 @@ function Hero() {
       <div className="max-w-5xl w-full mx-auto flex flex-col md:flex-row gap-10 items-center md:items-center justify-center md:justify-between">
         <div className="w-72 h-72 bg-blue-100 rounded-xl flex items-center justify-center text-blue-300 md:-ml-10">
           <img
-            src="/PP.JPG"
+            src={profileImageUrl}
             alt="Chinomso Augustine"
             className="w-72 h-72 object-cover rounded-xl shadow-sm"
 
@@ -195,7 +198,7 @@ function Projects() {
         className="block h-44 rounded-lg overflow-hidden relative group ring-1 ring-violet-300/60"
       >
         <img
-          src="/PP.JPG"
+          src={profileImageUrl}
           alt="CampusConnect case study preview"
           className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
         />
@@ -220,7 +223,7 @@ function GroupProject() {
         className="block h-44 rounded-lg overflow-hidden relative group ring-1 ring-sky-300/70"
       >
         <img
-          src="/PP.JPG"
+          src={profileImageUrl}
           alt="Re-Fill group project preview"
           className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
         />

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const profileImageUrl = `${import.meta.env.BASE_URL}PP.JPG`;
+
 function Section({ id, title, children }) {
   return (
     <section className="rounded-2xl border border-violet-200/70 bg-white/80 p-6 md:p-8 shadow-sm shadow-violet-200/40">
@@ -46,7 +48,7 @@ export default function Case1() {
 
             <div className="h-44 overflow-hidden rounded-xl ring-1 ring-violet-300/70">
               <img
-                src="/PP.JPG"
+                src={profileImageUrl}
                 alt="CampusConnect project cover"
                 className="h-full w-full object-cover"
               />
