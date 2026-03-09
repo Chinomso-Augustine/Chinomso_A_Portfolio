@@ -1,27 +1,124 @@
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "motion/react";
 
 const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
 const fountainImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Fountain Graphic.png");
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-l from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
-      <Hero />
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-l from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
+      <MotionBackground />
 
-      <div className="grid md:grid-cols-3 gap-12 mt-8">
-        <div className="md:col-span-1 space-y-10">
-          <Education />
-          <Clubs />
-          <Contact />
-        </div>
+      <div className="relative z-10">
+        <Hero />
 
-        <div className="md:col-span-2 space-y-10">
-          <Projects />
-          <GroupProject />
-          <Services />
-          <Tools />
+        <div className="grid md:grid-cols-3 gap-12 mt-8">
+          <div className="md:col-span-1 space-y-10">
+            <Education />
+            <Clubs />
+            <Contact />
+          </div>
+
+          <div className="md:col-span-2 space-y-10">
+            <Projects />
+            <GroupProject />
+            <Services />
+            <Tools />
+          </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function MotionBackground() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const floatingTransition = {
+    duration: 20,
+    ease: "easeInOut",
+    repeat: Infinity,
+    repeatType: "mirror",
+  };
+
+  const floatingProps = shouldReduceMotion
+    ? {}
+    : {
+        animate: {
+          x: [0, 90, -45, 0],
+          y: [0, 55, 110, 0],
+          scale: [1, 1.18, 0.88, 1],
+        },
+      };
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <motion.div
+        className="absolute left-[-12rem] top-[-10rem] h-[30rem] w-[30rem] rounded-full bg-cyan-300/55 blur-3xl"
+        {...floatingProps}
+        transition={floatingTransition}
+      />
+
+      <motion.div
+        className="absolute right-[-12rem] top-[18%] h-[34rem] w-[34rem] rounded-full bg-blue-400/45 blur-3xl"
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : { x: [0, -130, -35, 0], y: [0, -70, 60, 0], scale: [1, 0.82, 1.15, 1] }
+        }
+        transition={{ ...floatingTransition, duration: 20 }}
+      />
+
+      <motion.div
+        className="absolute bottom-[-14rem] left-[24%] h-[28rem] w-[28rem] rounded-full bg-indigo-300/45 blur-3xl"
+        animate={
+          shouldReduceMotion
+            ? undefined
+            : { x: [0, 70, -30, 0], y: [0, -65, -20, 0], scale: [1, 1.16, 0.9, 1] }
+        }
+        transition={{ ...floatingTransition, duration: 18 }}
+      />
+
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 10% 16%, rgba(34,211,238,0.4), transparent 42%), radial-gradient(circle at 88% 72%, rgba(59,130,246,0.34), transparent 44%)",
+        }}
+        animate={shouldReduceMotion ? undefined : { opacity: [0.42, 1, 0.42] }}
+        transition={{
+          duration: 8,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+      />
+
+      <motion.div
+        className="absolute left-1/2 top-1/2 h-[48rem] w-[48rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35"
+        style={{
+          background:
+            "conic-gradient(from 90deg, rgba(14,165,233,0.32), rgba(37,99,235,0.08), rgba(99,102,241,0.3), rgba(14,165,233,0.32))",
+          filter: "blur(24px)",
+        }}
+        animate={shouldReduceMotion ? undefined : { rotate: [0, 360] }}
+        transition={{ duration: 22, ease: "linear", repeat: Infinity }}
+      />
+
+      <motion.svg
+        className="absolute left-1/2 top-[-20rem] h-[56rem] w-[56rem] -translate-x-1/2 opacity-55"
+        viewBox="0 0 600 600"
+        fill="none"
+        animate={shouldReduceMotion ? undefined : { rotate: [0, 360] }}
+        transition={{
+          duration: 48,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        <circle cx="300" cy="300" r="250" stroke="rgba(37, 99, 235, 0.3)" strokeWidth="1.3" />
+        <circle cx="300" cy="300" r="190" stroke="rgba(14, 165, 233, 0.24)" strokeWidth="1.1" />
+        <circle cx="300" cy="300" r="130" stroke="rgba(99, 102, 241, 0.2)" strokeWidth="1" />
+      </motion.svg>
     </div>
   );
 }
