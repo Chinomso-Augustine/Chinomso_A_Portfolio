@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const resumePreviewUrl = `${import.meta.env.BASE_URL}chinomso-augustine-resume-preview.png`;
-const resumePdfUrl = `${import.meta.env.BASE_URL}chinomso-augustine-resume.pdf`;
+const resumeFileName = "Chinomso Augustine's Resume -3.pdf";
+const resumePdfUrl = `${import.meta.env.BASE_URL}${encodeURIComponent(
+  resumeFileName
+)}`;
 
 export default function Resume() {
   const [zoom, setZoom] = useState(100);
@@ -63,23 +65,26 @@ export default function Resume() {
           </div>
 
           <div className="rounded-lg border border-blue-200 overflow-hidden bg-blue-50">
-            <div className="md:hidden overflow-auto">
-              <img
-                src={resumePreviewUrl}
-                alt="Chinomso Augustine resume preview"
-                className="w-full h-auto"
-                style={{
-                  transform: `scale(${zoom / 100})`,
-                  transformOrigin: "top center",
-                }}
+            <div className="hidden md:block">
+              <iframe
+                src={`${resumePdfUrl}#zoom=${zoom}`}
+                title="Chinomso Augustine Resume"
+                className="w-full h-[75vh]"
               />
             </div>
-
-            <iframe
-              src={`${resumePdfUrl}#zoom=${zoom}`}
-              title="Chinomso Augustine Resume"
-              className="hidden md:block w-full h-[75vh]"
-            />
+            <div className="md:hidden p-6 text-center">
+              <p className="text-sm text-blue-900/80">
+                Your browser may not render PDF previews inline.
+              </p>
+              <a
+                href={resumePdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block mt-3 px-4 py-2 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 transition text-sm"
+              >
+                Open Resume PDF
+              </a>
+            </div>
           </div>
 
           <div className="mt-4 md:hidden">
