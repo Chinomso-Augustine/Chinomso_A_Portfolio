@@ -26,7 +26,7 @@ export default function Resume() {
                <div className="mt-8">
             <Link
               to="/"
-              className="text-sm text-neutral-500 hover:text-neutral-900 transition"
+              className="text-sm font-semibold text-red-600 hover:text-red-700 transition"
             >
               ← Back to Home
             </Link>
@@ -101,7 +101,7 @@ export default function Resume() {
           <div className="mt-8">
             <Link
               to="/"
-              className="text-sm text-neutral-500 hover:text-neutral-900 transition"
+              className="text-sm font-semibold text-red-600 hover:text-red-700 transition"
             >
               ← Back to Home
             </Link>

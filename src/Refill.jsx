@@ -21,7 +21,7 @@ export default function Refill() {
       {/* HERO */}
       <div className="bg-[#c8e3e8] py-14 px-6 md:px-20 border-b border-blue-200/70">
         <div className="mb-6">
-          <Link to="/" className="text-sm text-sky-900/90 hover:text-sky-950 transition">
+          <Link to="/" className="text-sm font-semibold text-red-600 hover:text-red-700 transition">
             Back to Home
           </Link>
         </div>

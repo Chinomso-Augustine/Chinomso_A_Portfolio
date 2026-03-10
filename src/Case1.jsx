@@ -63,7 +63,7 @@ export default function Case1() {
           </div>
 
           <div className="mt-6">
-            <Link to="/" className="text-sm font-medium text-red-700 transition hover:text-violet-900">
+            <Link to="/" className="text-sm font-semibold text-red-600 transition hover:text-red-700">
               Back to Home
             </Link>
           </div>

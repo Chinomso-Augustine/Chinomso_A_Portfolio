@@ -22,8 +22,8 @@ export default function App() {
           <div className="md:col-span-2 space-y-10">
             <Projects />
             <GroupProject />
-            <Services />
             <Tools />
+            <Services />
           </div>
         </div>
       </div>
@@ -207,41 +207,6 @@ function Education() {
   );
 }
 
-/* ---------------- SERVICES ---------------- */
-
-function Services() {
-  const services = [
-    "Website Designing",
-    "Graphic Designing",
-    "Photography",
-    "Social Media Management",
-    "Content Creation",
-  ];
-
-  return (
-    <Card>
-      <h3 className="text-lg font-semibold mb-2">
-        My Services
-      </h3>
-
-      <p className="text-sm text-blue-900/80 mb-6">
-        Checkout services offered by me
-      </p>
-
-      <div className="grid sm:grid-cols-2 gap-4">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-blue-50 px-4 py-3 rounded-lg text-sm hover:bg-blue-100 transition"
-          >
-            {service}
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
-}
-
 /* ---------------- TOOLS ---------------- */
 
 function Tools() {
@@ -278,6 +243,41 @@ function Tools() {
     </Card>
   );
 }
+/* ---------------- SERVICES ---------------- */
+
+function Services() {
+  const services = [
+    "Website Designing",
+    "Graphic Designing",
+    "Photography",
+    "Social Media Management",
+    "Content Creation",
+  ];
+
+  return (
+    <Card>
+      <h3 className="text-lg font-semibold mb-2">
+        My Services
+      </h3>
+
+      <p className="text-sm text-blue-900/80 mb-6">
+        Checkout services offered by me
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="bg-blue-50 px-4 py-3 rounded-lg text-sm hover:bg-blue-100 transition"
+          >
+            {service}
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
 
 /* ---------------- PROJECTS ---------------- */
 
@@ -292,16 +292,31 @@ function Projects() {
         to="/case1"
         className="block h-44 rounded-lg overflow-hidden relative group ring-1 ring-violet-300/60"
       >
-        <img
-          src={profileImageUrl}
-          alt="CampusConnect case study preview"
-          className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-200 via-fuchsia-100 to-indigo-200 transition duration-300 group-hover:scale-105" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-40 [background-size:220px_120px] [background-image:linear-gradient(120deg,rgba(79,70,229,0.18)_0%,rgba(139,92,246,0.08)_48%,rgba(244,114,182,0.14)_100%)]"
         />
+        <div className="absolute inset-0 flex flex-col justify-center px-4">
+          <p className="text-[2.15rem] leading-none tracking-tight font-semibold text-indigo-900/85">
+            CampusConnect
+          </p>
+          <p className="text-[2.15rem] leading-none tracking-tight font-semibold text-fuchsia-700/35 -mt-1">
+            CampusConnect
+          </p>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-violet-900/20 via-fuchsia-800/30 to-indigo-950/70 group-hover:from-violet-900/25 group-hover:to-indigo-950/80 transition" />
         <div className="absolute inset-0 flex items-end">
           <p className="text-white text-base font-medium px-4 py-3">CampusConnect</p>
         </div>
       </Link>
+
+      <p className="mt-4 text-sm leading-relaxed text-blue-950/85">
+        I designed CampusConnect to help students discover services and resources in
+        one place instead of searching across multiple platforms. I focused on simplifying
+        navigation and improving accessibility so students can take action quickly.{" "}
+        <strong>Click to learn more.</strong>
+      </p>
     </Card>
   );
 }
@@ -327,6 +342,13 @@ function GroupProject() {
           <p className="text-white text-base font-medium px-4 py-3">Re/Fill</p>
         </div>
       </Link>
+
+      <p className="mt-4 text-sm leading-relaxed text-blue-950/85">
+        In Re/Fill, I collaborated with my team to design a retrofit fountain solution so students can refill
+        bottles more easily and sustainably on campus. I contributed from ideation to physical construction and
+        visual storytelling to make the concept practical and easy to understand.{" "}
+        <strong>Click to learn more.</strong>
+      </p>
     </Card>
   );
 }
