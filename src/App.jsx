@@ -192,7 +192,7 @@ function Education() {
       <ul className="space-y-2 text-sm text-blue-950/85 mb-6">
         <li>Prototype</li>
         <li>Wireframe</li>
-        <li>Coding — HTML, CSS, JavaScript</li>
+        <li>Coding — HTML, CSS, JavaScript, C, C++, Assembly</li>
         <li>UX Research</li>
       </ul>
 
@@ -211,12 +211,13 @@ function Education() {
 
 function Tools() {
   const tools = [
-    { name: "Figma", level: "Intermediate" },
-    { name: "Adobe Illustrator", level: "Intermediate" },
-    { name: "Adobe Photoshop", level: "Intermediate" },
-    { name: "Lightroom", level: "Expert" },
-    { name: "Canva", level: "Expert" },
-    { name: "Sony a7iii & a7rii", level: "Expert" },
+    "Figma",
+    "Adobe Illustrator",
+    "Adobe Photoshop",
+    "Lightroom",
+    "Canva",
+    "Sony a7iii & a7rii",
+    "Notion",
   ];
 
   return (
@@ -226,17 +227,7 @@ function Tools() {
       <div className="grid md:grid-cols-3 gap-4">
         {tools.map((tool, index) => (
           <div key={index} className="bg-white border border-blue-200 rounded-lg p-4">
-            <p className="font-medium">{tool.name}</p>
-
-            <span
-              className={
-                tool.level === "Expert"
-                  ? "inline-block mt-2 text-xs px-2 py-1 rounded bg-blue-700 text-white"
-                  : "inline-block mt-2 text-xs px-2 py-1 rounded bg-blue-100 text-blue-800"
-              }
-            >
-              {tool.level}
-            </span>
+            <p className="font-medium">{tool}</p>
           </div>
         ))}
       </div>
