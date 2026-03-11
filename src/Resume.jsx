@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const resumeFileName = "Chinomso Augustine's Resume -3.pdf";
+const resumeFileName = "Chinomso Augustine's Design Resume.pdf";
 const resumePdfUrl = `${import.meta.env.BASE_URL}${encodeURIComponent(
   resumeFileName
 )}`;

@@ -190,10 +190,19 @@ function Education() {
 
       <h4 className="font-semibold mb-3">Skill Set</h4>
       <ul className="space-y-2 text-sm text-blue-950/85 mb-6">
-        <li>Prototype</li>
-        <li>Wireframe</li>
-        <li>Coding — HTML, CSS, JavaScript, C, C++, Assembly</li>
+        <li>UI/UX Design</li>
+        <li>Interactive Media</li>
+        <li>Graphic Design & Computer Technology</li>
+        <li>Prototyping</li>
+        <li>Wireframing</li>
         <li>UX Research</li>
+        <li>Forms & Color</li>
+        <li>Design Drawing</li>
+        <li>Programming — JavaScript, React, HTML, CSS, C, C++, Assembly</li>
+        <li>Data Structures & Algorithms</li>
+        <li>Discrete Math</li>
+        <li>Calculus</li>
+        <li>Professional Photography & Videography</li>
       </ul>
 
       <h4 className="font-semibold mb-3">Certifications</h4>
@@ -212,10 +221,12 @@ function Education() {
 function Tools() {
   const tools = [
     "Figma",
+    "Miro",
     "Adobe Illustrator",
     "Adobe Photoshop",
     "Lightroom",
     "Canva",
+    "Canvas",
     "Sony a7iii & a7rii",
     "Notion",
   ];
@@ -243,6 +254,9 @@ function Services() {
     "Photography",
     "Social Media Management",
     "Content Creation",
+    "UI/UX Design",
+    "Prototyping & Wireframing",
+    "UX Research",
   ];
 
   return (

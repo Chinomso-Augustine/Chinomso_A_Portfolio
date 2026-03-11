@@ -18,6 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/case1" element={<Case1 />} />
         <Route path="/refill" element={<Refill />} />
       </Routes>
+      <footer className="mt-12 py-6 text-center text-xs text-blue-900/70">
+        Created by Chinomso Augustine
+      </footer>
     </HashRouter>
   </React.StrictMode>
 );
