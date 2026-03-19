@@ -154,13 +154,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
-            <Link
-              to="/About"
-              className="px-4 py-2 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 transition text-sm"
-            >
-              About Me
-            </Link>
-
+            <Button text="About Me" to="/About" />
             <Button text="Resume" to="/resume" />
             <Button
               text="LinkedIn"
@@ -184,7 +178,7 @@ function Education() {
     <Card>
       <h3 className="text-lg font-semibold mb-4">Education</h3>
 
-      <div className="bg-blue-50 rounded-lg px-4 py-3 text-sm mb-6">
+      <div className="bg-purple-200 rounded-lg px-4 py-3 text-sm mb-6 text-black font-semibold">
         Design Major & Computer Science Minor
       </div>
 
@@ -407,7 +401,8 @@ function Card({ children }) {
 }
 
 function Button({ text, href, to }) {
-  const classes = "px-4 py-2 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 transition text-sm";
+  const classes =
+    "px-4 py-2 bg-purple-200 border border-blue-200 rounded-lg hover:bg-blue-100 transition text-sm text-black font-semibold";
 
   if (to) {
     return (
