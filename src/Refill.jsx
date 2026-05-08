@@ -1,202 +1,323 @@
 import { Link } from "react-router-dom";
 
-export default function Refill() {
-  const asset = (file) => import.meta.env.BASE_URL + encodeURIComponent(file);
+const asset = (file) => import.meta.env.BASE_URL + encodeURIComponent(file);
 
-  const team = [
-    { name: "Devin Bangayan", role: "Design", image: "Devin.png" },
-    { name: "Marilyn Bangayan", role: "Design", image: "Marilyn.png" },
-    { name: "Chinomso Augustine", role: "3rd Year Design & Computer Science Minor", image: "Chinomso.png" },
-    { name: "Crow Raya", role: "3rd Year Design Major", image: "Crow.JPG.jpg" },
-  ];
-  const prototypeSets = [
-    { title: "Prototype #1", images: ["Proto1.png", "Proto1.2.png"] },
-    { title: "Prototype #2", images: ["Proto2.png", "Proto2.2.png"] },
-    { title: "Prototype #3", images: ["Proto3.png", "Proto3.2.png"] },
-  ];
-  const pressImages = ["Pres1.png", "press2.JPG", "Press3.png", "press4.png"];
+function MetaItem({ label, value }) {
+  return (
+    <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
+      <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">{label}</p>
+      <p className="mt-1 text-sm font-medium text-[#193946]">{value}</p>
+    </div>
+  );
+}
+
+function VisualRail({ images, layout }) {
+  const prototypeGroupedLayout = images.every((image) => image.group);
+  const multiImageLayout = images.length > 1;
+
+  if (prototypeGroupedLayout) {
+    const grouped = images.reduce((acc, image) => {
+      if (!acc[image.group]) acc[image.group] = [];
+      acc[image.group].push(image);
+      return acc;
+    }, {});
+
+    return (
+      <div className="space-y-4">
+        {Object.entries(grouped).map(([groupName, groupImages]) => (
+          <div key={groupName} className="border border-[#bfd1d8] bg-white p-3">
+            <p className="mb-3 text-sm font-semibold text-[#2a5563]">{groupName}</p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {groupImages.map((image) => (
+                <figure key={image.src} className="overflow-hidden border border-[#d3e1e6] bg-white p-2">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-48 w-full bg-white object-contain"
+                  />
+                  <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+                    {image.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (layout === "teamRow") {
+    return (
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {images.map((image) => (
+          <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-2">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="h-60 w-full bg-white object-contain"
+            />
+            <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+              {image.caption}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 text-slate-900">
-      {/* HERO */}
-      <div className="bg-[#c8e3e8] py-14 px-6 md:px-20 border-b border-blue-200/70">
-        <div className="mb-6">
-          <Link to="/" className="text-sm font-semibold text-red-600 hover:text-red-700 transition">
+    <div className={multiImageLayout ? "grid grid-cols-1 gap-3 sm:grid-cols-2" : "space-y-3"}>
+      {images.map((image) => (
+        <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-2">
+          <img
+            src={image.src}
+            alt={image.alt}
+            className={multiImageLayout ? "h-48 w-full bg-white object-contain" : "max-h-[28rem] w-full bg-white object-contain"}
+          />
+          <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+            {image.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
+  if (imageLayout === "teamRow") {
+    return (
+      <section className="border-t border-[#c8d9e0] py-10">
+        <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
+        {body ? <p className="mt-3 text-[15px] leading-7 text-[#32535f]">{body}</p> : null}
+        <div className="mt-5">
+          <VisualRail images={images} layout={imageLayout} />
+        </div>
+      </section>
+    );
+  }
+
+  const contentOrder = reverse ? "md:order-2" : "md:order-1";
+  const visualOrder = reverse ? "md:order-1" : "md:order-2";
+
+  return (
+    <section className="border-t border-[#c8d9e0] py-10">
+      <div className="grid gap-6 md:grid-cols-12 md:items-start">
+        <div className={`md:col-span-7 ${contentOrder}`}>
+          <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
+          {body ? <p className="mt-3 text-[15px] leading-7 text-[#32535f]">{body}</p> : null}
+          {bullets ? (
+            <ul className="mt-4 list-disc space-y-1 pl-6 text-[15px] text-[#32535f]">
+              {bullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+
+        <div className={`md:col-span-5 ${visualOrder}`}>
+          <VisualRail images={images} layout={imageLayout} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Refill() {
+  return (
+    <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
+      <section className="border-b border-[#c7d9e0] bg-[linear-gradient(140deg,#cde2e7_0%,#e8f3f6_52%,#f6fbfc_100%)] px-6 pb-14 pt-20 md:px-16">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6d78]">Case Study</p>
+          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
+            Accessible Water Fountain
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-[#335460]">
+            Retrofitting public fountains for inclusive, everyday hydration.
+          </p>
+          <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#31515c]">
+            This project redesigns existing drinking fountains with a retrofit mouthpiece that supports
+            both direct drinking and easy bottle filling. The concept focuses on access, sustainability,
+            and practical campus adoption.
+          </p>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <MetaItem label="Role" value="UI/UX + Product Design" />
+            <MetaItem label="Project Type" value="Physical Product Concept" />
+            <MetaItem label="Scope" value="Research + Prototyping" />
+            <MetaItem label="Context" value="UC Davis" />
+          </div>
+
+          <Link
+            to="/"
+            className="mt-8 inline-flex h-9 items-center rounded-md border border-[#9db9c5] bg-white px-4 text-xs font-semibold text-[#215365] transition hover:bg-[#eef5f8] hover:text-[#173a47]"
+          >
             Back to Home
           </Link>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 items-center gap-10">
-          <div>
-            <p className="text-sky-700 font-semibold text-lg">Upgrade existing drinking fountains with:</p>
-            <h1 className="mt-2 text-6xl md:text-7xl font-bold text-[#c84a2f]">Re/Fill</h1>
-            <div className="mt-6 font-semibold text-sky-700 text-2xl md:text-4xl leading-tight">
-              <p>Accessible</p>
-              <p>Sustainable</p>
-              <p>Renewable</p>
-            </div>
-          </div>
+      <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+        <StudyBand
+          title="Overview"
+          body="Many campus fountains still support only one interaction pattern and are not optimized for modern reusable bottle habits. Our team explored a retrofit approach instead of full replacement, so institutions can improve access with lower implementation cost."
+          images={[
+            {
+              src: asset("Fountain Graphic.png"),
+              alt: "Accessible water fountain concept render",
+              caption: "Retrofit fountain concept",
+            },
+            {
+              src: asset("Work2.png"),
+              alt: "Water fountain process frame 2",
+              caption: "Context and use case visual",
+            },
+          ]}
+        />
 
-          <div className="rounded-lg overflow-hidden border border-sky-200 bg-white/40">
-            <img
-              src={asset("Fountain Graphic.png")}
-              alt="Re/Fill fountain concept"
-              className="w-full h-auto object-contain"
-            />
-          </div>
-        </div>
-      </div>
+        <StudyBand
+          title="Value Proposition"
+          body="The concept creates value by improving utility of existing infrastructure while preserving simplicity in day-to-day use."
+          bullets={[
+            "Improves water access without replacing existing fountain systems.",
+            "Supports both direct use and reusable bottle filling in one form.",
+            "Promotes sustainability through easier refill behavior.",
+          ]}
+          images={[
+            {
+              src: asset("Work1.png"),
+              alt: "Process and value framing visual 1",
+              caption: "System and value framing",
+            },
+            {
+              src: asset("Work3.png"),
+              alt: "Process and value framing visual 3",
+              caption: "Behavior and value opportunity",
+            },
+          ]}
+          reverse
+        />
 
-      <div className="px-6 md:px-20 py-14 space-y-10">
-        {/* OUR STORY */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-6">Our Story</h2>
+        <StudyBand
+          title="How Might We"
+          body="To focus ideation, we reframed the challenge into practical opportunity prompts that balanced accessibility and feasibility."
+          bullets={[
+            "How might we improve fountain access for more body types and use cases?",
+            "How might we add bottle-fill behavior without disrupting existing use?",
+            "How might we make adoption feasible for campus facilities teams?",
+          ]}
+          images={[
+            {
+              src: asset("Crazy 8.png"),
+              alt: "Crazy 8 ideation sheet",
+              caption: "Early ideation (Crazy 8)",
+            },
+          ]}
+        />
 
-          <p className="mb-4">
-            Our journey with <span className="font-semibold">Re/Fill</span> began in UC Davis
-            Design 01, where we were tasked with collaboratively designing a spatial,
-            communication, or physical product that engages with social systems, facilitates
-            person-to-person interaction, serves a specific audience, and is feasible to build.
-            We approached this challenge with the goal of creating an impactful solution that
-            promotes human rights.
-          </p>
+        <StudyBand
+          title="Design and Prototyping"
+          body="We iterated through multiple prototype generations to test ergonomics, attachment strategy, and water flow behavior. Each pass reduced complexity while improving confidence in real-world installation."
+          bullets={[
+            "Prototype 1 explored core geometry and compatibility.",
+            "Prototype 2 improved fit and interaction comfort.",
+            "Prototype 3 refined manufacturability and visual clarity.",
+          ]}
+          images={[
+            {
+              src: asset("Proto1.png"),
+              alt: "Prototype 1 - image 1",
+              caption: "Prototype 1 (Image 1)",
+              group: "Prototype 1",
+            },
+            {
+              src: asset("Proto1.2.png"),
+              alt: "Prototype 1 - image 2",
+              caption: "Prototype 1 (Image 2)",
+              group: "Prototype 1",
+            },
+            {
+              src: asset("Proto2.png"),
+              alt: "Prototype 2 - image 1",
+              caption: "Prototype 2 (Image 1)",
+              group: "Prototype 2",
+            },
+            {
+              src: asset("Proto2.2.png"),
+              alt: "Prototype 2 - image 2",
+              caption: "Prototype 2 (Image 2)",
+              group: "Prototype 2",
+            },
+            {
+              src: asset("Proto3.png"),
+              alt: "Prototype 3 - image 1",
+              caption: "Prototype 3 (Image 1)",
+              group: "Prototype 3",
+            },
+            {
+              src: asset("Proto3.2.png"),
+              alt: "Prototype 3 - image 2",
+              caption: "Prototype 3 (Image 2)",
+              group: "Prototype 3",
+            },
+          ]}
+          reverse
+        />
 
-          <p className="mb-4">
-            Recognizing that water accessibility is closely tied to social equity and public health,
-            our research focused on mitigating the effects of limited access to drinking water in
-            the greater Sacramento metropolitan area, beginning at UC Davis.
-          </p>
+        <StudyBand
+          title="Validation and Next Step"
+          body="The project progressed from course work to conference-level presentation and received positive faculty feedback for campus relevance. The next step is implementation planning with stakeholders and funding alignment."
+          images={[
+            {
+              src: asset("Pres1.png"),
+              alt: "Presentation board at research conference",
+              caption: "Research conference presentation",
+            },
+            {
+              src: asset("press2.JPG"),
+              alt: "Presentation moment 2",
+              caption: "Presentation snapshot",
+            },
+            {
+              src: asset("Press3.png"),
+              alt: "Presentation moment 3",
+              caption: "Project showcase visual",
+            },
+            {
+              src: asset("press4.png"),
+              alt: "Team presenting project outcome",
+              caption: "Project communication and outreach",
+            },
+          ]}
+        />
 
-          <p className="mb-4">
-            Our team designed a retrofit mouthpiece for existing water fountains that
-            preserves the traditional drinking function while adding a spout for bottle filling.
-            This dual functionality expands access to clean water, encourages reusable bottles, and
-            supports healthier hydration practices within the community.
-          </p>
-
-          <p>
-            By utilizing existing filtered water infrastructure and prioritizing sustainability, our
-            design revitalizes current fountain systems rather than replacing them. This approach
-            offers a cost-effective, actionable solution that increases access to safe public water
-            without relying on private commerce, reinforcing water as a public right rather than a
-            commodity.
-          </p>
-
-          <p className="mt-4">
-            ReFill has evolved from a class project into a research conference presentation. After
-            receiving strong positive feedback from faculty during our final presentation in DES
-            101, we submitted the project to the UC Davis Research Conference in 2025. Once
-            accepted, we significantly refined ReFill and received further encouragement from
-            faculty to move toward campus implementation. ReFill is currently under evaluation for
-            a $20,000 scholarship application to support implementation at UC Davis.
-          </p>
-        </section>
-
-        {/* TEAM */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-10">Meet the Team</h2>
-
-          <div className="grid md:grid-cols-4 gap-10">
-            {team.map((member, i) => (
-              <div key={i} className="text-center">
-                <img
-                  src={asset(member.image)}
-                  alt={member.name}
-                  className="h-52 w-full rounded-lg mb-4 object-cover object-center"
-                />
-
-                <p className="font-semibold">{member.name}</p>
-                <p className="text-gray-600 text-sm">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* INFOGRAPHICS */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-8">Infographics of our Process</h2>
-
-          <h3 className="text-xl font-medium mb-4">Crazy 8</h3>
-
-          <div className="rounded-lg overflow-hidden border border-neutral-200 mb-8">
-            <img
-              src={asset("Crazy 8.png")}
-              alt="Crazy 8 ideation sketch"
-              className="w-full max-w-[980px] mx-auto h-auto object-contain"
-            />
-          </div>
-
-          <h2 className="text-xl font-medium mb-4">Process</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {["Work1.png", "Work2.png", "Work3.png"].map((file) => (
-              <img
-                key={file}
-                src={asset(file)}
-                alt={`Process frame ${file.replace(".png", "")}`}
-                className="h-[22rem] w-full rounded-lg border border-neutral-200 object-cover"
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* PROTOTYPING */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-10">Prototyping</h2>
-
-          <div className="grid md:grid-cols-3 gap-6 items-start">
-            {prototypeSets.map((set) => (
-              <div
-                key={set.title}
-                className="bg-[#e6f3f6] border border-blue-200 rounded-xl p-4 text-center mx-auto w-full max-w-sm"
-              >
-                <h3 className="text-xl mb-4 text-sky-800 font-semibold">{set.title}</h3>
-                <div className="grid grid-cols-1 gap-3 justify-items-center">
-                  {set.images.map((file) => (
-                    <img
-                      key={file}
-                      src={asset(file)}
-                      alt={`${set.title} frame`}
-                      className="h-[12.5rem] w-full rounded-md border border-blue-100 bg-white object-contain"
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* PRESENTATION */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-5 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-8">Presentation</h2>
-
-          <div className="grid md:grid-cols-2 gap-7 justify-items-center max-w-6xl mx-auto">
-            {pressImages.map((file) => (
-              <img
-                key={file}
-                src={asset(file)}
-                alt={`Presentation ${file}`}
-                className="w-md h-150 rounded-lg border border-neutral-200 object-cover"
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* PROJECT LOCATION */}
-        <section className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
-          <h2 className="text-3xl font-semibold mb-6">Project Location</h2>
-
-          <p>
-            <span className="font-semibold">ReFill</span> will be implemented at UC Davis to
-            increase water accessibility and encourage the use of reusable bottles across campus.
-            UC Davis is an ideal environment for ReFill due to the outdated condition of many
-            existing fountains and limited water access in certain buildings, particularly science
-            and engineering facilities where reliable water availability is essential. ReFill is
-            quick and cost-effective implementation enables expanded fountain access, making clean
-            drinking water more readily available to students.
-          </p>
-        </section>
-
-      </div>
+        <StudyBand
+          title="Project Team"
+          images={[
+            {
+              src: asset("Chinomso.png"),
+              alt: "Team member Chinomso",
+              caption: "Chinomso Augustine",
+            },
+            {
+              src: asset("Devin.png"),
+              alt: "Team member Devin",
+              caption: "Devin Bangayan",
+            },
+            {
+              src: asset("Marilyn.png"),
+              alt: "Team member Marilyn",
+              caption: "Marilyn Bangayan",
+            },
+            {
+              src: asset("Crow.JPG.jpg"),
+              alt: "Team member Crow",
+              caption: "Crow Raya",
+            },
+          ]}
+          imageLayout="teamRow"
+        />
+      </main>
     </div>
   );
 }

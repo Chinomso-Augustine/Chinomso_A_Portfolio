@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const resumeFileName = "Chinomso Augustine's Design Resume.pdf";
+const resumeFileName = "myresume.pdf";
 const resumePdfUrl = `${import.meta.env.BASE_URL}${encodeURIComponent(
   resumeFileName
 )}`;
+const backHomeButtonClass =
+  "inline-flex h-9 items-center rounded-md border border-[#9db9c5] bg-white px-4 text-xs font-semibold text-[#1f4f5f] transition hover:bg-[#eef5f8] hover:text-[#173a47]";
 
 export default function Resume() {
   const [zoom, setZoom] = useState(100);
@@ -24,11 +26,8 @@ export default function Resume() {
                 UI/UX Designer and UI Engineer
               </p>
                <div className="mt-8">
-            <Link
-              to="/"
-              className="text-sm font-semibold text-red-600 hover:text-red-700 transition"
-            >
-              ← Back to Home
+            <Link to="/" className={backHomeButtonClass}>
+              Back to Home
             </Link>
           </div>
             </div>
@@ -99,11 +98,8 @@ export default function Resume() {
           </div>
 
           <div className="mt-8">
-            <Link
-              to="/"
-              className="text-sm font-semibold text-red-600 hover:text-red-700 transition"
-            >
-              ← Back to Home
+            <Link to="/" className={backHomeButtonClass}>
+              Back to Home
             </Link>
           </div>
         </div>

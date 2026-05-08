@@ -7,6 +7,8 @@ import About from "./About";
 import Resume from "./Resume";
 import Case1 from "./Case1";
 import Refill from "./Refill";
+import JobMadeEasy from "./JobMadeEasy";
+import LearningRhino8 from "./LearningRhino8";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,10 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/resume" element={<Resume />} />
         <Route path="/case1" element={<Case1 />} />
         <Route path="/refill" element={<Refill />} />
+        <Route path="/jobmadeeasy" element={<JobMadeEasy />} />
+        <Route path="/learningrhino8" element={<LearningRhino8 />} />
       </Routes>
-      <footer className="mt-12 py-6 text-center text-xs text-blue-900/70">
-        Created by Chinomso Augustine
-      </footer>
     </HashRouter>
   </React.StrictMode>
 );

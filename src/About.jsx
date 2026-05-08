@@ -6,179 +6,152 @@ const includeImageOneUrl = import.meta.env.BASE_URL + "Include1.JPG";
 const includeImageTwoUrl = import.meta.env.BASE_URL + "Include2.JPG";
 const nsbeImageUrl = import.meta.env.BASE_URL + "NSBE.JPG";
 const colorstackImageUrl = import.meta.env.BASE_URL + "Colorstack.JPG";
-const backLinkClass = "text-sm font-semibold text-red-600 transition hover:text-red-700";
 
-function InfoCard({ title, children, className = "" }) {
+function Panel({ title, children, className = "" }) {
   return (
-    <section className={`rounded-2xl border border-blue-200 bg-white/85 p-6 shadow-sm shadow-blue-100/50 ${className}`}>
-      <h2 className="text-2xl font-semibold text-slate-900">{title}</h2>
-      <div className="mt-4 text-[15px] leading-7 text-blue-950/90">{children}</div>
+    <section className={`border border-[#c9d8de] bg-white p-6 ${className}`}>
+      <h2 className="text-2xl font-semibold text-[#153846]">{title}</h2>
+      <div className="mt-4 space-y-3 text-[15px] leading-7 text-[#2f515d]">{children}</div>
     </section>
+  );
+}
+
+function ClubCard({ title, text, image, alt }) {
+  return (
+    <article className="border border-[#cddce2] bg-white">
+      <img src={image} alt={alt} className="h-52 w-full object-cover" />
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-[#183d4c]">{title}</h3>
+        <p className="mt-2 text-sm leading-7 text-[#31545f]">{text}</p>
+      </div>
+    </article>
   );
 }
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 px-6 py-12 text-slate-900 md:px-20 md:py-16">
-      <div className="mx-auto max-w-6xl space-y-10">
-        <Link to="/" className={backLinkClass}>
-          ← Back to Home
-        </Link>
-
-        <header className="relative overflow-hidden rounded-3xl border border-blue-200 bg-blue-100/70 shadow-sm shadow-blue-100/60">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${profileImageUrl})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-950/70 via-blue-900/45 to-transparent" />
-
-          <div className="relative z-10 flex min-h-[23rem] items-end px-6 py-7 md:px-10 md:py-10">
-            <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-100/85">Who I Am</p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white md:text-6xl">About Me</h1>
-              <p className="mt-4 text-sm leading-7 text-blue-100/90 md:text-base">
-                I design with empathy, build with intention, and focus on experiences that are clear,
-                useful, and human.
-              </p>
-            </div>
+    <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
+      <section className="border-b border-[#c6d7de] bg-[linear-gradient(135deg,#d5e6ec_0%,#e9f3f6_52%,#f6fbfc_100%)] px-6 pb-12 pt-20 md:px-16">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6f7b]">About</p>
+            <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
+              Chinomso Augustine
+            </h1>
+          
+            <Link
+              to="/"
+              className="mt-7 inline-flex h-9 items-center rounded-md border border-[#9db9c5] bg-white px-4 text-xs font-semibold text-[#1f4f5f] transition hover:bg-[#eef5f8] hover:text-[#173a47]"
+            >
+              Back to Home
+            </Link>
           </div>
-        </header>
+
+          <div className="overflow-hidden border border-[#c7d8de] bg-white p-2">
+            <img src={profileImageUrl} alt="Chinomso Augustine portrait" className="h-72 w-full object-cover object-center" />
+          </div>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-6xl space-y-6 px-6 py-10 md:px-16">
+        <Panel title="Who I Am">
+          <p>
+            I am <strong>Chinomso Augustine</strong>, a UI/UX Designer and UI Engineer studying at the
+            <strong> University of California, Davis</strong>, majoring in Design with a minor in Computer Science.
+            I focus on designing intuitive, user-centered applications that prioritize clarity, usability,
+            and purpose.
+          </p>
+          <p>
+            I am currently seeking internship opportunities and am open to relocation.
+          </p>
+        </Panel>
+
+        <Panel title="Community and Leadership">
+          <p>
+            I stay involved in student communities where design, collaboration, and representation are central.
+            These experiences strengthened how I communicate ideas and work across different teams.
+          </p>
+
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            <ClubCard
+              title="#Include"
+              text="At UC Davis, I collaborate on client-based projects and serve as one of the club photographers for events and board activities."
+              image={includeImageOneUrl}
+              alt="#Include club activity"
+            />
+            <ClubCard
+              title="NSBE"
+              text="As an active member of the National Society of Black Engineers, I support communication efforts and participate in development and networking events."
+              image={nsbeImageUrl}
+              alt="NSBE event"
+            />
+            <ClubCard
+              title="ColorStack"
+              text="As former Project Manager, I hosted work sessions with my cohort and led collaboration for projects supporting Black and Latinx students in STEM."
+              image={colorstackImageUrl}
+              alt="ColorStack collaboration session"
+            />
+          </div>
+
+          <div className="mt-4 overflow-hidden border border-[#cddce2] bg-white">
+            <img src={includeImageTwoUrl} alt="#Include team and board moments" className="h-56 w-full object-cover" />
+          </div>
+        </Panel>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <InfoCard title="Hi There">
+          <Panel title="Photography / Videography">
             <p>
-              I am <strong>Chinomso Augustine</strong>, a UI/UX Designer and UI Engineer studying at the
-              <strong> University of California, Davis</strong>, majoring in Design with a minor in Computer Science.
-              I focus on designing intuitive, user-centered applications that prioritize clarity, usability,
-              and purpose. I am currently seeking internship opportunities and am open to relocation.
+              Outside of school, I work as a <strong>photographer and videographer</strong>. My work includes
+              graduation, professional, club, event, and sports photography.
             </p>
-          </InfoCard>
+            <p>
+              I currently shoot with Sony a7 III and Sony a7R II cameras, then edit using Adobe Lightroom and
+              Premiere Pro. This work sharpened my eye for composition and visual storytelling.
+            </p>
+            <p>
+              To view my work, visit my{" "}
+              <a
+                href="https://www.instagram.com/chino_clickss/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#215365] underline underline-offset-4 hover:text-[#173a47]"
+              >
+                Instagram portfolio
+              </a>
+              .
+            </p>
+          </Panel>
 
-          <InfoCard title="Clubs" className="md:col-span-2">
-            <div className="space-y-3">
-              <p>
-                <strong>#Include:</strong> At UC Davis, I am a member of <strong>#Include</strong>, where I collaborate
-                with students from diverse backgrounds on client-based projects. I also serve as one of the club
-                photographers, capturing event and board photos.
-              </p>
-              <p>
-                <strong>NSBE:</strong> I am an active member of the
-                <strong> National Society of Black Engineers (NSBE)</strong>, where I support communication efforts
-                and participate in workshops and events focused on professional development and networking.
-              </p>
-              <p>
-                <strong>ColorStack:</strong> I was the Project Manager for <strong>ColorStack</strong>, a nonprofit
-                organization dedicated to increasing the representation of Black and Latinx students in STEM. I hosted
-                morning work sessions with my cohort at a coffee shop to collaborate on projects.
-              </p>
-            </div>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="overflow-hidden rounded-xl border border-blue-200 bg-blue-50">
-                <img
-                  src={includeImageOneUrl}
-                  alt="#Include club activity"
-                  className="h-48 w-full object-cover"
-                />
-                <p className="px-3 py-2 text-xs font-medium text-blue-900/85">#Include</p>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-blue-200 bg-blue-50">
-                <img
-                  src={includeImageTwoUrl}
-                  alt="#Include team and board moments"
-                  className="h-48 w-full object-cover"
-                />
-                <p className="px-3 py-2 text-xs font-medium text-blue-900/85">#Include Team</p>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-blue-200 bg-blue-50">
-                <img
-                  src={nsbeImageUrl}
-                  alt="NSBE event"
-                  className="h-48 w-full object-cover"
-                />
-                <p className="px-3 py-2 text-xs font-medium text-blue-900/85">NSBE</p>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-blue-200 bg-blue-50">
-                <img
-                  src={colorstackImageUrl}
-                  alt="ColorStack collaboration session"
-                  className="h-48 w-full object-cover"
-                />
-                <p className="px-3 py-2 text-xs font-medium text-blue-900/85">ColorStack</p>
-              </div>
-            </div>
-          </InfoCard>
-
+          <section className="overflow-hidden border border-[#c9d8de] bg-white">
+            <img src={sonyKitImageUrl} alt="Sony camera gear" className="h-full min-h-[18rem] w-full object-cover" />
+          </section>
         </div>
 
-        <InfoCard title="Photography / Videography" className="overflow-hidden">
-          <div className="grid gap-6 md:grid-cols-[1.15fr_0.85fr] md:items-stretch">
-            <div>
-              <p>
-                Outside of school, I work as a <strong>photographer and videographer</strong>. My work includes
-                graduation, professional, club, event, and sports photography. I currently shoot with Sony
-                a7 III and Sony a7R II cameras, then edit using Adobe Lightroom and Premiere Pro.
-              </p>
-              <p className="mt-4">
-                Photography has grown into a side business and has sharpened my eye for detail,
-                composition, and visual storytelling.
-                To view my work, visit my{" "}
-                <a
-                  href="https://www.instagram.com/chino_clickss/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-blue-700 underline-offset-4 hover:underline"
-                >
-                  Instagram portfolio
-                </a>
-                .
-              </p>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl border border-blue-200 p-5">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${sonyKitImageUrl})` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-950/55 via-blue-900/35 to-sky-700/35" />
-              <div className="relative z-10 flex h-full flex-col justify-between">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-100">Sony Kit</p>
-
-               
-
-                <div>
-                  <p className="text-xl font-semibold tracking-tight text-white">SONY</p>
-                  <p className="mt-1 text-sm text-blue-100">a7 III · a7R II</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </InfoCard>
-
         <div className="grid gap-6 md:grid-cols-2">
-          <InfoCard title="Athletics and Fitness">
+          <Panel title="Athletics and Fitness">
             <p>
               I am a former <strong>marathon runner</strong>, captain of my high school soccer and
               <strong> cross-country</strong> teams, and I competed in track and field (100m, 200m,
-              4x100m, and 4x400m relays). These experiences taught me discipline, teamwork,
-              and perseverance, and they still shape how I approach both design and life.
+              4x100m, and 4x400m relays).
             </p>
-          </InfoCard>
-
-          <InfoCard title="Healthcare Experience">
             <p>
-              In addition to my design and research work, I am a
-              <strong> Certified Nursing Assistant (CNA)</strong>. I completed a three-month nursing program
-              and passed two state exams to obtain my certification. This work has deeply influenced
-              my approach to empathy, responsibility, and human-centered problem-solving.
+              These experiences taught me discipline, teamwork, and perseverance, and they still shape
+              how I approach design and daily life.
             </p>
-          </InfoCard>
-        </div>
+          </Panel>
 
-        <Link to="/" className={backLinkClass}>
-          ← Back to Home
-        </Link>
-      </div>
+          <Panel title="Healthcare Experience">
+            <p>
+              I am a <strong>Certified Nursing Assistant (CNA)</strong>. I completed a three-month nursing
+              program and passed two state exams to obtain my certification.
+            </p>
+            <p>
+              Healthcare work strengthened my empathy, responsibility, and human-centered approach to
+              problem-solving.
+            </p>
+          </Panel>
+        </div>
+      </main>
     </div>
   );
 }
