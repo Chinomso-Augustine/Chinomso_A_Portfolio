@@ -80,24 +80,24 @@ export default function LearningRhino8() {
       <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
         <StepCard
           step="1"
-          title="Sketch Exploration"
-          text="I started by exploring abstract form direction through sketching. This phase helped me test how fragmented and flowing qualities could coexist before moving into modeling."
+          title="Exploration"
+          text="I started by exploring abstract form direction using 6x4 postcards. This phase helped me test how fragmented and flowing qualities could coexist before moving into modeling."
           image={sketchImageUrl}
           alt="Chinomso Augustine Project 1 Sketch"
         />
 
         <StepCard
           step="2"
-          title="Early Digital Build"
-          text="Next, I translated the concept into Rhino and began shaping structured repetitions. This stage focused on controlling rhythm, spacing, and form consistency."
+          title="Early Digital Build with Adobe Illustrator"
+          text="Next, I created a step by step approach on how to reconstruct my favorite design among the 6 designs. It also showcases different sides of my product. This stage focused on controlling rhythm, spacing, and form consistency."
           image={aiImageUrl}
           alt="Chinomso Augustine Design 50 Project 1 A1"
         />
 
         <StepCard
           step="3"
-          title="Refined Rhino Modeling"
-          text="In the final stage, I refined the form toward a clearer flowing outcome. The result demonstrates my first full 3D workflow and foundational digital fabrication thinking."
+          title="Rhino Modeling"
+          text="In the final stage, I used Rhino 8 to construct the product, adding more layers. The result demonstrates my first full 3D workflow and foundational digital fabrication thinking."
           image={modelingImageUrl}
           alt="Chinomso Augustine Design 50 Project 1 Modeling"
         />
