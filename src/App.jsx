@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const heroBackgroundUrl = import.meta.env.BASE_URL + "PP.JPG";
 const campusImageUrl = import.meta.env.BASE_URL + "camp.png";
 const fountainImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Fountain Graphic.png");
-const jobMadEsayImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Laptop 1.png");
+const jobMadeEasyImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Laptop 1.png");
 const rhinoProjectImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
 
 const skills = [
@@ -54,10 +54,10 @@ const workCards = [
   },
   {
     type: "project",
-    title: "Job Made Esay",
+    title: "Job Made Easy",
     description:
       "A career discovery platform for college and graduate students.",
-    image: jobMadEsayImageUrl,
+    image: jobMadeEasyImageUrl,
     action: "View project",
     to: "/jobmadeeasy",
   },
