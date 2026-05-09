@@ -38,7 +38,7 @@ const workCards = [
     type: "project",
     title: "Learning Rhino 8",
     description:
-      "My first Rhino 8 workflow from concept sketch to 3D modeling.",
+      "A simple project exploring Rhino 8 for the first time",
     image: rhinoProjectImageUrl,
     action: "View project",
     to: "/learningrhino8",

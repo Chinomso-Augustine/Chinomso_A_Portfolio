@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+public/Chinomso Augustine's Project1Sketch.pdf
 
 # Editor directories and files
 .vscode/*
