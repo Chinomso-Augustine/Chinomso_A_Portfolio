@@ -170,7 +170,7 @@ export default function Refill() {
             {
               src: asset("Work2.png"),
               alt: "Water fountain process frame 2",
-              caption: "Context and use case visual",
+              caption: "Prototyping",
             },
           ]}
         />
@@ -187,12 +187,12 @@ export default function Refill() {
             {
               src: asset("Work1.png"),
               alt: "Process and value framing visual 1",
-              caption: "System and value framing",
+              caption: "More prototyping",
             },
             {
               src: asset("Work3.png"),
               alt: "Process and value framing visual 3",
-              caption: "Behavior and value opportunity",
+              caption: "More prototyping",
             },
           ]}
           reverse
