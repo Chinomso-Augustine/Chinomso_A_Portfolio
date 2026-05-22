@@ -29,13 +29,13 @@ function VisualRail({ images, layout }) {
             <p className="mb-3 text-sm font-semibold text-[#2a5563]">{groupName}</p>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {groupImages.map((image) => (
-                <figure key={image.src} className="overflow-hidden border border-[#d3e1e6] bg-white p-2">
+                <figure key={image.src} className="overflow-hidden border border-[#d3e1e6] bg-white p-3">
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="h-48 w-full bg-white object-contain"
+                    className="h-72 w-full bg-white object-contain"
                   />
-                  <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+                  <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
                     {image.caption}
                   </figcaption>
                 </figure>
@@ -55,9 +55,9 @@ function VisualRail({ images, layout }) {
             <img
               src={image.src}
               alt={image.alt}
-              className="h-60 w-full bg-white object-contain"
+              className="h-72 w-full bg-white object-contain"
             />
-            <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+            <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
               {image.caption}
             </figcaption>
           </figure>
@@ -69,13 +69,13 @@ function VisualRail({ images, layout }) {
   return (
     <div className={multiImageLayout ? "grid grid-cols-1 gap-3 sm:grid-cols-2" : "space-y-3"}>
       {images.map((image) => (
-        <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-2">
+        <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-3">
           <img
             src={image.src}
             alt={image.alt}
-            className={multiImageLayout ? "h-48 w-full bg-white object-contain" : "max-h-[28rem] w-full bg-white object-contain"}
+            className={multiImageLayout ? "h-72 w-full bg-white object-contain" : "max-h-[36rem] w-full bg-white object-contain"}
           />
-          <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-xs text-[#4f6c78]">
+          <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
             {image.caption}
           </figcaption>
         </figure>
@@ -89,7 +89,7 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
     return (
       <section className="border-t border-[#c8d9e0] py-10">
         <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
-        {body ? <p className="mt-3 text-[15px] leading-7 text-[#32535f]">{body}</p> : null}
+        {body ? <p className="mt-3 max-w-3xl text-sm leading-6 text-[#32535f]">{body}</p> : null}
         <div className="mt-5">
           <VisualRail images={images} layout={imageLayout} />
         </div>
@@ -103,11 +103,11 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
   return (
     <section className="border-t border-[#c8d9e0] py-10">
       <div className="grid gap-6 md:grid-cols-12 md:items-start">
-        <div className={`md:col-span-7 ${contentOrder}`}>
+        <div className={`md:col-span-4 ${contentOrder}`}>
           <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
-          {body ? <p className="mt-3 text-[15px] leading-7 text-[#32535f]">{body}</p> : null}
+          {body ? <p className="mt-3 text-sm leading-6 text-[#32535f]">{body}</p> : null}
           {bullets ? (
-            <ul className="mt-4 list-disc space-y-1 pl-6 text-[15px] text-[#32535f]">
+            <ul className="mt-4 list-disc space-y-1 pl-5 text-sm leading-6 text-[#32535f]">
               {bullets.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -115,7 +115,7 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
           ) : null}
         </div>
 
-        <div className={`md:col-span-5 ${visualOrder}`}>
+        <div className={`md:col-span-8 ${visualOrder}`}>
           <VisualRail images={images} layout={imageLayout} />
         </div>
       </div>
@@ -135,10 +135,8 @@ export default function Refill() {
           <p className="mt-4 max-w-2xl text-lg text-[#335460]">
             Retrofitting public fountains for inclusive, everyday hydration.
           </p>
-          <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#31515c]">
-            This project redesigns existing drinking fountains with a retrofit mouthpiece that supports
-            both direct drinking and easy bottle filling. The concept focuses on access, sustainability,
-            and practical campus adoption.
+          <p className="mt-6 max-w-2xl text-sm leading-6 text-[#31515c]">
+            A retrofit mouthpiece that makes existing fountains easier to use for direct drinking and reusable bottle filling.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -160,7 +158,7 @@ export default function Refill() {
       <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
         <StudyBand
           title="Overview"
-          body="Many campus fountains still support only one interaction pattern and are not optimized for modern reusable bottle habits. Our team explored a retrofit approach instead of full replacement, so institutions can improve access with lower implementation cost."
+          body="A retrofit concept for making existing campus fountains more accessible, useful, and affordable to upgrade."
           images={[
             {
               src: asset("Fountain Graphic.png"),
@@ -177,11 +175,11 @@ export default function Refill() {
 
         <StudyBand
           title="Value Proposition"
-          body="The concept creates value by improving utility of existing infrastructure while preserving simplicity in day-to-day use."
+          body="The design improves everyday hydration without requiring full fountain replacement."
           bullets={[
-            "Improves water access without replacing existing fountain systems.",
-            "Supports both direct use and reusable bottle filling in one form.",
-            "Promotes sustainability through easier refill behavior.",
+            "Fits existing fountain systems.",
+            "Supports drinking and bottle filling.",
+            "Encourages reusable bottle habits.",
           ]}
           images={[
             {
@@ -200,11 +198,11 @@ export default function Refill() {
 
         <StudyBand
           title="How Might We"
-          body="To focus ideation, we reframed the challenge into practical opportunity prompts that balanced accessibility and feasibility."
+          body="We focused ideation around access, refill behavior, and campus feasibility."
           bullets={[
-            "How might we improve fountain access for more body types and use cases?",
-            "How might we add bottle-fill behavior without disrupting existing use?",
-            "How might we make adoption feasible for campus facilities teams?",
+            "Improve access for more users.",
+            "Add refill behavior cleanly.",
+            "Keep adoption realistic.",
           ]}
           images={[
             {
@@ -217,11 +215,11 @@ export default function Refill() {
 
         <StudyBand
           title="Design and Prototyping"
-          body="We iterated through multiple prototype generations to test ergonomics, attachment strategy, and water flow behavior. Each pass reduced complexity while improving confidence in real-world installation."
+          body="Three prototype rounds tested form, fit, water flow, and installation clarity."
           bullets={[
-            "Prototype 1 explored core geometry and compatibility.",
-            "Prototype 2 improved fit and interaction comfort.",
-            "Prototype 3 refined manufacturability and visual clarity.",
+            "Prototype 1: basic geometry.",
+            "Prototype 2: fit and comfort.",
+            "Prototype 3: cleaner final form.",
           ]}
           images={[
             {
@@ -266,7 +264,7 @@ export default function Refill() {
 
         <StudyBand
           title="Validation and Next Step"
-          body="The project progressed from course work to conference-level presentation and received positive faculty feedback for campus relevance. The next step is implementation planning with stakeholders and funding alignment."
+          body="Presented at a research conference and received strong feedback for campus relevance."
           images={[
             {
               src: asset("Pres1.png"),

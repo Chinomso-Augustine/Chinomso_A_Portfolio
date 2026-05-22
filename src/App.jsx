@@ -33,45 +33,59 @@ const skills = [
   "Notion",
 ];
 
-const workCards = [
+const projectCategories = [
   {
-    type: "project",
-    title: "Learning Rhino 8",
-    description:
-      "A simple project exploring Rhino 8 for the first time",
-    image: rhinoProjectImageUrl,
-    action: "View project",
-    to: "/learningrhino8",
+    title: "Industry Design",
+    backgroundClass: "bg-[#f3f0e8]",
+    borderClass: "border-[#ddd4c2]",
+    projects: [
+      {
+        type: "project",
+        title: "Learning Rhino 8",
+        description:
+          "A simple project exploring Rhino 8 for the first time",
+        image: rhinoProjectImageUrl,
+        action: "View project",
+        to: "/learningrhino8",
+      },
+      {
+        type: "project",
+        title: "Accessible Water Fountain",
+        description:
+          "A refill station redesign focused on accessibility, sustainability, and everyday use.",
+        image: fountainImageUrl,
+        action: "View project",
+        to: "/refill",
+      },
+      { type: "empty", title: "Parklet" },
+    ],
   },
   {
-    type: "project",
-    title: "Accessible Water Fountain",
-    description:
-      "A refill station redesign focused on accessibility, sustainability, and everyday use.",
-    image: fountainImageUrl,
-    action: "View project",
-    to: "/refill",
+    title: "UI/UX",
+    backgroundClass: "bg-[#eef4f7]",
+    borderClass: "border-[#cfdde3]",
+    projects: [
+      {
+        type: "project",
+        title: "Job Made Easy",
+        description:
+          "A career discovery platform for college and graduate students.",
+        image: jobMadeEasyImageUrl,
+        action: "View project",
+        to: "/jobmadeeasy",
+      },
+      {
+        type: "project",
+        title: "Student Service Hub",
+        description:
+          "A student-first platform that makes campus services easier to discover and use.",
+        image: campusImageUrl,
+        action: "View project",
+        to: "/case1",
+      },
+      { type: "empty", title: "Design Club Client Work" },
+    ],
   },
-  {
-    type: "project",
-    title: "Job Made Easy",
-    description:
-      "A career discovery platform for college and graduate students.",
-    image: jobMadeEasyImageUrl,
-    action: "View project",
-    to: "/jobmadeeasy",
-  },
-  {
-    type: "project",
-    title: "Student Service Hub",
-    description:
-      "A student-first platform that makes campus services easier to discover and use.",
-    image: campusImageUrl,
-    action: "View project",
-    to: "/case1",
-  },
-  { type: "empty", title: "Parklet" },
-  { type: "empty", title: "Design Club Client Work" },
 ];
 
 export default function App() {
@@ -170,9 +184,9 @@ export default function App() {
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {workCards.map((card) => (
-              <WorkCard key={card.title} card={card} />
+          <div className="mt-8 space-y-12">
+            {projectCategories.map((category) => (
+              <WorkSection key={category.title} category={category} />
             ))}
           </div>
         </section>
@@ -272,6 +286,31 @@ function SiteFooter() {
   );
 }
 
+function WorkSection({ category }) {
+  const headingId = `${category.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
+
+  return (
+    <section aria-labelledby={headingId}>
+      <div className={`rounded-2xl border ${category.borderClass} ${category.backgroundClass} p-5 md:p-6`}>
+        <div className={`mb-5 flex items-end justify-between border-b ${category.borderClass} pb-3`}>
+          <div>
+            <p className="text-sm uppercase tracking-[0.16em] text-[#7a7a7a]">Projects</p>
+            <h2 id={headingId} className="mt-1 text-3xl font-semibold">
+              {category.title}
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {category.projects.map((card) => (
+            <WorkCard key={card.title} card={card} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SkillsRow({ skills: items, duration }) {
   const loopedSkills = [...items, ...items];
 
@@ -297,7 +336,7 @@ function SkillsRow({ skills: items, duration }) {
 function WorkCard({ card }) {
   if (card.type === "empty") {
     return (
-      <article className="flex min-h-[320px] items-center justify-center border border-dashed border-[#bcbcbc] bg-[#ededed]">
+      <article className="flex min-h-[224px] items-center justify-center rounded-xl border border-dashed border-[#bcbcbc] bg-white/45">
         <div className="text-center">
           <p className="text-[0.78rem] uppercase tracking-[0.16em] text-[#8a8a8a]">Upcoming Project</p>
           <p className="mt-2 text-2xl font-semibold text-[#3f3f3f]">{card.title}</p>
@@ -307,12 +346,12 @@ function WorkCard({ card }) {
   }
 
   return (
-    <Link to={card.to} className="group block border border-[#cdcdcd] bg-[#ececec]">
-      <div className="relative h-[250px] overflow-hidden">
+    <Link to={card.to} className="group block overflow-hidden rounded-xl border border-[#cdcdcd] bg-white/55">
+      <div className="relative h-[210px] overflow-hidden bg-white/45 p-3">
         <img
           src={card.image}
           alt={card.title}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/55" />
         <div className="absolute inset-x-5 bottom-4 translate-y-3 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
@@ -320,9 +359,9 @@ function WorkCard({ card }) {
         </div>
       </div>
 
-      <div className="p-5">
-        <h3 className="text-3xl font-medium">{card.title}</h3>
-        <p className="mt-8 inline-block text-xl underline underline-offset-[8px]">{card.action}</p>
+      <div className="p-4">
+        <h3 className="text-2xl font-medium">{card.title}</h3>
+        <p className="mt-5 inline-block text-base underline underline-offset-[6px]">{card.action}</p>
       </div>
     </Link>
   );
