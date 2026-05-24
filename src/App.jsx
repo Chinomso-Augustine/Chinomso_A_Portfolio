@@ -83,7 +83,7 @@ const projectCategories = [
         action: "View project",
         to: "/case1",
       },
-      { type: "empty", title: "Design Club Client Work" },
+      { type: "empty", title: "Client Website Rebuild" },
     ],
   },
 ];
