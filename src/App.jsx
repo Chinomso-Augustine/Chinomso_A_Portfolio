@@ -35,6 +35,32 @@ const skills = [
 
 const projectCategories = [
   {
+    title: "UI/UX",
+    backgroundClass: "bg-[#eef4f7]",
+    borderClass: "border-[#cfdde3]",
+    projects: [
+      {
+        type: "project",
+        title: "Student Service Hub",
+        description:
+          "A student-first platform that makes campus services easier to discover and use.",
+        image: campusImageUrl,
+        action: "View project",
+        to: "/case1",
+      },
+      {
+        type: "project",
+        title: "Job Made Easy",
+        description:
+          "A career discovery platform for college and graduate students.",
+        image: jobMadeEasyImageUrl,
+        action: "View project",
+        to: "/jobmadeeasy",
+      },
+      { type: "empty", title: "Client Website Rebuild" },
+    ],
+  },
+  {
     title: "Industry Design",
     backgroundClass: "bg-[#f3f0e8]",
     borderClass: "border-[#ddd4c2]",
@@ -58,32 +84,6 @@ const projectCategories = [
         to: "/refill",
       },
       { type: "empty", title: "Parklet" },
-    ],
-  },
-  {
-    title: "UI/UX",
-    backgroundClass: "bg-[#eef4f7]",
-    borderClass: "border-[#cfdde3]",
-    projects: [
-      {
-        type: "project",
-        title: "Job Made Easy",
-        description:
-          "A career discovery platform for college and graduate students.",
-        image: jobMadeEasyImageUrl,
-        action: "View project",
-        to: "/jobmadeeasy",
-      },
-      {
-        type: "project",
-        title: "Student Service Hub",
-        description:
-          "A student-first platform that makes campus services easier to discover and use.",
-        image: campusImageUrl,
-        action: "View project",
-        to: "/case1",
-      },
-      { type: "empty", title: "Client Website Rebuild" },
     ],
   },
 ];
