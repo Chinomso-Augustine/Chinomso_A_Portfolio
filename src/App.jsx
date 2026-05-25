@@ -1,10 +1,21 @@
 import { Link } from "react-router-dom";
 
 const heroBackgroundUrl = import.meta.env.BASE_URL + "PP.JPG";
-const campusImageUrl = import.meta.env.BASE_URL + "camp.png";
+const campusImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
 const fountainImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Fountain Graphic.png");
 const jobMadeEasyImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Laptop 1.png");
 const rhinoProjectImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
+const publicFileUrl = (...pathSegments) =>
+  import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
+
+const typographyPdfUrl = publicFileUrl("DI", "Typography Project.pdf");
+const typographyImageUrl = publicFileUrl("DI", "typography-project.jpg");
+const digitalIllustrationsPdfUrl = publicFileUrl("DI", "Digital Illustrations.pdf");
+const digitalIllustrationsImageUrl = publicFileUrl("DI", "digital-illustrations.jpg");
+const eventPosterPdfUrl = publicFileUrl("DI", "My Event Poster.pdf");
+const eventPosterImageUrl = publicFileUrl("DI", "event-poster.jpg");
+const zinePdfUrl = publicFileUrl("DI", "zine-preview.pdf");
+const zineImageUrl = publicFileUrl("DI", "zine.jpg");
 
 const skills = [
   "Rhino 8",
@@ -50,7 +61,7 @@ const projectCategories = [
       },
       {
         type: "project",
-        title: "Job Made Easy",
+        title: "Job Made Easy Webpage",
         description:
           "A career discovery platform for college and graduate students.",
         image: jobMadeEasyImageUrl,
@@ -58,6 +69,7 @@ const projectCategories = [
         to: "/jobmadeeasy",
       },
       { type: "empty", title: "Client Website Rebuild" },
+      { type: "empty", title: "Social Media Control" },
     ],
   },
   {
@@ -84,6 +96,51 @@ const projectCategories = [
         to: "/refill",
       },
       { type: "empty", title: "Parklet" },
+      { type: "empty", title: "Final Parklet Project" },
+    ],
+  },
+  {
+    title: "Digital Illustrations / Graphic Design",
+    backgroundClass: "bg-[#f4eef7]",
+    borderClass: "border-[#ddcde6]",
+    projects: [
+      {
+        type: "project",
+        title: "Typography Project",
+        description:
+          "A type-focused poster study exploring hierarchy, scale, and visual contrast.",
+        image: typographyImageUrl,
+        action: "View PDF",
+        href: typographyPdfUrl,
+      },
+      {
+        type: "project",
+        title: "Digital Illustrations",
+        description:
+          "A multi-page illustration series exploring color systems, form, and everyday objects.",
+        image: digitalIllustrationsImageUrl,
+        action: "View PDF",
+        href: digitalIllustrationsPdfUrl,
+      },
+      {
+        type: "project",
+        title: "Event Poster",
+        description:
+          "A bold event poster composition using sports imagery, layered color, and scale.",
+        image: eventPosterImageUrl,
+        action: "View PDF",
+        href: eventPosterPdfUrl,
+      },
+      {
+        type: "project",
+        title: "Zine",
+        description:
+          "A visual zine exploring time pressure, workflow, and collage-based storytelling.",
+        image: zineImageUrl,
+        action: "View PDF",
+        href: zinePdfUrl,
+      },
+      { type: "empty", title: "Soccer" },
     ],
   },
 ];
@@ -345,8 +402,9 @@ function WorkCard({ card }) {
     );
   }
 
-  return (
-    <Link to={card.to} className="group block overflow-hidden rounded-xl border border-[#cdcdcd] bg-white/55">
+  const cardClassName = "group block overflow-hidden rounded-xl border border-[#cdcdcd] bg-white/55";
+  const cardContent = (
+    <>
       <div className="relative h-[210px] overflow-hidden bg-white/45 p-3">
         <img
           src={card.image}
@@ -363,6 +421,20 @@ function WorkCard({ card }) {
         <h3 className="text-2xl font-medium">{card.title}</h3>
         <p className="mt-5 inline-block text-base underline underline-offset-[6px]">{card.action}</p>
       </div>
+    </>
+  );
+
+  if (card.href) {
+    return (
+      <a href={card.href} target="_blank" rel="noreferrer" className={cardClassName}>
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={card.to} className={cardClassName}>
+      {cardContent}
     </Link>
   );
 }
