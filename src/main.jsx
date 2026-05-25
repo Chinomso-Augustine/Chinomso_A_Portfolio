@@ -9,6 +9,7 @@ import Case1 from "./Case1";
 import Refill from "./Refill";
 import JobMadeEasy from "./JobMadeEasy";
 import LearningRhino8 from "./LearningRhino8";
+import DesignProcess from "./DesignProcess";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/case1" element={<Case1 />} />
         <Route path="/refill" element={<Refill />} />
         <Route path="/jobmadeeasy" element={<JobMadeEasy />} />
+        <Route path="/designprocess" element={<DesignProcess />} />
         <Route path="/learningrhino8" element={<LearningRhino8 />} />
       </Routes>
     </HashRouter>

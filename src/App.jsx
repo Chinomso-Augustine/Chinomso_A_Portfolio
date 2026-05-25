@@ -16,6 +16,7 @@ const eventPosterPdfUrl = publicFileUrl("DI", "My Event Poster.pdf");
 const eventPosterImageUrl = publicFileUrl("DI", "event-poster.jpg");
 const zinePdfUrl = publicFileUrl("DI", "zine-preview.pdf");
 const zineImageUrl = publicFileUrl("DI", "zine.jpg");
+const designProcessImageUrl = publicFileUrl("journey-map-1.jpg");
 
 const skills = [
   "Rhino 8",
@@ -67,6 +68,15 @@ const projectCategories = [
         image: jobMadeEasyImageUrl,
         action: "View project",
         to: "/jobmadeeasy",
+      },
+      {
+        type: "project",
+        title: "Design Process",
+        description:
+          "Some branches of design work from different classes.",
+        image: designProcessImageUrl,
+        action: "View process",
+        to: "/designprocess",
       },
       { type: "empty", title: "Client Website Rebuild" },
       { type: "empty", title: "Social Media Control" },
