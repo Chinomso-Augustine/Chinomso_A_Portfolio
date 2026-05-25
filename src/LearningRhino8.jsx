@@ -8,7 +8,7 @@ function BackButton() {
   return (
     <Link
       to="/"
-      className="inline-flex h-9 items-center rounded-md border border-[#9db9c5] bg-white px-4 text-xs font-semibold text-[#1f4f5f] transition hover:bg-[#eef5f8] hover:text-[#173a47]"
+      className="inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
     >
       Back to Home
     </Link>

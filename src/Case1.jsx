@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const overviewImageUrl = import.meta.env.BASE_URL + "Home.png";
-const valuePropImageUrl = import.meta.env.BASE_URL + "VP.png";
-const serviceScreenImageUrl = import.meta.env.BASE_URL + "Service.png";
-const providerScreenImageUrl = import.meta.env.BASE_URL + "Provider.png";
+const overviewImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
+const valuePropImageUrl = import.meta.env.BASE_URL + "campconnect/VP.png";
+const serviceScreenImageUrl = import.meta.env.BASE_URL + "campconnect/" + encodeURIComponent("Services .png");
+const providerScreenImageUrl = import.meta.env.BASE_URL + "campconnect/Providers.png";
 
 const googleColors = ["#4285F4", "#DB4437", "#F4B400", "#0F9D58"];
 
@@ -50,7 +50,7 @@ function SectionVisual({ images }) {
           }`}
         >
           <div className="bg-[#f8fafd] p-5">
-            <div className={`${image.featured ? "h-[28rem] overflow-hidden" : ""} rounded-2xl`}>
+            <div className={`${image.featured ? "h-[18rem] overflow-hidden" : ""} rounded-2xl`}>
               <img
                 src={image.src}
                 alt={image.alt}
@@ -139,7 +139,7 @@ export default function Case1() {
                 className="rounded-full border border-[#dadce0] bg-white px-4 py-2 font-semibold text-[#1a73e8] shadow-sm transition hover:bg-[#f8fafd]"
                 style={{ boxShadow: "inset 0 -2px 0 #0F9D58" }}
               >
-                Explore case study
+                Explore Project Live
               </a>
             </div>
 

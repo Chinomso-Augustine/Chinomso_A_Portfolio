@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
-const sonyKitImageUrl = import.meta.env.BASE_URL + "Sony.PNG";
+const photographyImageUrl = import.meta.env.BASE_URL + "Photography.JPG";
 const includeImageOneUrl = import.meta.env.BASE_URL + "Include1.JPG";
 const includeImageTwoUrl = import.meta.env.BASE_URL + "Include2.JPG";
 const nsbeImageUrl = import.meta.env.BASE_URL + "NSBE.JPG";
@@ -41,7 +41,7 @@ export default function About() {
           
             <Link
               to="/"
-              className="mt-7 inline-flex h-9 items-center rounded-md border border-[#9db9c5] bg-white px-4 text-xs font-semibold text-[#1f4f5f] transition hover:bg-[#eef5f8] hover:text-[#173a47]"
+              className="mt-7 inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
             >
               Back to Home
             </Link>
@@ -114,7 +114,7 @@ export default function About() {
                 href="https://www.instagram.com/chino_clickss/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-[#215365] underline underline-offset-4 hover:text-[#173a47]"
+                className="rounded-full bg-[#ff3d8b] px-3 py-1 font-semibold text-white no-underline shadow-sm transition hover:bg-[#d62976]"
               >
                 Instagram portfolio
               </a>
@@ -123,7 +123,7 @@ export default function About() {
           </Panel>
 
           <section className="overflow-hidden border border-[#c9d8de] bg-white">
-            <img src={sonyKitImageUrl} alt="Sony camera gear" className="h-full min-h-[18rem] w-full object-cover" />
+            <img src={photographyImageUrl} alt="Photography portfolio sample" className="h-72 w-full object-cover object-[center_18%]" />
           </section>
         </div>
 
