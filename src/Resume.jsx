@@ -21,7 +21,7 @@ export default function Resume() {
         <div className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl md:text-4xl font-semibold">Resume</h1>
+              <h1 className="text-3xl md:text-4xl font-semibold">Tech Resume</h1>
               <p className="text-sm text-blue-900/80 mt-2">
                 UI/UX Designer and UI Engineer
               </p>
@@ -67,7 +67,7 @@ export default function Resume() {
             <div className="hidden md:block">
               <iframe
                 src={`${resumePdfUrl}#zoom=${zoom}`}
-                title="Chinomso Augustine Resume"
+                title="Chinomso Augustine Tech Resume"
                 className="w-full h-[75vh]"
               />
             </div>
