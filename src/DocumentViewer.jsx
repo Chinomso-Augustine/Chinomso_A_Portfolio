@@ -33,6 +33,7 @@ const documents = {
 export default function DocumentViewer() {
   const { documentId } = useParams();
   const document = documents[documentId];
+  const pdfPreviewUrl = `${document?.pdf || ""}#view=FitH&toolbar=1&navpanes=0`;
 
   if (!document) {
     return (
@@ -70,16 +71,18 @@ export default function DocumentViewer() {
         </section>
 
         <section className="mt-6 overflow-hidden rounded-2xl border border-[#cbdce3] bg-white shadow-sm">
-          <iframe
-            src={document.pdf}
-            title={`${document.title} PDF preview`}
-            className="hidden h-[78vh] w-full md:block"
-          />
-          <div className="p-4 md:hidden">
-            <img src={document.image} alt={`${document.title} preview`} className="w-full rounded-xl border border-[#d6e4e9]" />
+          <div className="h-[72vh] overflow-auto bg-[#eef6f9] [-webkit-overflow-scrolling:touch] md:h-[78vh]">
+            <iframe
+              src={pdfPreviewUrl}
+              title={`${document.title} PDF preview`}
+              className="h-full min-h-[720px] w-full bg-white md:min-h-0"
+            />
+          </div>
+          <div className="flex flex-col gap-3 border-t border-[#d6e4e9] bg-white p-4 text-sm text-[#395d69] sm:flex-row sm:items-center sm:justify-between">
+            <p>If your mobile browser does not scroll embedded PDFs smoothly, use the direct PDF link.</p>
             <a
               href={document.pdf}
-              className="mt-4 inline-flex rounded-full bg-[#173a47] px-5 py-3 text-sm font-semibold text-white"
+              className="inline-flex w-fit rounded-full bg-[#173a47] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0f2b35]"
             >
               Open PDF
             </a>
