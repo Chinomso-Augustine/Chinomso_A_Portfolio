@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
 const photographyImageUrl = import.meta.env.BASE_URL + "Photography.JPG";
 const includeImageOneUrl = import.meta.env.BASE_URL + "Include1.JPG";
@@ -31,20 +29,13 @@ function ClubCard({ title, text, image, alt }) {
 export default function About() {
   return (
     <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
-      <section className="border-b border-[#c6d7de] bg-[linear-gradient(135deg,#d5e6ec_0%,#e9f3f6_52%,#f6fbfc_100%)] px-6 pb-12 pt-20 md:px-16">
+      <section className="border-b border-[#c6d7de] bg-[linear-gradient(135deg,#d5e6ec_0%,#e9f3f6_52%,#f6fbfc_100%)] px-6 pb-12 pt-32 md:px-16">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6f7b]">About</p>
             <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
               Chinomso Augustine
             </h1>
-          
-            <Link
-              to="/"
-              className="mt-7 inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
-            >
-              Back to Home
-            </Link>
           </div>
 
           <div className="overflow-hidden border border-[#c7d8de] bg-white p-2">

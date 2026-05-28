@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const resumeFileName = "myresume.pdf";
 const resumePdfUrl = `${import.meta.env.BASE_URL}${encodeURIComponent(
   resumeFileName
 )}`;
-const backHomeButtonClass =
-  "inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]";
 
 export default function Resume() {
   const [zoom, setZoom] = useState(100);
@@ -16,7 +13,7 @@ export default function Resume() {
   const resetZoom = () => setZoom(100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 text-slate-900 px-6 md:px-20 py-16">
+    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 px-6 pb-16 pt-32 text-slate-900 md:px-20">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
@@ -25,11 +22,6 @@ export default function Resume() {
               <p className="text-sm text-blue-900/80 mt-2">
                 UI/UX Designer and UI Engineer
               </p>
-               <div className="mt-8">
-            <Link to="/" className={backHomeButtonClass}>
-              Back to Home
-            </Link>
-          </div>
             </div>
 
             <a
@@ -97,11 +89,6 @@ export default function Resume() {
             </a>
           </div>
 
-          <div className="mt-8">
-            <Link to="/" className={backHomeButtonClass}>
-              Back to Home
-            </Link>
-          </div>
         </div>
       </div>
     </div>

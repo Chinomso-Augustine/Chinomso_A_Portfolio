@@ -10,10 +10,13 @@ import Refill from "./Refill";
 import JobMadeEasy from "./JobMadeEasy";
 import LearningRhino8 from "./LearningRhino8";
 import DesignProcess from "./DesignProcess";
+import SiteNav from "./SiteNav";
+import DocumentViewer from "./DocumentViewer";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter>
+      <SiteNav />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
@@ -23,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/jobmadeeasy" element={<JobMadeEasy />} />
         <Route path="/designprocess" element={<DesignProcess />} />
         <Route path="/learningrhino8" element={<LearningRhino8 />} />
+        <Route path="/document/:documentId" element={<DocumentViewer />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>

@@ -44,21 +44,29 @@ function ProcessSection({ eyebrow, title, description, children }) {
 
 function JourneyMapCard({ map }) {
   return (
-    <figure className="overflow-hidden rounded-3xl border border-[#d9cde2] bg-white shadow-[0_18px_45px_rgba(64,38,78,0.1)]">
+    <figure
+      tabIndex={0}
+      className="group overflow-hidden rounded-3xl border border-[#d9cde2] bg-white shadow-[0_18px_45px_rgba(64,38,78,0.1)] outline-none transition duration-300 hover:shadow-[0_28px_70px_rgba(64,38,78,0.2)] focus-visible:ring-4 focus-visible:ring-[#a978c7]/45"
+    >
       <div className="bg-[#fbf8fd] p-3">
-        <img src={map.image} alt={map.alt} className="w-full rounded-2xl bg-white object-contain" />
+        <img
+          src={map.image}
+          alt={map.alt}
+          className="w-full rounded-2xl bg-white object-contain transition duration-500 group-hover:scale-[1.03] group-focus:scale-[1.03]"
+        />
       </div>
       <figcaption className="flex flex-col gap-3 border-t border-[#eadff0] bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
         <span className="text-sm font-semibold text-[#2f1f39]">{map.title}</span>
-        <a
-          href={map.pdf}
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm font-medium text-[#7b3fa0] underline underline-offset-4"
-        >
-          Open PDF
-        </a>
+        <span className="text-sm font-medium text-[#7b3fa0]">Hover or focus to preview full map</span>
       </figcaption>
+      <div className="pointer-events-none fixed inset-0 z-[60] flex items-center justify-center bg-[#1f1028]/88 p-4 opacity-0 backdrop-blur-sm transition duration-300 group-hover:opacity-100 group-focus:opacity-100 md:p-8">
+        <img
+          src={map.image}
+          alt=""
+          aria-hidden="true"
+          className="max-h-[92vh] max-w-[96vw] rounded-2xl bg-white object-contain p-2 shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+        />
+      </div>
     </figure>
   );
 }
@@ -66,7 +74,7 @@ function JourneyMapCard({ map }) {
 export default function DesignProcess() {
   return (
     <div className="min-h-screen bg-[#f5eef8] text-[#2f1f39]">
-      <section className="border-b border-[#d8cfe2] bg-[linear-gradient(140deg,#ead8f2_0%,#f7effa_52%,#fffafe_100%)] px-6 pb-14 pt-20 md:px-16">
+      <section className="border-b border-[#d8cfe2] bg-[linear-gradient(140deg,#ead8f2_0%,#f7effa_52%,#fffafe_100%)] px-6 pb-14 pt-32 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#795f8b]">Process Archive</p>
           <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-[-0.05em] text-[#2f1f39] md:text-7xl">

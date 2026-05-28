@@ -100,7 +100,7 @@ function DetailSection({ title, body, bullets, images }) {
 export default function Case1() {
   return (
     <div className="min-h-screen bg-white text-[#202124]">
-      <section className="relative overflow-hidden border-b border-[#e8eaed] bg-white px-6 pb-16 pt-20 md:px-16">
+      <section className="relative overflow-hidden border-b border-[#e8eaed] bg-white px-6 pb-16 pt-32 md:px-16">
         <div className="pointer-events-none absolute -right-24 top-12 h-72 w-72 rounded-full bg-[#e8f0fe]" />
         <div className="pointer-events-none absolute -left-24 bottom-6 h-64 w-64 rounded-full bg-[#fef7e0]" />
 

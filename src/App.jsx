@@ -8,13 +8,9 @@ const rhinoProjectImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
 const publicFileUrl = (...pathSegments) =>
   import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
 
-const typographyPdfUrl = publicFileUrl("DI", "Typography Project.pdf");
 const typographyImageUrl = publicFileUrl("DI", "typography-project.jpg");
-const digitalIllustrationsPdfUrl = publicFileUrl("DI", "Digital Illustrations.pdf");
 const digitalIllustrationsImageUrl = publicFileUrl("DI", "digital-illustrations.jpg");
-const eventPosterPdfUrl = publicFileUrl("DI", "My Event Poster.pdf");
 const eventPosterImageUrl = publicFileUrl("DI", "event-poster.jpg");
-const zinePdfUrl = publicFileUrl("DI", "zine-preview.pdf");
 const zineImageUrl = publicFileUrl("DI", "zine.jpg");
 const designProcessImageUrl = publicFileUrl("journey-map-1.jpg");
 
@@ -120,8 +116,8 @@ const projectCategories = [
         description:
           "A type-focused poster study exploring hierarchy, scale, and visual contrast.",
         image: typographyImageUrl,
-        action: "View PDF",
-        href: typographyPdfUrl,
+        action: "View project",
+        to: "/document/typography",
       },
       {
         type: "project",
@@ -129,8 +125,8 @@ const projectCategories = [
         description:
           "A multi-page illustration series exploring color systems, form, and everyday objects.",
         image: digitalIllustrationsImageUrl,
-        action: "View PDF",
-        href: digitalIllustrationsPdfUrl,
+        action: "View project",
+        to: "/document/digital-illustrations",
       },
       {
         type: "project",
@@ -138,8 +134,8 @@ const projectCategories = [
         description:
           "A bold event poster composition using sports imagery, layered color, and scale.",
         image: eventPosterImageUrl,
-        action: "View PDF",
-        href: eventPosterPdfUrl,
+        action: "View project",
+        to: "/document/event-poster",
       },
       {
         type: "project",
@@ -147,8 +143,8 @@ const projectCategories = [
         description:
           "A visual zine exploring time pressure, workflow, and collage-based storytelling.",
         image: zineImageUrl,
-        action: "View PDF",
-        href: zinePdfUrl,
+        action: "View project",
+        to: "/document/zine",
       },
       { type: "empty", title: "Soccer" },
     ],
@@ -177,50 +173,6 @@ export default function App() {
         `}
       </style>
 
-      <header className="fixed inset-x-0 top-0 z-30 bg-black/20 backdrop-blur-[2px]">
-        <div className="mx-auto flex h-20 w-full max-w-[1280px] items-center justify-end px-6 md:px-10">
-          <nav aria-label="Main navigation">
-            <ul className="flex items-center gap-5 text-[1rem] text-white/90 md:gap-8">
-              <li>
-                <Link to="/about" className="hover:text-white">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/resume" className="hover:text-white">
-                  Resume
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Chinomso-Augustine"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white"
-                >
-                  Github
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/chinomso-augustine-ba9a29258/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="mailto:chinomsoaugustine073@gmail.com" className="hover:text-white">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
       <main className="pb-16">
         <section className="relative flex min-h-[68vh] items-center justify-center overflow-hidden">
           <img
@@ -228,13 +180,16 @@ export default function App() {
             alt="Hero background"
             className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(7,31,39,0.78),rgba(15,76,92,0.55),rgba(15,76,92,0.35))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(3,18,24,0.9),rgba(9,50,62,0.74),rgba(9,50,62,0.6))]" />
 
-          <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-24 text-center md:px-10">
-            <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white md:whitespace-nowrap">
+          <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-32 text-center md:px-10">
+            <p className="mb-4 inline-flex rounded-full border border-white/30 bg-black/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
+              Home
+            </p>
+            <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
               CHINOMSO AUGUSTINE
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/92 md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-black/35 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(0,0,0,0.25)] ring-1 ring-white/15 md:text-lg">
               I design and build thoughtful digital and physical experiences with a focus on UI/UX and Industry Design.
             </p>
           </div>
@@ -433,14 +388,6 @@ function WorkCard({ card }) {
       </div>
     </>
   );
-
-  if (card.href) {
-    return (
-      <a href={card.href} target="_blank" rel="noreferrer" className={cardClassName}>
-        {cardContent}
-      </a>
-    );
-  }
 
   return (
     <Link to={card.to} className={cardClassName}>

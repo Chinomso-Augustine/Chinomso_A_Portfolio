@@ -35,7 +35,7 @@ function StepCard({ step, title, text, image, alt }) {
 export default function LearningRhino8() {
   return (
     <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
-      <section className="border-b border-[#c7d9e0] bg-[linear-gradient(140deg,#cde2e7_0%,#e8f3f6_52%,#f6fbfc_100%)] px-6 pb-14 pt-20 md:px-16">
+      <section className="border-b border-[#c7d9e0] bg-[linear-gradient(140deg,#cde2e7_0%,#e8f3f6_52%,#f6fbfc_100%)] px-6 pb-14 pt-32 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6d78]">Project 02</p>
           <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
