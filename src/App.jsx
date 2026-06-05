@@ -7,6 +7,7 @@ const jobMadeEasyImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Lapto
 const rhinoProjectImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
 const publicFileUrl = (...pathSegments) =>
   import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
+const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
 
 const typographyImageUrl = publicFileUrl("DI", "typography-project.jpg");
 const digitalIllustrationsImageUrl = publicFileUrl("DI", "digital-illustrations.jpg");
@@ -101,8 +102,16 @@ const projectCategories = [
         action: "View project",
         to: "/refill",
       },
-      { type: "empty", title: "Parklet" },
-      { type: "empty", title: "Final Parklet Project" },
+      {
+        type: "project",
+        title: "Parklet",
+        description:
+          "A modular streetside parklet concept with layered wood ribs, seating, and a small public workspace.",
+        image: parkletImageUrl,
+        action: "View project",
+        to: "/parklet",
+      },
+      { type: "empty", title: "Upcoming Project" },
     ],
   },
   {
