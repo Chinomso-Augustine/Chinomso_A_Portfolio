@@ -5,17 +5,17 @@ const parkletAsset = (...pathSegments) =>
 
 const images = {
   hero: parkletAsset("Parklet", "Graphics.png"),
-  sketch: parkletAsset("Parklet", "converted", "Sketch.png"),
+  sketch: parkletAsset("Parklet", "Sketch.png"),
   rhino: parkletAsset("Parklet", "Screenshot 2026-06-04 at 3.27.20 PM copy.png"),
   floorplan: parkletAsset("Parklet", "Floorplan Dim copy.png"),
-  smallScale: parkletAsset("Parklet", "converted", "Small scale.png"),
-  printing: parkletAsset("Parklet", "converted", "Printing.png"),
-  processOne: parkletAsset("Parklet", "converted", "Process 1.png"),
-  processTwo: parkletAsset("Parklet", "converted", "Process 2.png"),
-  groupWork: parkletAsset("Parklet", "converted", "Group work.png"),
-  groupTwo: parkletAsset("Parklet", "converted", "Group2.png"),
-  fdOne: parkletAsset("Parklet", "converted", "FD1.png"),
-  fdTwo: parkletAsset("Parklet", "converted", "FD2.png"),
+  smallScale: parkletAsset("Parklet", "Small scale.png"),
+  printing: parkletAsset("Parklet", "Printing.png"),
+  processOne: parkletAsset("Parklet", "Process 1.png"),
+  processTwo: parkletAsset("Parklet", "Process 2.png"),
+  groupWork: parkletAsset("Parklet", "Group work.png"),
+  groupTwo: parkletAsset("Parklet", "Group2.png"),
+  fdOne: parkletAsset("Parklet", "FD1.png"),
+  fdTwo: parkletAsset("Parklet", "FD2.png"),
 };
 
 function MetaCard({ label, value }) {
@@ -116,13 +116,24 @@ export default function Parklet() {
                 body="The design uses repeated cardboard to create enclosure, seating, shade, and a visual rhythm that feels architectural without becoming heavy."
               />
             </div>
-            <div className="grid gap-4 md:col-span-7 sm:grid-cols-3">
-              {["Seatings"].map((item) => (
-                <div key={item} className="border border-[#d8c7aa] bg-[#fffaf0] p-5">
-                  <p className="text-sm font-semibold text-[#302213]">{item}</p>
-                  <p className="mt-3 text-sm leading-6 text-[#735b3b]">
-                   Carefully designed to ensure accessibility and group collaboration
-                  </p>
+            <div className="grid gap-4 sm:grid-cols-3 md:col-span-7">
+              {[
+                {
+                  label: "Seating",
+                  body: "Layered surfaces support individual studying and small-group collaboration.",
+                },
+                {
+                  label: "Accessibility",
+                  body: "A clear circulation path keeps the sidewalk edge open and approachable.",
+                },
+                {
+                  label: "Experience",
+                  body: "Rhythmic ribs create shade, enclosure, and a stronger street presence.",
+                },
+              ].map((item) => (
+                <div key={item.label} className="border border-[#d8c7aa] bg-[#fffaf0] p-5">
+                  <p className="text-sm font-semibold text-[#302213]">{item.label}</p>
+                  <p className="mt-3 text-sm leading-6 text-[#735b3b]">{item.body}</p>
                 </div>
               ))}
             </div>
