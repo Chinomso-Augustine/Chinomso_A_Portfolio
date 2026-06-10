@@ -86,12 +86,12 @@ const projectCategories = [
     projects: [
       {
         type: "project",
-        title: "Learning Rhino 8",
+        title: "Parklet",
         description:
-          "A simple project exploring Rhino 8 for the first time",
-        image: rhinoProjectImageUrl,
+          "A modular streetside parklet concept with layered wood ribs, seating, and a small public workspace.",
+        image: parkletImageUrl,
         action: "View project",
-        to: "/learningrhino8",
+        to: "/parklet",
       },
       {
         type: "project",
@@ -104,12 +104,12 @@ const projectCategories = [
       },
       {
         type: "project",
-        title: "Parklet",
+        title: "Learning Rhino 8",
         description:
-          "A modular streetside parklet concept with layered wood ribs, seating, and a small public workspace.",
-        image: parkletImageUrl,
+          "A simple project exploring Rhino 8 for the first time",
+        image: rhinoProjectImageUrl,
         action: "View project",
-        to: "/parklet",
+        to: "/learningrhino8",
       },
       { type: "empty", title: "Upcoming Project" },
     ],
