@@ -139,8 +139,8 @@ export default function IncludeClinic() {
   const [selectedWireframe, setSelectedWireframe] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#f8f6fb] text-[#281638]">
-      <header className="relative flex min-h-[84vh] items-end overflow-hidden border-b border-[#d9c9e6] bg-[#321547] px-6 pb-16 pt-32 text-white md:px-16">
+    <div className="min-h-screen bg-[#ffffff] text-[#281638]">
+      <header className="relative flex min-h-[84vh] items-end overflow-hidden border-b border-[#d9c9e6] bg-[#4a2f68] px-6 pb-16 pt-32 text-white md:px-16">
         <img
           src={heroImage}
           alt=""
@@ -151,9 +151,9 @@ export default function IncludeClinic() {
         <div className="relative z-10 mx-auto w-full max-w-6xl">
           <Link
             to="/"
-            className="inline-flex h-11 items-center rounded-full border border-white/40 bg-[#321547]/70 px-5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(22,7,32,0.25)] backdrop-blur-sm transition hover:bg-[#321547]/85"
+            className="inline-flex h-11 translate-y-8 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f0a383]/45"
           >
-            ← Back to Home
+            Back to Home
           </Link>
         </div>
       </header>
@@ -200,7 +200,7 @@ export default function IncludeClinic() {
             <div className="grid gap-px overflow-hidden border border-[#d9c9e6] bg-[#d9c9e6] shadow-[0_16px_40px_rgba(58,25,78,0.06)] md:grid-cols-2 xl:grid-cols-3">
               {overviewItems.map((item) => (
                 <article key={item.title} className="bg-white p-5 md:p-7">
-                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#63317f]">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#4a2f68]">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-[13px] leading-6 text-[#665470]">{item.body}</p>
@@ -230,7 +230,7 @@ export default function IncludeClinic() {
               <div className="grid gap-5">
                 {userUnderstandingItems.map((item) => (
                   <article key={item.title} className="border border-[#d9c9e6] bg-white p-6 shadow-[0_16px_40px_rgba(58,25,78,0.06)] md:p-7">
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#63317f]">
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#4a2f68]">
                       {item.title}
                     </h3>
                     {item.points ? (
@@ -250,7 +250,7 @@ export default function IncludeClinic() {
               </div>
 
               <article className="border border-[#d9c9e6] bg-white p-5 shadow-[0_16px_40px_rgba(58,25,78,0.06)] md:p-6">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#63317f]">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-[#4a2f68]">
                   Persona
                 </h3>
                 <figure className="mx-auto mt-4 max-w-[30rem] overflow-hidden border border-[#eadff2] bg-[#fbf7ff]">
@@ -312,7 +312,7 @@ export default function IncludeClinic() {
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#805b99]">
                     0{index + 1}
                   </p>
-                  <h3 className="mt-2 text-xl font-semibold text-[#63317f]">
+                  <h3 className="mt-2 text-xl font-semibold text-[#4a2f68]">
                     {stage.title}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-[#665470]">{stage.body}</p>
@@ -322,7 +322,7 @@ export default function IncludeClinic() {
           </div>
 
           <div className="mt-10 border-t border-[#d9c9e6] pt-8">
-            <h3 className="text-2xl font-semibold text-[#63317f]">
+            <h3 className="text-2xl font-semibold text-[#4a2f68]">
               Teammate&apos;s work
             </h3>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#665470]">
@@ -461,14 +461,14 @@ export default function IncludeClinic() {
 
       {selectedWireframe && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#160720]/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#160720]/88 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={selectedWireframe.title}
         >
           <button
             type="button"
-            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white text-2xl leading-none text-[#321547] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:bg-[#eadff2]"
+            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white text-2xl leading-none text-[#4a2f68] shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:bg-[#f0e7f6]"
             onClick={() => setSelectedWireframe(null)}
             aria-label="Close expanded wireframe"
           >
@@ -476,7 +476,7 @@ export default function IncludeClinic() {
           </button>
 
           <figure className="max-h-[88vh] w-full max-w-4xl overflow-auto bg-white p-4 shadow-[0_28px_80px_rgba(0,0,0,0.35)]">
-            <figcaption className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#63317f]">
+            <figcaption className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4a2f68]">
               {selectedWireframe.title}
             </figcaption>
             <img

@@ -4,13 +4,13 @@ const navLinkClass = ({ isActive }) =>
   [
     "rounded-full px-3 py-2 text-sm font-semibold transition md:text-[0.95rem]",
     isActive
-      ? "bg-white text-[#0b2c55] shadow-sm"
+      ? "bg-[#fffaf2] text-[#112f3a] shadow-sm"
       : "text-white/88 hover:bg-white/15 hover:text-white",
   ].join(" ");
 
 export default function SiteNav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#071f42]/94 shadow-[0_8px_24px_rgba(2,12,28,0.2)] backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/15 bg-[#112f3a]/94 shadow-[0_8px_24px_rgba(17,47,58,0.2)] backdrop-blur-md">
       <div className="mx-auto flex min-h-16 w-full max-w-[1280px] flex-col gap-3 px-4 py-3 sm:min-h-20 sm:flex-row sm:items-center sm:justify-between sm:px-6 md:px-10">
         <NavLink
           to="/"

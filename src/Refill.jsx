@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-const asset = (file) => import.meta.env.BASE_URL + encodeURIComponent(file);
+const asset = (file) => import.meta.env.BASE_URL + "Refil/" + encodeURIComponent(file);
 
 function MetaItem({ label, value }) {
   return (
-    <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
-      <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">{label}</p>
-      <p className="mt-1 text-sm font-medium text-[#193946]">{value}</p>
+    <div className="border border-[#b8dfe3] bg-[#f5fcfd] px-4 py-3">
+      <p className="text-[11px] uppercase tracking-[0.14em] text-[#0f6975]">{label}</p>
+      <p className="mt-1 text-sm font-medium text-[#073f4a]">{value}</p>
     </div>
   );
 }
@@ -25,17 +25,17 @@ function VisualRail({ images, layout }) {
     return (
       <div className="space-y-4">
         {Object.entries(grouped).map(([groupName, groupImages]) => (
-          <div key={groupName} className="border border-[#bfd1d8] bg-white p-3">
-            <p className="mb-3 text-sm font-semibold text-[#2a5563]">{groupName}</p>
+          <div key={groupName} className="border border-[#b8dfe3] bg-white p-3">
+            <p className="mb-3 text-sm font-semibold text-[#0f6975]">{groupName}</p>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {groupImages.map((image) => (
-                <figure key={image.src} className="overflow-hidden border border-[#d3e1e6] bg-white p-3">
+                <figure key={image.src} className="overflow-hidden border border-[#cce9ec] bg-white p-3">
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="h-72 w-full bg-white object-contain"
                   />
-                  <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
+                  <figcaption className="border-t border-[#cce9ec] bg-[#f5fcfd] px-3 py-2 text-[11px] text-[#507982]">
                     {image.caption}
                   </figcaption>
                 </figure>
@@ -51,13 +51,13 @@ function VisualRail({ images, layout }) {
     return (
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {images.map((image) => (
-          <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-2">
+          <figure key={image.src} className="overflow-hidden border border-[#b8dfe3] bg-white p-2">
             <img
               src={image.src}
               alt={image.alt}
               className="h-72 w-full bg-white object-contain"
             />
-            <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
+            <figcaption className="border-t border-[#cce9ec] bg-[#f5fcfd] px-3 py-2 text-[11px] text-[#507982]">
               {image.caption}
             </figcaption>
           </figure>
@@ -69,13 +69,13 @@ function VisualRail({ images, layout }) {
   return (
     <div className={multiImageLayout ? "grid grid-cols-1 gap-3 sm:grid-cols-2" : "space-y-3"}>
       {images.map((image) => (
-        <figure key={image.src} className="overflow-hidden border border-[#bfd1d8] bg-white p-3">
+        <figure key={image.src} className="overflow-hidden border border-[#b8dfe3] bg-white p-3">
           <img
             src={image.src}
             alt={image.alt}
             className={multiImageLayout ? "h-72 w-full bg-white object-contain" : "max-h-[36rem] w-full bg-white object-contain"}
           />
-          <figcaption className="border-t border-[#dce7eb] bg-[#f4f9fb] px-3 py-2 text-[11px] text-[#4f6c78]">
+          <figcaption className="border-t border-[#cce9ec] bg-[#f5fcfd] px-3 py-2 text-[11px] text-[#507982]">
             {image.caption}
           </figcaption>
         </figure>
@@ -87,9 +87,9 @@ function VisualRail({ images, layout }) {
 function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
   if (imageLayout === "teamRow") {
     return (
-      <section className="border-t border-[#c8d9e0] py-10">
-        <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
-        {body ? <p className="mt-3 max-w-3xl text-sm leading-6 text-[#32535f]">{body}</p> : null}
+      <section className="border-t border-[#b8dfe3] py-10">
+        <h2 className="text-2xl font-semibold text-[#073f4a]">{title}</h2>
+        {body ? <p className="mt-3 max-w-3xl text-sm leading-6 text-[#3e6870]">{body}</p> : null}
         <div className="mt-5">
           <VisualRail images={images} layout={imageLayout} />
         </div>
@@ -101,13 +101,13 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
   const visualOrder = reverse ? "md:order-1" : "md:order-2";
 
   return (
-    <section className="border-t border-[#c8d9e0] py-10">
+    <section className="border-t border-[#b8dfe3] py-10">
       <div className="grid gap-6 md:grid-cols-12 md:items-start">
         <div className={`md:col-span-4 ${contentOrder}`}>
-          <h2 className="text-2xl font-semibold text-[#183944]">{title}</h2>
-          {body ? <p className="mt-3 text-sm leading-6 text-[#32535f]">{body}</p> : null}
+          <h2 className="text-2xl font-semibold text-[#073f4a]">{title}</h2>
+          {body ? <p className="mt-3 text-sm leading-6 text-[#3e6870]">{body}</p> : null}
           {bullets ? (
-            <ul className="mt-4 list-disc space-y-1 pl-5 text-sm leading-6 text-[#32535f]">
+            <ul className="mt-4 list-disc space-y-1 pl-5 text-sm leading-6 text-[#3e6870]">
               {bullets.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -125,17 +125,17 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
 
 export default function Refill() {
   return (
-    <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
-      <section className="border-b border-[#c7d9e0] bg-[linear-gradient(140deg,#cde2e7_0%,#e8f3f6_52%,#f6fbfc_100%)] px-6 pb-14 pt-32 md:px-16">
+    <div className="min-h-screen bg-[#edf9fb] text-[#073f4a]">
+      <section className="border-b border-[#b8dfe3] bg-[linear-gradient(140deg,#073f4a_0%,#0f6975_50%,#edf9fb_100%)] text-white px-6 pb-14 pt-32 md:px-16">
         <div className="mx-auto max-w-6xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6d78]">Case Study</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8eeaf0]">Case Study</p>
+          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-white md:text-7xl">
             Accessible Water Fountain
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-[#335460]">
+          <p className="mt-4 max-w-2xl text-lg text-[#f5fcfd]">
             Retrofitting public fountains for inclusive, everyday hydration.
           </p>
-          <p className="mt-6 max-w-2xl text-sm leading-6 text-[#31515c]">
+          <p className="mt-6 max-w-2xl text-sm leading-6 text-[#ddf5f7]">
             A retrofit mouthpiece that makes existing fountains easier to use for direct drinking and reusable bottle filling.
           </p>
 
@@ -148,7 +148,7 @@ export default function Refill() {
 
           <Link
             to="/"
-            className="mt-8 inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
+            className="mt-8 inline-flex h-11 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f0a383]/45"
           >
             Back to Home
           </Link>

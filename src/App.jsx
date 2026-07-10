@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-const heroBackgroundUrl = import.meta.env.BASE_URL + "PP.JPG";
+const heroBackgroundUrl = import.meta.env.BASE_URL + "about-me/PP.JPG";
 const campusImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
-const fountainImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Fountain Graphic.png");
-const jobMadeEasyImageUrl = import.meta.env.BASE_URL + encodeURIComponent("Laptop 1.png");
-const rhinoProjectImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
+const fountainImageUrl = import.meta.env.BASE_URL + "Refil/" + encodeURIComponent("Fountain Graphic.png");
+const jobMadeEasyImageUrl = import.meta.env.BASE_URL + "other-images/" + encodeURIComponent("Laptop 1.png");
+const rhinoProjectImageUrl = import.meta.env.BASE_URL + "other-images/rhino-modeling.png";
 const publicFileUrl = (...pathSegments) =>
   import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
 const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
 
-const designProcessImageUrl = publicFileUrl("journey-map-1.jpg");
+const designProcessImageUrl = publicFileUrl("other-images", "journey-map-1.jpg");
 const includeClinicImageUrl = publicFileUrl("Include Design", "HeroImage.png");
 
 const skills = [
@@ -42,15 +42,15 @@ const skills = [
 const projectCategories = [
   {
     title: "UI/UX",
-    backgroundClass: "bg-[#fbf7ff]",
-    borderClass: "border-[#d8c5ea]",
-    eyebrowClass: "text-[#7b4fa0]",
-    headingClass: "text-[#2f1747]",
-    emptyBorderClass: "border-[#b99ad3]",
-    emptyTextClass: "text-[#815ca1]",
-    emptyTitleClass: "text-[#4b2368]",
+    backgroundClass: "bg-[#eef5f2]",
+    borderClass: "border-[#bdd2c9]",
+    eyebrowClass: "text-[#2f7664]",
+    headingClass: "text-[#112f3a]",
+    emptyBorderClass: "border-[#8fb8aa]",
+    emptyTextClass: "text-[#497e70]",
+    emptyTitleClass: "text-[#234f45]",
     cardClass:
-      "border-[#d8c5ea] hover:border-[#a982c8] hover:shadow-[0_14px_30px_rgba(78,35,104,0.13)]",
+      "border-[#bdd2c9] hover:border-[#e45d3d] hover:shadow-[0_14px_30px_rgba(17,47,58,0.13)]",
     projects: [
       {
         type: "project",
@@ -94,15 +94,15 @@ const projectCategories = [
   },
   {
     title: "None UI/UX Work",
-    backgroundClass: "bg-[#fff9f0]",
-    borderClass: "border-[#e4cda8]",
-    eyebrowClass: "text-[#94642c]",
-    headingClass: "text-[#392413]",
-    emptyBorderClass: "border-[#c9a36e]",
-    emptyTextClass: "text-[#8c6331]",
-    emptyTitleClass: "text-[#704211]",
+    backgroundClass: "bg-[#f6efe4]",
+    borderClass: "border-[#d9c8ad]",
+    eyebrowClass: "text-[#9b5a32]",
+    headingClass: "text-[#112f3a]",
+    emptyBorderClass: "border-[#c99a73]",
+    emptyTextClass: "text-[#8f6345]",
+    emptyTitleClass: "text-[#684022]",
     cardClass:
-      "border-[#e4cda8] hover:border-[#bf8d49] hover:shadow-[0_14px_30px_rgba(112,66,17,0.12)]",
+      "border-[#d9c8ad] hover:border-[#e45d3d] hover:shadow-[0_14px_30px_rgba(17,47,58,0.12)]",
     projects: [
       {
         type: "project",
@@ -141,7 +141,7 @@ export default function App() {
   const rowTwoSkills = skills.filter((_, index) => index % 2 !== 0);
 
   return (
-    <div className="min-h-screen bg-[#edf3fa] text-[#0b1f3a]">
+    <div className="min-h-screen bg-[#f7f3eb] text-[#112f3a]">
       <style>
         {`
           @keyframes skills-scroll-left {
@@ -165,24 +165,24 @@ export default function App() {
             alt="Hero background"
             className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,17,39,0.94),rgba(9,37,75,0.8),rgba(18,58,105,0.68))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(17,47,58,0.94),rgba(17,47,58,0.78),rgba(232,93,61,0.34))]" />
 
           <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-32 text-center md:px-10">
-            <p className="mb-4 inline-flex rounded-full border border-[#9fc5f8]/45 bg-[#071a36]/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
+            <p className="mb-4 inline-flex rounded-full border border-[#f0c7b6]/55 bg-[#112f3a]/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
               Home
             </p>
             <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
               CHINOMSO AUGUSTINE
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-[#071a36]/55 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(2,12,28,0.35)] ring-1 ring-[#b8d5fa]/20 md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-[#112f3a]/70 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(17,47,58,0.32)] ring-1 ring-[#f0c7b6]/30 md:text-lg">
               I design and build thoughtful digital and physical experiences with a focus on UI/UX and None UI/UX Work.
             </p>
           </div>
         </section>
 
         <section className="mx-auto mt-6 w-full max-w-[1280px] px-6 md:px-10">
-          <div className="rounded-2xl border border-[#bfd0e7] bg-[#f8fbff] p-6 shadow-[0_12px_34px_rgba(12,42,79,0.06)]">
-            <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#527096]">Skill Set</p>
+          <div className="rounded-2xl border border-[#d9c8ad] bg-[#fffaf2] p-6 shadow-[0_12px_34px_rgba(17,47,58,0.06)]">
+            <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#e45d3d]">Skill Set</p>
             <h2 className="mt-2 text-3xl font-semibold">Skills</h2>
 
             <div className="mt-5 space-y-3">
@@ -224,7 +224,7 @@ function SiteFooter() {
   };
 
   return (
-    <footer className="mt-12 border-t border-white/10 bg-[#071a36] text-[#e8f1fc]">
+    <footer className="mt-12 border-t border-white/10 bg-[#112f3a] text-[#fffaf2]">
       <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-6 py-12 md:grid-cols-2 md:px-10">
         <div>
           <p className="text-sm uppercase tracking-[0.14em] text-white/60">Connect</p>
@@ -251,31 +251,31 @@ function SiteFooter() {
               name="firstName"
               placeholder="First Name"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none"
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none"
             />
             <input
               type="email"
               name="email"
               placeholder="Email Address *"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none sm:col-span-2"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none sm:col-span-2"
             />
             <textarea
               name="message"
               placeholder="Message"
               required
-              className="min-h-28 rounded-md border border-white/20 bg-[#0c2850] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none sm:col-span-2"
+              className="min-h-28 rounded-md border border-white/20 bg-[#173f4d] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none sm:col-span-2"
             />
             <button
               type="submit"
-              className="h-11 rounded-md border border-[#8db8ea]/50 bg-[#174b85] px-4 text-sm font-medium text-white transition hover:bg-[#1d5d9f] sm:col-span-2"
+              className="h-11 rounded-md border border-[#f0a383]/60 bg-[#e45d3d] px-4 text-sm font-medium text-white transition hover:bg-[#c94c2f] sm:col-span-2"
             >
               Send message
             </button>
@@ -322,7 +322,7 @@ function SkillsRow({ skills: items, duration }) {
   const loopedSkills = [...items, ...items];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#c5d6ea] bg-white py-3 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]">
+    <div className="overflow-hidden rounded-xl border border-[#d9c8ad] bg-white py-3 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]">
       <div
         className="skills-track flex w-max gap-3 px-3"
         style={{ animation: `skills-scroll-left ${duration}s linear infinite` }}
@@ -330,7 +330,7 @@ function SkillsRow({ skills: items, duration }) {
         {loopedSkills.map((skill, index) => (
           <span
             key={`${skill}-${index}`}
-            className="whitespace-nowrap rounded-full border border-[#b7cce5] bg-[#eaf2fc] px-4 py-2 text-sm font-medium text-[#173f70]"
+            className="whitespace-nowrap rounded-full border border-[#bdd2c9] bg-[#eef5f2] px-4 py-2 text-sm font-medium text-[#112f3a]"
           >
             {skill}
           </span>
@@ -352,7 +352,7 @@ function WorkCard({ card, category }) {
     );
   }
 
-  const cardClassName = `group block overflow-hidden rounded-xl border bg-white shadow-[0_8px_24px_rgba(12,42,79,0.05)] transition hover:-translate-y-1 ${category.cardClass}`;
+  const cardClassName = `group block overflow-hidden rounded-xl border bg-white shadow-[0_8px_24px_rgba(17,47,58,0.05)] transition hover:-translate-y-1 ${category.cardClass}`;
   const cardContent = (
     <>
       <div className="relative h-[210px] overflow-hidden bg-white/45 p-3">

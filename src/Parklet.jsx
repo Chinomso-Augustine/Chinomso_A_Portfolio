@@ -20,9 +20,9 @@ const images = {
 
 function MetaCard({ label, value }) {
   return (
-    <div className="border border-[#d8c7aa] bg-[#fffaf0] px-4 py-3">
-      <p className="text-[11px] uppercase tracking-[0.16em] text-[#8a6f45]">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-[#3d2b15]">{value}</p>
+    <div className="border border-[#d5c6ad] bg-[#fffaf2] px-4 py-3">
+      <p className="text-[11px] uppercase tracking-[0.16em] text-[#6f8062]">{label}</p>
+      <p className="mt-1 text-sm font-semibold text-[#24352d]">{value}</p>
     </div>
   );
 }
@@ -30,24 +30,24 @@ function MetaCard({ label, value }) {
 function SectionHeader({ kicker, title, body }) {
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a7140]">{kicker}</p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#302213] md:text-5xl">{title}</h2>
-      {body ? <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#624b31]">{body}</p> : null}
+      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#c6653e]">{kicker}</p>
+      <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#24352d] md:text-5xl">{title}</h2>
+      {body ? <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#53634f]">{body}</p> : null}
     </div>
   );
 }
 
 function ImageFrame({ src, alt, caption, tall }) {
   return (
-    <figure className="overflow-hidden border border-[#d8c7aa] bg-[#fffaf0] p-3 shadow-[0_18px_45px_rgba(69,45,17,0.08)]">
-      <div className="flex items-center justify-center bg-[#efe2cd]">
+    <figure className="overflow-hidden border border-[#d5c6ad] bg-[#fffaf2] p-3 shadow-[0_18px_45px_rgba(69,45,17,0.08)]">
+      <div className="flex items-center justify-center bg-[#e7eee2]">
         <img
           src={src}
           alt={alt}
           className={`${tall ? "max-h-[42rem]" : "max-h-[34rem]"} w-full object-contain`}
         />
       </div>
-      <figcaption className="border-t border-[#e3d4bb] bg-[#fff6e8] px-3 py-2 text-xs text-[#735b3b]">
+      <figcaption className="border-t border-[#d5c6ad] bg-[#eef3e9] px-3 py-2 text-xs text-[#53634f]">
         {caption}
       </figcaption>
     </figure>
@@ -56,12 +56,12 @@ function ImageFrame({ src, alt, caption, tall }) {
 
 function ProcessStep({ number, title, body, image, alt, caption, reverse }) {
   return (
-    <section className="border-t border-[#dac8aa] py-12">
+    <section className="border-t border-[#d5c6ad] py-12">
       <div className="grid gap-7 md:grid-cols-12 md:items-start">
         <div className={`md:col-span-4 ${reverse ? "md:order-2" : ""}`}>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a7140]">Step {number}</p>
-          <h3 className="mt-2 text-2xl font-semibold text-[#302213]">{title}</h3>
-          <p className="mt-3 text-[15px] leading-7 text-[#624b31]">{body}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#c6653e]">Step {number}</p>
+          <h3 className="mt-2 text-2xl font-semibold text-[#24352d]">{title}</h3>
+          <p className="mt-3 text-[15px] leading-7 text-[#53634f]">{body}</p>
         </div>
         <div className={`md:col-span-8 ${reverse ? "md:order-1" : ""}`}>
           <ImageFrame src={image} alt={alt} caption={caption} tall />
@@ -73,16 +73,16 @@ function ProcessStep({ number, title, body, image, alt, caption, reverse }) {
 
 export default function Parklet() {
   return (
-    <div className="min-h-screen bg-[#f1eadf] text-[#302213]">
+    <div className="min-h-screen bg-[#f6f1e8] text-[#24352d]">
       <section className="px-6 pb-14 pt-32 md:px-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9a7140]">Industry Design Case Study</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c6653e]">Industry Design Case Study</p>
               <h1 className="mt-3 text-5xl leading-[0.9] font-semibold tracking-tight md:text-7xl">
                 Parklet Design
               </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#624b31]">
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#53634f]">
                 A modular streetside parklet concept designed for studying and gathering.
               </p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -93,13 +93,13 @@ export default function Parklet() {
               </div>
               <Link
                 to="/"
-                className="mt-8 inline-flex h-11 items-center rounded-full bg-[#6f4a1f] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#533714]"
+                className="mt-8 inline-flex h-11 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f0a383]/45"
               >
                 Back to Home
               </Link>
             </div>
 
-            <figure className="overflow-hidden border border-[#d8c7aa] bg-[#fffaf0] p-3 shadow-[0_24px_60px_rgba(69,45,17,0.14)]">
+            <figure className="overflow-hidden border border-[#d5c6ad] bg-[#fffaf2] p-3 shadow-[0_24px_60px_rgba(69,45,17,0.14)]">
               <img src={images.hero} alt="Rendered parklet concept on a sidewalk" className="h-[34rem] w-full object-cover" />
             </figure>
           </div>
@@ -107,7 +107,7 @@ export default function Parklet() {
       </section>
 
       <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
-        <section className="border-y border-[#dac8aa] py-12">
+        <section className="border-y border-[#d5c6ad] py-12">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-5">
               <SectionHeader
@@ -131,9 +131,9 @@ export default function Parklet() {
                   body: "Rhythmic ribs create shade, enclosure, and a stronger street presence.",
                 },
               ].map((item) => (
-                <div key={item.label} className="border border-[#d8c7aa] bg-[#fffaf0] p-5">
-                  <p className="text-sm font-semibold text-[#302213]">{item.label}</p>
-                  <p className="mt-3 text-sm leading-6 text-[#735b3b]">{item.body}</p>
+                <div key={item.label} className="border border-[#d5c6ad] bg-[#fffaf2] p-5">
+                  <p className="text-sm font-semibold text-[#24352d]">{item.label}</p>
+                  <p className="mt-3 text-sm leading-6 text-[#53634f]">{item.body}</p>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function Parklet() {
           caption="Dimensioned plan and module layout"
         />
 
-        <section className="border-t border-[#dac8aa] py-12">
+        <section className="border-t border-[#d5c6ad] py-12">
           <SectionHeader
             kicker="Fabrication"
             title="From digital model to physical prototype."
@@ -182,7 +182,7 @@ export default function Parklet() {
           </div>
         </section>
 
-        <section className="border-t border-[#dac8aa] py-12">
+        <section className="border-t border-[#d5c6ad] py-12">
           <SectionHeader
             kicker="Final Direction"
             title="Final Design"
@@ -195,9 +195,9 @@ export default function Parklet() {
               <ImageFrame src={images.fdTwo} alt="Final parklet model detail two" caption="Final model detail" />
             </div>
           </div>
-          <figure className="mt-4 overflow-hidden border border-[#d8c7aa] bg-[#fffaf0] p-3 shadow-[0_18px_45px_rgba(69,45,17,0.08)]">
+          <figure className="mt-4 overflow-hidden border border-[#d5c6ad] bg-[#fffaf2] p-3 shadow-[0_18px_45px_rgba(69,45,17,0.08)]">
             <img src={images.hero} alt="Final rendered parklet concept" className="max-h-[42rem] w-full object-cover" />
-            <figcaption className="border-t border-[#e3d4bb] bg-[#fff6e8] px-3 py-2 text-xs text-[#735b3b]">
+            <figcaption className="border-t border-[#d5c6ad] bg-[#eef3e9] px-3 py-2 text-xs text-[#53634f]">
               Final rendered concept in sidewalk context
             </figcaption>
           </figure>

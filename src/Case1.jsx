@@ -146,7 +146,7 @@ export default function Case1() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 to="/"
-                className="inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
+                className="inline-flex h-11 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f0a383]/45"
               >
                 Back to Home
               </Link>

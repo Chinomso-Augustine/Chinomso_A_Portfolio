@@ -1,9 +1,11 @@
-const profileImageUrl = import.meta.env.BASE_URL + "PP.JPG";
-const photographyImageUrl = import.meta.env.BASE_URL + "Photography.JPG";
-const includeImageOneUrl = import.meta.env.BASE_URL + "Include1.JPG";
-const includeImageTwoUrl = import.meta.env.BASE_URL + "Include2.JPG";
-const nsbeImageUrl = import.meta.env.BASE_URL + "NSBE.JPG";
-const colorstackImageUrl = import.meta.env.BASE_URL + "Colorstack.JPG";
+const aboutImageUrl = (file) => import.meta.env.BASE_URL + "about-me/" + encodeURIComponent(file);
+
+const profileImageUrl = aboutImageUrl("PP.JPG");
+const photographyImageUrl = aboutImageUrl("Photography.JPG");
+const includeImageOneUrl = aboutImageUrl("Include1.JPG");
+const includeImageTwoUrl = aboutImageUrl("Include2.JPG");
+const nsbeImageUrl = aboutImageUrl("NSBE.JPG");
+const colorstackImageUrl = aboutImageUrl("Colorstack.JPG");
 
 function Panel({ title, children, className = "" }) {
   return (

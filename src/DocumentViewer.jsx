@@ -8,25 +8,21 @@ const documents = {
     title: "Typography Project",
     description: "A type-focused poster study exploring hierarchy, scale, and visual contrast.",
     pdf: publicFileUrl("DI", "Typography Project.pdf"),
-    image: publicFileUrl("DI", "typography-project.jpg"),
   },
   "digital-illustrations": {
     title: "Digital Illustrations",
     description: "A multi-page illustration series exploring color systems, form, and everyday objects.",
     pdf: publicFileUrl("DI", "Digital Illustrations.pdf"),
-    image: publicFileUrl("DI", "digital-illustrations.jpg"),
   },
   "event-poster": {
     title: "Event Poster",
     description: "A bold event poster composition using sports imagery, layered color, and scale.",
     pdf: publicFileUrl("DI", "My Event Poster.pdf"),
-    image: publicFileUrl("DI", "event-poster.jpg"),
   },
   zine: {
     title: "Zine",
     description: "A visual zine exploring time pressure, workflow, and collage-based storytelling.",
     pdf: publicFileUrl("DI", "zine-preview.pdf"),
-    image: publicFileUrl("DI", "zine.jpg"),
   },
 };
 

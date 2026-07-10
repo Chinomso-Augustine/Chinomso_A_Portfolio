@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-const modelingImageUrl = import.meta.env.BASE_URL + "rhino-modeling.png";
-const sketchImageUrl = import.meta.env.BASE_URL + "rhino-sketch.png";
-const aiImageUrl = import.meta.env.BASE_URL + "rhino-ai.png";
+const modelingImageUrl = import.meta.env.BASE_URL + "other-images/rhino-modeling.png";
+const sketchImageUrl = import.meta.env.BASE_URL + "other-images/rhino-sketch.png";
+const aiImageUrl = import.meta.env.BASE_URL + "other-images/rhino-ai.png";
 
 function BackButton() {
   return (
     <Link
       to="/"
-      className="inline-flex h-11 items-center rounded-full bg-[#1a73e8] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1558b0]"
+      className="inline-flex h-11 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f0a383]/45"
     >
       Back to Home
     </Link>
@@ -17,14 +17,14 @@ function BackButton() {
 
 function StepCard({ step, title, text, image, alt }) {
   return (
-    <section className="border-t border-[#c8d9e0] py-10">
+    <section className="border-t border-[#d4d6cf] py-10">
       <div className="grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:items-start">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5a7a86]">Step {step}</p>
-          <h2 className="mt-2 text-2xl font-semibold text-[#183a47]">{title}</h2>
-          <p className="mt-3 text-[15px] leading-7 text-[#32535f]">{text}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#a6c84c]">Step {step}</p>
+          <h2 className="mt-2 text-2xl font-semibold text-[#2b2d2f]">{title}</h2>
+          <p className="mt-3 text-[15px] leading-7 text-[#5d625d]">{text}</p>
         </div>
-        <figure className="overflow-hidden border border-[#bfd1d8] bg-white p-2">
+        <figure className="overflow-hidden border border-[#d4d6cf] bg-white p-2">
           <img src={image} alt={alt} className="max-h-[30rem] w-full bg-white object-contain" />
         </figure>
       </div>
@@ -34,40 +34,40 @@ function StepCard({ step, title, text, image, alt }) {
 
 export default function LearningRhino8() {
   return (
-    <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
-      <section className="border-b border-[#c7d9e0] bg-[linear-gradient(140deg,#cde2e7_0%,#e8f3f6_52%,#f6fbfc_100%)] px-6 pb-14 pt-32 md:px-16">
+    <div className="min-h-screen bg-[#f2f2ee] text-[#2b2d2f]">
+      <section className="border-b border-[#d4d6cf] bg-[linear-gradient(140deg,#2b2d2f_0%,#5c6461_52%,#f2f2ee_100%)] text-white px-6 pb-14 pt-32 md:px-16">
         <div className="mx-auto max-w-6xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6d78]">Project 02</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#cde96a]">Project 02</p>
+          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-white md:text-7xl">
             Learning Rhino 8
           </h1>
-          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#31515c]">
+          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#f0f2ea]">
             First Rhino 8 project for Design 50 at UC Davis (Professor Hyemi Kang). The assignment
             challenged me to translate abstract concepts like fragmented, radiating, and aggregating
             into a 3D form. I chose splintered and flowing, with the final direction leaning into flowing.
           </p>
-          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#31515c]">
+          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#f0f2ea]">
             This process helped me learn how to build consistent rhythmic patterns and navigate a 3D
             workspace for the first time. It was a foundational introduction to digital fabrication, and
             I am looking forward to pushing complexity further in my next build.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">Course</p>
-              <p className="mt-1 text-sm font-medium text-[#193946]">Design 50</p>
+            <div className="border border-[#d4d6cf] bg-[#f8f8f2] px-4 py-3">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-[#5c6461]">Course</p>
+              <p className="mt-1 text-sm font-medium text-[#2b2d2f]">Design 50</p>
             </div>
-            <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">Tool</p>
-              <p className="mt-1 text-sm font-medium text-[#193946]">Rhino 8</p>
+            <div className="border border-[#d4d6cf] bg-[#f8f8f2] px-4 py-3">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-[#5c6461]">Tool</p>
+              <p className="mt-1 text-sm font-medium text-[#2b2d2f]">Rhino 8</p>
             </div>
-            <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">Direction</p>
-              <p className="mt-1 text-sm font-medium text-[#193946]">Splintered → Flowing</p>
+            <div className="border border-[#d4d6cf] bg-[#f8f8f2] px-4 py-3">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-[#5c6461]">Direction</p>
+              <p className="mt-1 text-sm font-medium text-[#2b2d2f]">Splintered → Flowing</p>
             </div>
-            <div className="border border-[#bdd2da] bg-[#f6fbfd] px-4 py-3">
-              <p className="text-[11px] uppercase tracking-[0.14em] text-[#587783]">Focus</p>
-              <p className="mt-1 text-sm font-medium text-[#193946]">3D Workflow Fundamentals</p>
+            <div className="border border-[#d4d6cf] bg-[#f8f8f2] px-4 py-3">
+              <p className="text-[11px] uppercase tracking-[0.14em] text-[#5c6461]">Focus</p>
+              <p className="mt-1 text-sm font-medium text-[#2b2d2f]">3D Workflow Fundamentals</p>
             </div>
           </div>
 
