@@ -11,6 +11,7 @@ import JobMadeEasy from "./JobMadeEasy";
 import LearningRhino8 from "./LearningRhino8";
 import DesignProcess from "./DesignProcess";
 import Parklet from "./Parklet";
+import IncludeClinic from "./IncludeClinic";
 import SiteNav from "./SiteNav";
 import DocumentViewer from "./DocumentViewer";
 
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/designprocess" element={<DesignProcess />} />
         <Route path="/learningrhino8" element={<LearningRhino8 />} />
         <Route path="/parklet" element={<Parklet />} />
+        <Route path="/student-run-clinic" element={<IncludeClinic />} />
         <Route path="/document/:documentId" element={<DocumentViewer />} />
       </Routes>
     </HashRouter>

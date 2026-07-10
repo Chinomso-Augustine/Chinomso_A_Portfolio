@@ -9,11 +9,8 @@ const publicFileUrl = (...pathSegments) =>
   import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
 const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
 
-const typographyImageUrl = publicFileUrl("DI", "typography-project.jpg");
-const digitalIllustrationsImageUrl = publicFileUrl("DI", "digital-illustrations.jpg");
-const eventPosterImageUrl = publicFileUrl("DI", "event-poster.jpg");
-const zineImageUrl = publicFileUrl("DI", "zine.jpg");
 const designProcessImageUrl = publicFileUrl("journey-map-1.jpg");
+const includeClinicImageUrl = publicFileUrl("Include Design", "HeroImage.png");
 
 const skills = [
   "Rhino 8",
@@ -45,9 +42,26 @@ const skills = [
 const projectCategories = [
   {
     title: "UI/UX",
-    backgroundClass: "bg-[#eef4f7]",
-    borderClass: "border-[#cfdde3]",
+    backgroundClass: "bg-[#fbf7ff]",
+    borderClass: "border-[#d8c5ea]",
+    eyebrowClass: "text-[#7b4fa0]",
+    headingClass: "text-[#2f1747]",
+    emptyBorderClass: "border-[#b99ad3]",
+    emptyTextClass: "text-[#815ca1]",
+    emptyTitleClass: "text-[#4b2368]",
+    cardClass:
+      "border-[#d8c5ea] hover:border-[#a982c8] hover:shadow-[0_14px_30px_rgba(78,35,104,0.13)]",
     projects: [
+      {
+        type: "project",
+        title: "Student Run Clinic",
+        description:
+          "A collaborative redesign of a UC Davis student-run clinic website",
+        image: includeClinicImageUrl,
+        imageClassName: "object-cover object-top",
+        action: "View project",
+        to: "/student-run-clinic",
+      },
       {
         type: "project",
         title: "Student Service Hub",
@@ -75,14 +89,20 @@ const projectCategories = [
         action: "View process",
         to: "/designprocess",
       },
-      { type: "empty", title: "Client Website Rebuild" },
       { type: "empty", title: "Social Media Control" },
     ],
   },
   {
-    title: "Industry Design",
-    backgroundClass: "bg-[#f3f0e8]",
-    borderClass: "border-[#ddd4c2]",
+    title: "None UI/UX Work",
+    backgroundClass: "bg-[#fff9f0]",
+    borderClass: "border-[#e4cda8]",
+    eyebrowClass: "text-[#94642c]",
+    headingClass: "text-[#392413]",
+    emptyBorderClass: "border-[#c9a36e]",
+    emptyTextClass: "text-[#8c6331]",
+    emptyTitleClass: "text-[#704211]",
+    cardClass:
+      "border-[#e4cda8] hover:border-[#bf8d49] hover:shadow-[0_14px_30px_rgba(112,66,17,0.12)]",
     projects: [
       {
         type: "project",
@@ -114,50 +134,6 @@ const projectCategories = [
       { type: "empty", title: "Upcoming Project" },
     ],
   },
-  {
-    title: "Digital Illustrations / Graphic Design",
-    backgroundClass: "bg-[#f4eef7]",
-    borderClass: "border-[#ddcde6]",
-    projects: [
-      {
-        type: "project",
-        title: "Typography Project",
-        description:
-          "A type-focused poster study exploring hierarchy, scale, and visual contrast.",
-        image: typographyImageUrl,
-        action: "View project",
-        to: "/document/typography",
-      },
-      {
-        type: "project",
-        title: "Digital Illustrations",
-        description:
-          "A multi-page illustration series exploring color systems, form, and everyday objects.",
-        image: digitalIllustrationsImageUrl,
-        action: "View project",
-        to: "/document/digital-illustrations",
-      },
-      {
-        type: "project",
-        title: "Event Poster",
-        description:
-          "A bold event poster composition using sports imagery, layered color, and scale.",
-        image: eventPosterImageUrl,
-        action: "View project",
-        to: "/document/event-poster",
-      },
-      {
-        type: "project",
-        title: "Zine",
-        description:
-          "A visual zine exploring time pressure, workflow, and collage-based storytelling.",
-        image: zineImageUrl,
-        action: "View project",
-        to: "/document/zine",
-      },
-      { type: "empty", title: "Soccer" },
-    ],
-  },
 ];
 
 export default function App() {
@@ -165,7 +141,7 @@ export default function App() {
   const rowTwoSkills = skills.filter((_, index) => index % 2 !== 0);
 
   return (
-    <div className="min-h-screen bg-[#e9e9e9] text-[#111111]">
+    <div className="min-h-screen bg-[#edf3fa] text-[#0b1f3a]">
       <style>
         {`
           @keyframes skills-scroll-left {
@@ -189,24 +165,24 @@ export default function App() {
             alt="Hero background"
             className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(3,18,24,0.9),rgba(9,50,62,0.74),rgba(9,50,62,0.6))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,17,39,0.94),rgba(9,37,75,0.8),rgba(18,58,105,0.68))]" />
 
           <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-32 text-center md:px-10">
-            <p className="mb-4 inline-flex rounded-full border border-white/30 bg-black/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
+            <p className="mb-4 inline-flex rounded-full border border-[#9fc5f8]/45 bg-[#071a36]/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
               Home
             </p>
             <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
               CHINOMSO AUGUSTINE
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-black/35 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(0,0,0,0.25)] ring-1 ring-white/15 md:text-lg">
-              I design and build thoughtful digital and physical experiences with a focus on UI/UX and Industry Design.
+            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-[#071a36]/55 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(2,12,28,0.35)] ring-1 ring-[#b8d5fa]/20 md:text-lg">
+              I design and build thoughtful digital and physical experiences with a focus on UI/UX and None UI/UX Work.
             </p>
           </div>
         </section>
 
         <section className="mx-auto mt-6 w-full max-w-[1280px] px-6 md:px-10">
-          <div className="border border-[#d0d0d0] bg-[#eef3f6] p-6">
-            <p className="text-sm text-[#808080]">Skill Set</p>
+          <div className="rounded-2xl border border-[#bfd0e7] bg-[#f8fbff] p-6 shadow-[0_12px_34px_rgba(12,42,79,0.06)]">
+            <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#527096]">Skill Set</p>
             <h2 className="mt-2 text-3xl font-semibold">Skills</h2>
 
             <div className="mt-5 space-y-3">
@@ -248,7 +224,7 @@ function SiteFooter() {
   };
 
   return (
-    <footer className="mt-12 border-t border-white/10 bg-[#171717] text-[#e8e8e8]">
+    <footer className="mt-12 border-t border-white/10 bg-[#071a36] text-[#e8f1fc]">
       <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-6 py-12 md:grid-cols-2 md:px-10">
         <div>
           <p className="text-sm uppercase tracking-[0.14em] text-white/60">Connect</p>
@@ -275,31 +251,31 @@ function SiteFooter() {
               name="firstName"
               placeholder="First Name"
               required
-              className="h-11 border border-white/20 bg-[#222222] px-3 text-sm text-white placeholder:text-white/55 focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none"
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
               required
-              className="h-11 border border-white/20 bg-[#222222] px-3 text-sm text-white placeholder:text-white/55 focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none"
             />
             <input
               type="email"
               name="email"
               placeholder="Email Address *"
               required
-              className="h-11 border border-white/20 bg-[#222222] px-3 text-sm text-white placeholder:text-white/55 focus:outline-none sm:col-span-2"
+              className="h-11 rounded-md border border-white/20 bg-[#0c2850] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none sm:col-span-2"
             />
             <textarea
               name="message"
               placeholder="Message"
               required
-              className="min-h-28 border border-white/20 bg-[#222222] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:outline-none sm:col-span-2"
+              className="min-h-28 rounded-md border border-white/20 bg-[#0c2850] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:border-[#8db8ea] focus:outline-none sm:col-span-2"
             />
             <button
               type="submit"
-              className="h-11 border border-white/25 bg-white/10 px-4 text-sm font-medium text-white transition hover:bg-white/20 sm:col-span-2"
+              className="h-11 rounded-md border border-[#8db8ea]/50 bg-[#174b85] px-4 text-sm font-medium text-white transition hover:bg-[#1d5d9f] sm:col-span-2"
             >
               Send message
             </button>
@@ -325,8 +301,8 @@ function WorkSection({ category }) {
       <div className={`rounded-2xl border ${category.borderClass} ${category.backgroundClass} p-5 md:p-6`}>
         <div className={`mb-5 flex items-end justify-between border-b ${category.borderClass} pb-3`}>
           <div>
-            <p className="text-sm uppercase tracking-[0.16em] text-[#7a7a7a]">Projects</p>
-            <h2 id={headingId} className="mt-1 text-3xl font-semibold">
+            <p className={`text-sm uppercase tracking-[0.16em] ${category.eyebrowClass}`}>Projects</p>
+            <h2 id={headingId} className={`mt-1 text-3xl font-semibold ${category.headingClass}`}>
               {category.title}
             </h2>
           </div>
@@ -334,7 +310,7 @@ function WorkSection({ category }) {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {category.projects.map((card) => (
-            <WorkCard key={card.title} card={card} />
+            <WorkCard key={card.title} card={card} category={category} />
           ))}
         </div>
       </div>
@@ -346,7 +322,7 @@ function SkillsRow({ skills: items, duration }) {
   const loopedSkills = [...items, ...items];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#c8d9e2] bg-[#f7fbfd] py-3 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]">
+    <div className="overflow-hidden rounded-xl border border-[#c5d6ea] bg-white py-3 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]">
       <div
         className="skills-track flex w-max gap-3 px-3"
         style={{ animation: `skills-scroll-left ${duration}s linear infinite` }}
@@ -354,7 +330,7 @@ function SkillsRow({ skills: items, duration }) {
         {loopedSkills.map((skill, index) => (
           <span
             key={`${skill}-${index}`}
-            className="whitespace-nowrap rounded-full border border-[#b7d0dd] bg-[#e8f3f9] px-4 py-2 text-sm font-medium text-[#2d5668]"
+            className="whitespace-nowrap rounded-full border border-[#b7cce5] bg-[#eaf2fc] px-4 py-2 text-sm font-medium text-[#173f70]"
           >
             {skill}
           </span>
@@ -364,39 +340,59 @@ function SkillsRow({ skills: items, duration }) {
   );
 }
 
-function WorkCard({ card }) {
+function WorkCard({ card, category }) {
   if (card.type === "empty") {
     return (
-      <article className="flex min-h-[224px] items-center justify-center rounded-xl border border-dashed border-[#bcbcbc] bg-white/45">
+      <article className={`flex min-h-[224px] items-center justify-center rounded-xl border border-dashed ${category.emptyBorderClass} bg-white/55`}>
         <div className="text-center">
-          <p className="text-[0.78rem] uppercase tracking-[0.16em] text-[#8a8a8a]">Upcoming Project</p>
-          <p className="mt-2 text-2xl font-semibold text-[#3f3f3f]">{card.title}</p>
+          <p className={`text-[0.78rem] uppercase tracking-[0.16em] ${category.emptyTextClass}`}>Upcoming Project</p>
+          <p className={`mt-2 text-2xl font-semibold ${category.emptyTitleClass}`}>{card.title}</p>
         </div>
       </article>
     );
   }
 
-  const cardClassName = "group block overflow-hidden rounded-xl border border-[#cdcdcd] bg-white/55";
+  const cardClassName = `group block overflow-hidden rounded-xl border bg-white shadow-[0_8px_24px_rgba(12,42,79,0.05)] transition hover:-translate-y-1 ${category.cardClass}`;
   const cardContent = (
     <>
       <div className="relative h-[210px] overflow-hidden bg-white/45 p-3">
-        <img
-          src={card.image}
-          alt={card.title}
-          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
-        />
+        {card.images ? (
+          <div className="grid h-full grid-cols-[1.2fr_0.8fr] grid-rows-2 gap-2 transition duration-500 group-hover:scale-[1.03]">
+            {card.images.map((image, index) => (
+              <img
+                key={image}
+                src={image}
+                alt={`${card.title} ${index + 1}`}
+                className={`h-full w-full rounded-lg border border-white/70 object-cover shadow-sm ${
+                  index === 0 ? "row-span-2" : ""
+                }`}
+              />
+            ))}
+          </div>
+        ) : (
+          <img
+            src={card.image}
+            alt={card.title}
+            className={`h-full w-full transition duration-500 group-hover:scale-[1.03] ${
+              card.imageClassName || "object-contain"
+            }`}
+          />
+        )}
         <div className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/55" />
-        <div className="absolute inset-x-5 bottom-4 translate-y-3 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <p className="text-sm leading-6 text-white">{card.description}</p>
+        <div className="absolute inset-4 flex translate-y-3 items-center justify-center overflow-y-auto text-center opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <p className="text-sm font-semibold leading-6 text-white md:text-base">{card.description}</p>
         </div>
       </div>
 
       <div className="p-4">
         <h3 className="text-2xl font-medium">{card.title}</h3>
-        <p className="mt-5 inline-block text-base underline underline-offset-[6px]">{card.action}</p>
       </div>
     </>
   );
+
+  if (!card.to) {
+    return <article className={cardClassName}>{cardContent}</article>;
+  }
 
   return (
     <Link to={card.to} className={cardClassName}>
