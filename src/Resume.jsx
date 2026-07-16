@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const resumeFileName = "Chinomso's UI:UX Resume.pdf";
+const resumeFileName = "Chinomso A UIUX Resume.pdf";
 const resumePdfUrl = `${import.meta.env.BASE_URL}${encodeURI(
   resumeFileName
 )}`;
