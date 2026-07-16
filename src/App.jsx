@@ -12,31 +12,50 @@ const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
 const designProcessImageUrl = publicFileUrl("other-images", "journey-map-1.jpg");
 const includeClinicImageUrl = publicFileUrl("Include Design", "HeroImage.png");
 
-const skills = [
-  "Rhino 8",
-  "UI/UX Design",
-  "Interactive Media",
-  "Graphic Design",
-  "Computer Technology",
-  "Prototyping",
-  "Wireframing",
-  "UX Research",
-  "Accessibility Design",
-  "User Flow Mapping",
-  "React",
-  "JavaScript",
-  "C",
-  "C++",
-  "Assembly",
-  "HTML/CSS",
-  "Data Structures & Algorithms",
-  "Figma",
-  "Miro",
-  "Adobe Illustrator",
-  "Adobe Photoshop",
-  "Lightroom",
-  "Canva",
-  "Notion",
+const skillGroups = [
+  {
+    title: "Tools",
+    duration: 48,
+    skills: [
+      "Figma",
+      "Adobe Illustrator",
+      "Photoshop",
+      "Lightroom",
+      "Rhino 8",
+      "Canva",
+      "Notion",
+    ],
+  },
+  {
+    title: "UI/UX Skills",
+    duration: 58,
+    skills: [
+      "Wireframing",
+      "Persona",
+      "User Journey",
+      "HMW",
+      "User Flow",
+      "Crazy 8",
+      "Accessibility",
+      "Information Architecture",
+      "UI/UX Design",
+      "Graphic Design",
+      "Prototyping",
+      "UX Research",
+      "User Map",
+    ],
+  },
+  {
+    title: "Coding",
+    duration: 44,
+    skills: [
+      "React",
+      "JavaScript",
+      "HTML/CSS",
+      "C & C++",
+      "Assembly",
+    ],
+  },
 ];
 
 const projectCategories = [
@@ -137,27 +156,8 @@ const projectCategories = [
 ];
 
 export default function App() {
-  const rowOneSkills = skills.filter((_, index) => index % 2 === 0);
-  const rowTwoSkills = skills.filter((_, index) => index % 2 !== 0);
-
   return (
     <div className="min-h-screen bg-[#f7f3eb] text-[#112f3a]">
-      <style>
-        {`
-          @keyframes skills-scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-
-          @media (prefers-reduced-motion: reduce) {
-            .skills-track {
-              animation: none !important;
-              transform: translateX(0) !important;
-            }
-          }
-        `}
-      </style>
-
       <main className="pb-16">
         <section className="relative flex min-h-[68vh] items-center justify-center overflow-hidden">
           <img
@@ -168,26 +168,24 @@ export default function App() {
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(17,47,58,0.94),rgba(17,47,58,0.78),rgba(232,93,61,0.34))]" />
 
           <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-32 text-center md:px-10">
-            <p className="mb-4 inline-flex rounded-full border border-[#f0c7b6]/55 bg-[#112f3a]/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
-              Home
-            </p>
             <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
               CHINOMSO AUGUSTINE
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl rounded-2xl bg-[#112f3a]/70 px-5 py-4 text-base leading-7 text-white shadow-[0_14px_40px_rgba(17,47,58,0.32)] ring-1 ring-[#f0c7b6]/30 md:text-lg">
-              I design and build thoughtful digital and physical experiences with a focus on UI/UX and None UI/UX Work.
+            <p className="mx-auto mt-4 max-w-3xl rounded-2xl bg-[#112f3a]/70 px-5 py-4 text-base leading-6 text-white shadow-[0_14px_40px_rgba(17,47,58,0.32)] ring-1 ring-[#f0c7b6]/30 md:text-lg">
+              I design and build thoughtful digital and physical experiences with a focus on UI/UX
             </p>
           </div>
         </section>
 
         <section className="mx-auto mt-6 w-full max-w-[1280px] px-6 md:px-10">
-          <div className="rounded-2xl border border-[#d9c8ad] bg-[#fffaf2] p-6 shadow-[0_12px_34px_rgba(17,47,58,0.06)]">
-            <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#e45d3d]">Skill Set</p>
-            <h2 className="mt-2 text-3xl font-semibold">Skills</h2>
+          <div className="rounded-md border border-[#d9c8ad] bg-[#fffaf2] p-4 shadow-[0_12px_34px_rgba(17,47,58,0.06)] md:p-5">
+            <p className="text-s font-medium uppercase tracking-[0.14em] text-[#e45d3d]">Skill Set</p>
+            <h2 className="mt-1 text-3xl font-semibold">Skills</h2>
 
-            <div className="mt-5 space-y-3">
-              <SkillsRow skills={rowOneSkills} duration={52} />
-              <SkillsRow skills={rowTwoSkills} duration={60} />
+            <div className="mt-2 space-y-1">
+              {skillGroups.map((group) => (
+                <SkillGroup key={group.title} group={group} />
+              ))}
             </div>
           </div>
 
@@ -318,19 +316,25 @@ function WorkSection({ category }) {
   );
 }
 
-function SkillsRow({ skills: items, duration }) {
-  const loopedSkills = [...items, ...items];
-
+function SkillGroup({ group }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-[#d9c8ad] bg-white py-3 shadow-[0_1px_0_rgba(255,255,255,0.8)_inset]">
-      <div
-        className="skills-track flex w-max gap-3 px-3"
-        style={{ animation: `skills-scroll-left ${duration}s linear infinite` }}
-      >
-        {loopedSkills.map((skill, index) => (
+    <section aria-label={group.title} className="space-y-1.5">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-[#497e70]">
+        {group.title}
+      </h3>
+      <SkillsRow skills={group.skills} duration={group.duration} />
+    </section>
+  );
+}
+
+function SkillsRow({ skills: items }) {
+  return (
+    <div className="rounded-md border border-[#d9c8ad] bg-white px-2 py-2">
+      <div className="flex flex-wrap gap-2">
+        {items.map((skill) => (
           <span
-            key={`${skill}-${index}`}
-            className="whitespace-nowrap rounded-full border border-[#bdd2c9] bg-[#eef5f2] px-4 py-2 text-sm font-medium text-[#112f3a]"
+            key={skill}
+            className="whitespace-nowrap rounded-sm border border-[#bdd2c9] bg-[#eef5f2] px-2.5 py-1 text-[0.72rem] font-medium text-[#112f3a] sm:px-3 sm:text-xs"
           >
             {skill}
           </span>
