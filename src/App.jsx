@@ -9,7 +9,6 @@ const publicFileUrl = (...pathSegments) =>
   import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
 const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
 
-const designProcessImageUrl = publicFileUrl("other-images", "journey-map-1.jpg");
 const includeClinicImageUrl = publicFileUrl("Include Design", "HeroImage.png");
 
 const skillGroups = [
@@ -69,7 +68,7 @@ const projectCategories = [
     emptyTextClass: "text-[#497e70]",
     emptyTitleClass: "text-[#234f45]",
     cardClass:
-      "border-[#bdd2c9] hover:border-[#e45d3d] hover:shadow-[0_14px_30px_rgba(17,47,58,0.13)]",
+      "border-[#bdd2c9] hover:border-[#2f7664] hover:shadow-[0_14px_30px_rgba(17,47,58,0.13)]",
     projects: [
       {
         type: "project",
@@ -99,20 +98,11 @@ const projectCategories = [
         action: "View project",
         to: "/jobmadeeasy",
       },
-      {
-        type: "project",
-        title: "Design Process",
-        description:
-          "Some branches of design work from different classes.",
-        image: designProcessImageUrl,
-        action: "View process",
-        to: "/designprocess",
-      },
       { type: "empty", title: "Social Media Control" },
     ],
   },
   {
-    title: "None UI/UX Work",
+    title: "Physical UI/UX Work",
     backgroundClass: "bg-[#f6efe4]",
     borderClass: "border-[#d9c8ad]",
     eyebrowClass: "text-[#9b5a32]",
@@ -121,7 +111,7 @@ const projectCategories = [
     emptyTextClass: "text-[#8f6345]",
     emptyTitleClass: "text-[#684022]",
     cardClass:
-      "border-[#d9c8ad] hover:border-[#e45d3d] hover:shadow-[0_14px_30px_rgba(17,47,58,0.12)]",
+      "border-[#d9c8ad] hover:border-[#2f7664] hover:shadow-[0_14px_30px_rgba(17,47,58,0.12)]",
     projects: [
       {
         type: "project",
@@ -249,31 +239,31 @@ function SiteFooter() {
               name="firstName"
               placeholder="First Name"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8fb8aa] focus:outline-none"
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8fb8aa] focus:outline-none"
             />
             <input
               type="email"
               name="email"
               placeholder="Email Address *"
               required
-              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none sm:col-span-2"
+              className="h-11 rounded-md border border-white/20 bg-[#173f4d] px-3 text-sm text-white placeholder:text-white/55 focus:border-[#8fb8aa] focus:outline-none sm:col-span-2"
             />
             <textarea
               name="message"
               placeholder="Message"
               required
-              className="min-h-28 rounded-md border border-white/20 bg-[#173f4d] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:border-[#f0a383] focus:outline-none sm:col-span-2"
+              className="min-h-28 rounded-md border border-white/20 bg-[#173f4d] px-3 py-3 text-sm text-white placeholder:text-white/55 focus:border-[#8fb8aa] focus:outline-none sm:col-span-2"
             />
             <button
               type="submit"
-              className="h-11 rounded-md border border-[#f0a383]/60 bg-[#e45d3d] px-4 text-sm font-medium text-white transition hover:bg-[#c94c2f] sm:col-span-2"
+              className="h-11 rounded-md border border-[#8fb8aa]/70 bg-[#e45d3d] px-4 text-sm font-medium text-white transition hover:bg-[#c94c2f] sm:col-span-2"
             >
               Send message
             </button>
