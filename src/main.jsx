@@ -14,10 +14,12 @@ import Parklet from "./Parklet";
 import IncludeClinic from "./IncludeClinic";
 import SiteNav from "./SiteNav";
 import DocumentViewer from "./DocumentViewer";
+import PointerTrail from "./PointerTrail";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter>
+      <PointerTrail />
       <SiteNav />
       <Routes>
         <Route path="/" element={<App />} />
