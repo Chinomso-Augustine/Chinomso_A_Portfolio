@@ -37,10 +37,10 @@ function Section({ title, text, children }) {
 export default function JobMadeEasy() {
   return (
     <div className="min-h-screen bg-[#eef4fb] text-[#183b63]">
-      <section className="border-b border-[#c7d6e7] bg-[linear-gradient(140deg,#183b63_0%,#315d86_50%,#eef4fb_100%)] px-6 pb-14 pt-32 text-white md:px-16">
+      <section className="border-b border-[#c7d6e7] bg-[linear-gradient(140deg,#183b63_0%,#315d86_50%,#eef4fb_100%)] px-5 pb-14 pt-32 text-white sm:px-6 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#ffd28a]">Case Study</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-white md:text-7xl">
+          <h1 className="mt-3 text-4xl leading-[0.95] font-semibold tracking-tight text-white sm:text-5xl md:text-7xl">
             Pathfinder
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[#f7fbff]">
@@ -76,7 +76,7 @@ export default function JobMadeEasy() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+      <main className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 md:px-16">
         <Section
           title="Overview"
           text="Pathfinder helps undergraduate and graduate students discover career paths before applying. The platform uses AI to analyze resume content, suggest relevant roles, and recommend how to tailor resumes for those roles."

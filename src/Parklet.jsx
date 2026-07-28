@@ -74,12 +74,12 @@ function ProcessStep({ number, title, body, image, alt, caption, reverse }) {
 export default function Parklet() {
   return (
     <div className="min-h-screen bg-[#f6f1e8] text-[#24352d]">
-      <section className="px-6 pb-14 pt-32 md:px-16">
+      <section className="px-5 pb-14 pt-32 sm:px-6 md:px-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#c6653e]">Industry Design Case Study</p>
-              <h1 className="mt-3 text-5xl leading-[0.9] font-semibold tracking-tight md:text-7xl">
+              <h1 className="mt-3 text-4xl leading-[0.9] font-semibold tracking-tight sm:text-5xl md:text-7xl">
                 Parklet Design
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-[#53634f]">
@@ -100,13 +100,13 @@ export default function Parklet() {
             </div>
 
             <figure className="overflow-hidden border border-[#d5c6ad] bg-[#fffaf2] p-3 shadow-[0_24px_60px_rgba(69,45,17,0.14)]">
-              <img src={images.hero} alt="Rendered parklet concept on a sidewalk" className="h-[34rem] w-full object-cover" />
+              <img src={images.hero} alt="Rendered parklet concept on a sidewalk" className="h-80 w-full object-cover sm:h-[34rem]" />
             </figure>
           </div>
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+      <main className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 md:px-16">
         <section className="border-y border-[#d5c6ad] py-12">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-5">

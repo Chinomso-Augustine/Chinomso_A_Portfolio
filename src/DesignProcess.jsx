@@ -70,10 +70,10 @@ export default function DesignProcess() {
 
   return (
     <div className="min-h-screen bg-[#f8f3ff] text-[#2f285a]">
-      <section className="border-b border-[#d8cbed] bg-[linear-gradient(140deg,#2f285a_0%,#625aa0_52%,#f8f3ff_100%)] text-white px-6 pb-14 pt-32 md:px-16">
+      <section className="border-b border-[#d8cbed] bg-[linear-gradient(140deg,#2f285a_0%,#625aa0_52%,#f8f3ff_100%)] px-5 pb-14 pt-32 text-white sm:px-6 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#e0a12f]">Process Archive</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-[-0.05em] text-white md:text-7xl">
+          <h1 className="mt-3 text-4xl leading-[0.95] font-semibold tracking-tight text-white sm:text-5xl md:text-7xl md:tracking-[-0.05em]">
             Design Process
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-[#eee9ff]">
@@ -86,7 +86,7 @@ export default function DesignProcess() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-7xl px-6 pb-16 md:px-16">
+      <main className="mx-auto max-w-7xl px-5 pb-16 sm:px-6 md:px-16">
         <ProcessSection
           eyebrow="Section 01"
           title="Journey Map Samples"

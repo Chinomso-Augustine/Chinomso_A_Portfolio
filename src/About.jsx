@@ -1,11 +1,32 @@
 const aboutImageUrl = (file) => import.meta.env.BASE_URL + "about-me/" + encodeURIComponent(file);
+const aboutPhotoUrl = (file) => import.meta.env.BASE_URL + "about-me/Photos/" + encodeURIComponent(file);
 
-const profileImageUrl = aboutImageUrl("PP.JPG");
-const photographyImageUrl = aboutImageUrl("Photography.JPG");
+const profileImageUrl = aboutPhotoUrl("PP.JPG");
 const includeImageOneUrl = aboutImageUrl("Include1.JPG");
 const includeImageTwoUrl = aboutImageUrl("Include2.JPG");
 const nsbeImageUrl = aboutImageUrl("NSBE.JPG");
 const colorstackImageUrl = aboutImageUrl("Colorstack.JPG");
+
+const photographySlides = [
+  { image: aboutPhotoUrl("Sanjith1.JPG"), alt: "Outdoor graduation portrait" },
+  { image: aboutPhotoUrl("Sanjith2.JPG"), alt: "Outdoor graduation portrait" },
+  { image: aboutPhotoUrl("Sanjith3.JPG"), alt: "Outdoor graduation portrait" },
+  
+  { image: aboutPhotoUrl("Baseball2.JPEG"), alt: "Baseball sports photography" },
+  { image: aboutPhotoUrl("DSC02840.JPG"), alt: "Event photography moment" },
+  { image: aboutPhotoUrl("Jovani1.JPG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Jovania2.JPG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Rachel1.JPG"), alt: "Outdoor portrait photography" },
+  { image: aboutPhotoUrl("Rachel2.JPG"), alt: "Outdoor portrait photography" },
+  { image: aboutPhotoUrl("Raj1.JPG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Saj1.JPG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Saj2.JPG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Saj3.jpg"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Saj4.JPEG"), alt: "Portrait photography session" },
+  { image: aboutPhotoUrl("Sanjith4.JPG"), alt: "Outdoor graduation portrait" },
+  { image: aboutPhotoUrl("Sanjith5.JPG"), alt: "Outdoor graduation portrait" },
+  { image: aboutPhotoUrl("baseball1.JPEG"), alt: "Baseball sports photography" },
+];
 
 function Panel({ title, children, className = "" }) {
   return (
@@ -28,14 +49,43 @@ function ClubCard({ title, text, image, alt }) {
   );
 }
 
+function PhotographyCarousel() {
+  const loopingSlides = [...photographySlides, ...photographySlides];
+
+  return (
+    <section className="pt-4">
+      <div className="mb-4">
+        <h2 className="text-2xl font-semibold text-[#153846]">Photography Work</h2>
+      </div>
+
+      <div className="overflow-hidden">
+        <div className="photography-marquee-track flex w-max gap-4">
+          {loopingSlides.map((slide, index) => (
+            <article
+              key={`${slide.image}-${index}`}
+              className="group w-52 shrink-0 overflow-hidden border border-[#bfd0d7] bg-white transition duration-300 hover:-translate-y-2 hover:border-[#153846] hover:shadow-xl sm:w-72 md:w-80"
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className="h-72 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-96"
+              />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function About() {
   return (
     <div className="min-h-screen bg-[#eaf1f4] text-[#163843]">
-      <section className="border-b border-[#c6d7de] bg-[linear-gradient(135deg,#d5e6ec_0%,#e9f3f6_52%,#f6fbfc_100%)] px-6 pb-12 pt-32 md:px-16">
+      <section className="border-b border-[#c6d7de] bg-[linear-gradient(135deg,#d5e6ec_0%,#e9f3f6_52%,#f6fbfc_100%)] px-5 pb-12 pt-32 sm:px-6 md:px-16">
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#4f6f7b]">About</p>
-            <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-[#173a47] md:text-7xl">
+            <h1 className="mt-3 text-4xl leading-[0.95] font-semibold tracking-tight text-[#173a47] sm:text-5xl md:text-7xl">
               Chinomso Augustine
             </h1>
           </div>
@@ -46,18 +96,17 @@ export default function About() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl space-y-6 px-6 py-10 md:px-16">
-        <Panel title="Who I Am">
-          <p>
-            I am <strong>Chinomso Augustine</strong>, a UI/UX Designer and UI Engineer studying at the
-            <strong> University of California, Davis</strong>, majoring in Design with a minor in Computer Science.
-            I focus on designing intuitive, user-centered applications that prioritize clarity, usability,
-            and purpose.
-          </p>
-          <p>
-            I am currently seeking internship opportunities and am open to relocation.
-          </p>
-        </Panel>
+      <main className="mx-auto max-w-7xl space-y-6 px-5 py-10 sm:px-6 md:px-16">
+        <section>
+          <div className="mt-4 space-y-3 text-[15px] leading-7 text-[#2f515d]">
+            <p>
+              I am a UI/UX Designer and UI Engineer studying at the
+              <strong> University of California, Davis</strong>, majoring in Design with a minor in Computer Science.
+              I focus on designing intuitive, user-centered applications that prioritize clarity, usability,
+              and purpose. I am currently seeking internship opportunities and am open to relocation.
+            </p>
+          </div>
+        </section>
 
         <Panel title="Community and Leadership">
           <p>
@@ -92,35 +141,6 @@ export default function About() {
         </Panel>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <Panel title="Photography / Videography">
-            <p>
-              Outside of school, I work as a <strong>photographer and videographer</strong>. My work includes
-              graduation, professional, club, event, and sports photography.
-            </p>
-            <p>
-              I currently shoot with Sony a7 III and Sony a7R II cameras, then edit using Adobe Lightroom and
-              Premiere Pro. This work sharpened my eye for composition and visual storytelling.
-            </p>
-            <p>
-              To view my work, visit my{" "}
-              <a
-                href="https://www.instagram.com/chino_clickss/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-[#ff3d8b] px-3 py-1 font-semibold text-white no-underline shadow-sm transition hover:bg-[#d62976]"
-              >
-                Instagram portfolio
-              </a>
-              .
-            </p>
-          </Panel>
-
-          <section className="overflow-hidden border border-[#c9d8de] bg-white">
-            <img src={photographyImageUrl} alt="Photography portfolio sample" className="h-72 w-full object-cover object-[center_18%]" />
-          </section>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
           <Panel title="Athletics and Fitness">
             <p>
               I am a former <strong>marathon runner</strong>, captain of my high school soccer and
@@ -144,6 +164,8 @@ export default function About() {
             </p>
           </Panel>
         </div>
+
+        <PhotographyCarousel />
       </main>
     </div>
   );

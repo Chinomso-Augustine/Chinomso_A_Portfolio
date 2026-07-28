@@ -7,6 +7,11 @@
 
 body {
   font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 h1,
@@ -88,5 +93,25 @@ h4 {
   to {
     opacity: 0;
     transform: translate(-50%, calc(-50% - 35px)) scale(0);
+  }
+}
+
+.photography-marquee-track {
+  animation: photographyMarquee 72s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photography-marquee-track {
+    animation: none;
+  }
+}
+
+@keyframes photographyMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }

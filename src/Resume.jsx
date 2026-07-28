@@ -13,7 +13,7 @@ export default function Resume() {
   const resetZoom = () => setZoom(100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 px-6 pb-16 pt-32 text-slate-900 md:px-20">
+    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 px-5 pb-16 pt-32 text-slate-900 sm:px-6 md:px-20">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white border border-blue-200 rounded-xl p-6 md:p-8 shadow-sm shadow-blue-100/40">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">

@@ -100,7 +100,7 @@ function DetailSection({ title, body, bullets, images }) {
 export default function Case1() {
   return (
     <div className="min-h-screen bg-white text-[#202124]">
-      <section className="relative overflow-hidden border-b border-[#e8eaed] bg-white px-6 pb-16 pt-32 md:px-16">
+      <section className="relative overflow-hidden border-b border-[#e8eaed] bg-white px-5 pb-16 pt-32 sm:px-6 md:px-16">
         <div className="pointer-events-none absolute -right-24 top-12 h-72 w-72 rounded-full bg-[#e8f0fe]" />
         <div className="pointer-events-none absolute -left-24 bottom-6 h-64 w-64 rounded-full bg-[#fef7e0]" />
 
@@ -110,11 +110,11 @@ export default function Case1() {
               <ColorDots />
               Case Study
             </div>
-            <h1 className="font-sans mt-6 text-5xl leading-[0.95] font-semibold tracking-[-0.06em] md:text-7xl">
+            <h1 className="font-sans mt-6 text-4xl leading-[0.95] font-semibold tracking-tight sm:text-5xl md:text-7xl md:tracking-[-0.06em]">
               <ColorWord text="Campus" />
               <span className="text-[#202124]">Connect</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-2xl font-medium tracking-[-0.03em] text-[#3c4043]">
+            <p className="mt-5 max-w-2xl text-xl font-medium tracking-tight text-[#3c4043] sm:text-2xl sm:tracking-[-0.03em]">
               Student services, simplified into one trusted search-and-book hub.
             </p>
             <p className="mt-5 max-w-3xl text-[16px] leading-8 text-[#5f6368]">
@@ -155,7 +155,7 @@ export default function Case1() {
         </div>
       </section>
 
-      <main id="case-details" className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+      <main id="case-details" className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 md:px-16">
         <section className="grid gap-4 py-10 md:grid-cols-3">
           {metrics.map((metric) => (
             <article key={metric.label} className="rounded-[28px] border border-[#dadce0] bg-white p-6 shadow-sm">

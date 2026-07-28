@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const heroBackgroundUrl = import.meta.env.BASE_URL + "about-me/PP.JPG";
+const heroBackgroundUrl = import.meta.env.BASE_URL + "about-me/Photos/PP.JPG";
 const campusImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
 const fountainImageUrl = import.meta.env.BASE_URL + "Refil/" + encodeURIComponent("Fountain Graphic.png");
 const jobMadeEasyImageUrl = import.meta.env.BASE_URL + "other-images/" + encodeURIComponent("Laptop 1.png");
@@ -149,7 +149,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f7f3eb] text-[#112f3a]">
       <main className="pb-16">
-        <section className="relative flex min-h-[68vh] items-center justify-center overflow-hidden">
+        <section className="relative flex min-h-[72vh] items-center justify-center overflow-hidden sm:min-h-[68vh]">
           <img
             src={heroBackgroundUrl}
             alt="Hero background"
@@ -157,17 +157,17 @@ export default function App() {
           />
           <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(17,47,58,0.94),rgba(17,47,58,0.78),rgba(232,93,61,0.34))]" />
 
-          <div className="relative z-10 mx-auto w-full max-w-[1280px] px-6 pt-32 text-center md:px-10">
-            <h1 className="w-full text-[clamp(2.2rem,8.2vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
+          <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pt-36 text-center sm:px-6 md:px-10">
+            <h1 className="w-full text-[clamp(2rem,12vw,7rem)] leading-[0.92] font-bold tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)] md:whitespace-nowrap">
               CHINOMSO AUGUSTINE
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl rounded-2xl bg-[#112f3a]/70 px-5 py-4 text-base leading-6 text-white shadow-[0_14px_40px_rgba(17,47,58,0.32)] ring-1 ring-[#f0c7b6]/30 md:text-lg">
+            <p className="mx-auto mt-4 max-w-3xl rounded-lg bg-[#112f3a]/70 px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_40px_rgba(17,47,58,0.32)] ring-1 ring-[#f0c7b6]/30 sm:rounded-2xl sm:px-5 sm:py-4 sm:text-base md:text-lg">
               I design and build thoughtful digital and physical experiences with a focus on UI/UX
             </p>
           </div>
         </section>
 
-        <section className="mx-auto mt-6 w-full max-w-[1280px] px-6 md:px-10">
+        <section className="mx-auto mt-6 w-full max-w-[1280px] px-5 sm:px-6 md:px-10">
           <div className="rounded-md border border-[#d9c8ad] bg-[#fffaf2] p-4 shadow-[0_12px_34px_rgba(17,47,58,0.06)] md:p-5">
             <p className="text-s font-medium uppercase tracking-[0.14em] text-[#e45d3d]">Skill Set</p>
             <h2 className="mt-1 text-3xl font-semibold">Skills</h2>
@@ -287,7 +287,7 @@ function WorkSection({ category }) {
   return (
     <section aria-labelledby={headingId}>
       <div className={`rounded-2xl border ${category.borderClass} ${category.backgroundClass} p-5 md:p-6`}>
-        <div className={`mb-5 flex items-end justify-between border-b ${category.borderClass} pb-3`}>
+        <div className={`mb-5 flex flex-col gap-2 border-b ${category.borderClass} pb-3 sm:flex-row sm:items-end sm:justify-between`}>
           <div>
             <p className={`text-sm uppercase tracking-[0.16em] ${category.eyebrowClass}`}>Projects</p>
             <h2 id={headingId} className={`mt-1 text-3xl font-semibold ${category.headingClass}`}>
@@ -380,6 +380,7 @@ function WorkCard({ card, category }) {
 
       <div className="p-4">
         <h3 className="text-2xl font-medium">{card.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-[#53634f] md:hidden">{card.description}</p>
       </div>
     </>
   );

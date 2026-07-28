@@ -33,8 +33,8 @@ export default function DocumentViewer() {
 
   if (!document) {
     return (
-      <main className="min-h-screen bg-[#edf4f7] px-6 pb-12 pt-32 text-[#173a47] md:px-16">
-        <div className="mx-auto max-w-4xl rounded-2xl border border-[#cbdce3] bg-white p-8">
+      <main className="min-h-screen bg-[#edf4f7] px-5 pb-12 pt-32 text-[#173a47] sm:px-6 md:px-16">
+        <div className="mx-auto max-w-4xl rounded-xl border border-[#cbdce3] bg-white p-5 sm:rounded-2xl sm:p-8">
           <h1 className="text-3xl font-semibold">Document not found</h1>
           <Link to="/" className="mt-6 inline-flex rounded-full bg-[#1a73e8] px-5 py-3 text-sm font-semibold text-white">
             Return Home
@@ -45,9 +45,9 @@ export default function DocumentViewer() {
   }
 
   return (
-    <main className="min-h-screen bg-[#edf4f7] px-6 pb-12 pt-32 text-[#173a47] md:px-16">
+    <main className="min-h-screen bg-[#edf4f7] px-5 pb-12 pt-32 text-[#173a47] sm:px-6 md:px-16">
       <div className="mx-auto max-w-6xl">
-        <section className="rounded-2xl border border-[#cbdce3] bg-white p-6 shadow-sm">
+        <section className="rounded-xl border border-[#cbdce3] bg-white p-5 shadow-sm sm:rounded-2xl sm:p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#597381]">
             Digital Illustrations / Graphic Design
           </p>

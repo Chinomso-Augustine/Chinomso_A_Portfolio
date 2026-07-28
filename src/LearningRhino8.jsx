@@ -35,10 +35,10 @@ function StepCard({ step, title, text, image, alt }) {
 export default function LearningRhino8() {
   return (
     <div className="min-h-screen bg-[#f2f2ee] text-[#2b2d2f]">
-      <section className="border-b border-[#d4d6cf] bg-[linear-gradient(140deg,#2b2d2f_0%,#5c6461_52%,#f2f2ee_100%)] text-white px-6 pb-14 pt-32 md:px-16">
+      <section className="border-b border-[#d4d6cf] bg-[linear-gradient(140deg,#2b2d2f_0%,#5c6461_52%,#f2f2ee_100%)] px-5 pb-14 pt-32 text-white sm:px-6 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#cde96a]">Project 02</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-white md:text-7xl">
+          <h1 className="mt-3 text-4xl leading-[0.95] font-semibold tracking-tight text-white sm:text-5xl md:text-7xl">
             Learning Rhino 8
           </h1>
           <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[#f0f2ea]">
@@ -77,7 +77,7 @@ export default function LearningRhino8() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+      <main className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 md:px-16">
         <StepCard
           step="1"
           title="Exploration"

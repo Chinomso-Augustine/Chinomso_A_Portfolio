@@ -126,10 +126,10 @@ function StudyBand({ title, body, bullets, images, reverse, imageLayout }) {
 export default function Refill() {
   return (
     <div className="min-h-screen bg-[#edf9fb] text-[#073f4a]">
-      <section className="border-b border-[#b8dfe3] bg-[linear-gradient(140deg,#073f4a_0%,#0f6975_50%,#edf9fb_100%)] text-white px-6 pb-14 pt-32 md:px-16">
+      <section className="border-b border-[#b8dfe3] bg-[linear-gradient(140deg,#073f4a_0%,#0f6975_50%,#edf9fb_100%)] px-5 pb-14 pt-32 text-white sm:px-6 md:px-16">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8eeaf0]">Case Study</p>
-          <h1 className="mt-3 text-5xl leading-[0.95] font-semibold tracking-tight text-white md:text-7xl">
+          <h1 className="mt-3 text-4xl leading-[0.95] font-semibold tracking-tight text-white sm:text-5xl md:text-7xl">
             Accessible Water Fountain
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[#f5fcfd]">
@@ -155,7 +155,7 @@ export default function Refill() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-6 pb-16 md:px-16">
+      <main className="mx-auto max-w-6xl px-5 pb-16 sm:px-6 md:px-16">
         <StudyBand
           title="Overview"
           body="A retrofit concept for making existing campus fountains more accessible, useful, and affordable to upgrade."

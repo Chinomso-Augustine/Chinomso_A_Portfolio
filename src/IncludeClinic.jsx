@@ -140,7 +140,7 @@ export default function IncludeClinic() {
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-[#281638]">
-      <header className="relative flex min-h-[84vh] items-end overflow-hidden border-b border-[#d9c9e6] bg-[#4a2f68] px-6 pb-16 pt-32 text-white md:px-16">
+      <header className="relative flex min-h-[68vh] items-end overflow-hidden border-b border-[#d9c9e6] bg-[#4a2f68] px-5 pb-12 pt-32 text-white sm:min-h-[84vh] sm:px-6 sm:pb-16 md:px-16">
         <img
           src={heroImage}
           alt=""
@@ -158,14 +158,14 @@ export default function IncludeClinic() {
         </div>
       </header>
 
-      <main className="mx-auto w-[90vw] max-w-[90rem] px-0 pb-0">
+      <main className="mx-auto w-full max-w-[90rem] px-5 pb-0 sm:w-[90vw] sm:px-0">
         <section id="meet-the-team" className="scroll-mt-40 py-14">
           <div className="mx-auto max-w-6xl text-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
                 01
               </p>
-              <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 Meet the Team
               </h2>
               <p className="mx-auto mt-4 max-w-3xl leading-7 text-[#665470]">
@@ -189,7 +189,7 @@ export default function IncludeClinic() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
                 02
               </p>
-              <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 Project Overview
               </h2>
               <p className="mt-5 max-w-md leading-7 text-[#665470]">
@@ -210,14 +210,14 @@ export default function IncludeClinic() {
           </div>
         </section>
 
-        <section id="understanding-the-user" className="relative left-1/2 w-screen -translate-x-1/2 scroll-mt-40 border-y border-[#d9c9e6] bg-[#f0e7f6] px-[5vw] py-12">
+        <section id="understanding-the-user" className="relative left-1/2 w-screen -translate-x-1/2 scroll-mt-40 border-y border-[#d9c9e6] bg-[#f0e7f6] px-5 py-12 sm:px-[5vw]">
           <div className="mx-auto max-w-[90rem]">
             <div className="grid lg:grid-cols-2">
               <div className="lg:col-start-2 lg:text-right">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
                   03
                 </p>
-                <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                   Understanding the User
                 </h2>
                 <p className="mt-5 leading-7 text-[#665470] lg:ml-auto">
@@ -269,7 +269,7 @@ export default function IncludeClinic() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
             04
           </p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Starting the Design
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-[#665470]">
@@ -364,7 +364,7 @@ export default function IncludeClinic() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
                 05
               </p>
-              <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 Refining the Design
               </h2>
               <p className="mt-5 max-w-4xl leading-7 text-[#665470] lg:ml-auto">
@@ -388,7 +388,7 @@ export default function IncludeClinic() {
                   <img
                     src={item.image}
                     alt={`${item.title} design iteration`}
-                    className="h-[15rem] w-[125%] max-w-none -translate-x-[10%] object-contain transition duration-300 group-hover:scale-[1.02]"
+                    className="h-[15rem] w-full object-contain transition duration-300 group-hover:scale-[1.02] sm:w-[125%] sm:max-w-none sm:-translate-x-[10%]"
                   />
                 </span>
                 <span className="mt-3 block text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#805b99]">
@@ -407,7 +407,7 @@ export default function IncludeClinic() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#805b99]">
               06
             </p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
               Presentation
             </h2>
             <p className="mt-5 leading-7 text-[#665470]">
@@ -452,7 +452,7 @@ export default function IncludeClinic() {
               <img
                 src={clubImage.image}
                 alt="Club group after the Student Run Clinic presentation"
-                className="h-[26rem] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                className="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02] sm:h-[26rem]"
               />
             </span>
           </button>
@@ -504,7 +504,7 @@ function WireframePreview({ title, image, onOpen, wide = false }) {
         <img
           src={image}
           alt={`${title} for the Student Run Clinic redesign`}
-          className={`max-h-[22rem] max-w-none object-contain transition duration-300 group-hover:scale-[1.02] ${wide ? "w-full" : "w-[190%] -translate-x-[23.7%]"
+          className={`max-h-[22rem] object-contain transition duration-300 group-hover:scale-[1.02] ${wide ? "w-full" : "w-full sm:w-[190%] sm:max-w-none sm:-translate-x-[23.7%]"
             }`}
         />
       </span>
