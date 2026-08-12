@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const overviewImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
-const valuePropImageUrl = import.meta.env.BASE_URL + "campconnect/VP.png";
-const serviceScreenImageUrl = import.meta.env.BASE_URL + "campconnect/" + encodeURIComponent("Services .png");
-const providerScreenImageUrl = import.meta.env.BASE_URL + "campconnect/Providers.png";
+const overviewImageUrl = assetUrl("campconnect", "Camp.png");
+const valuePropImageUrl = assetUrl("campconnect", "VP.png");
+const serviceScreenImageUrl = assetUrl("campconnect", "Services .png");
+const providerScreenImageUrl = assetUrl("campconnect", "Providers.png");
 
 const googleColors = ["#4285F4", "#DB4437", "#F4B400", "#0F9D58"];
 

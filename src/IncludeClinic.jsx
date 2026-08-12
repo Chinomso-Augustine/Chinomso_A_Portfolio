@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const includeAsset = (...pathSegments) =>
-  import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
+const includeAsset = (...pathSegments) => assetUrl(...pathSegments);
 
 const heroImage = includeAsset("Include Design", "HeroImage.png");
 const personaImage = includeAsset("Include Design", "Persona.png");

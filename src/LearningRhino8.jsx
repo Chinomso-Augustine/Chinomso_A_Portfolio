@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const modelingImageUrl = import.meta.env.BASE_URL + "other-images/rhino-modeling.png";
-const sketchImageUrl = import.meta.env.BASE_URL + "other-images/rhino-sketch.png";
-const aiImageUrl = import.meta.env.BASE_URL + "other-images/rhino-ai.png";
+const modelingImageUrl = assetUrl("other-images", "rhino-modeling.png");
+const sketchImageUrl = assetUrl("other-images", "rhino-sketch.png");
+const aiImageUrl = assetUrl("other-images", "rhino-ai.png");
 
 function BackButton() {
   return (

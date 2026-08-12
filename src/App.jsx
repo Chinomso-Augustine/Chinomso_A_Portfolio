@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const heroBackgroundUrl = import.meta.env.BASE_URL + "about-me/Photos/PP.JPG";
-const campusImageUrl = import.meta.env.BASE_URL + "campconnect/Camp.png";
-const fountainImageUrl = import.meta.env.BASE_URL + "Refil/" + encodeURIComponent("Fountain Graphic.png");
-const jobMadeEasyImageUrl = import.meta.env.BASE_URL + "other-images/" + encodeURIComponent("Laptop 1.png");
-const rhinoProjectImageUrl = import.meta.env.BASE_URL + "other-images/rhino-modeling.png";
-const publicFileUrl = (...pathSegments) =>
-  import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
-const parkletImageUrl = publicFileUrl("Parklet", "Graphics.png");
-
-const includeClinicImageUrl = publicFileUrl("Include Design", "HeroImage.png");
+const heroBackgroundUrl = assetUrl("about-me", "Photos", "PP.JPG");
+const campusImageUrl = assetUrl("campconnect", "Camp.png");
+const fountainImageUrl = assetUrl("Refil", "Fountain Graphic.png");
+const jobMadeEasyImageUrl = assetUrl("other-images", "Laptop 1.png");
+const rhinoProjectImageUrl = assetUrl("other-images", "rhino-modeling.png");
+const parkletImageUrl = assetUrl("Parklet", "Graphics.png");
+const includeClinicImageUrl = assetUrl("Include Design", "HeroImage.png");
 
 const skillGroups = [
   {

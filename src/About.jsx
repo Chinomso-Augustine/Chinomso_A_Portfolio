@@ -1,5 +1,7 @@
-const aboutImageUrl = (file) => import.meta.env.BASE_URL + "about-me/" + encodeURIComponent(file);
-const aboutPhotoUrl = (file) => import.meta.env.BASE_URL + "about-me/Photos/" + encodeURIComponent(file);
+import { assetUrl } from "./assets";
+
+const aboutImageUrl = (file) => assetUrl("about-me", file);
+const aboutPhotoUrl = (file) => assetUrl("about-me", "Photos", file);
 
 const profileImageUrl = aboutPhotoUrl("PP.JPG");
 const includeImageOneUrl = aboutImageUrl("Include1.JPG");

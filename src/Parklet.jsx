@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const parkletAsset = (...pathSegments) =>
-  import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
+const parkletAsset = (...pathSegments) => assetUrl(...pathSegments);
 
 const images = {
   hero: parkletAsset("Parklet", "Graphics.png"),

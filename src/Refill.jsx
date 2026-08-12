@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const asset = (file) => import.meta.env.BASE_URL + "Refil/" + encodeURIComponent(file);
+const asset = (file) => assetUrl("Refil", file);
 
 function MetaItem({ label, value }) {
   return (

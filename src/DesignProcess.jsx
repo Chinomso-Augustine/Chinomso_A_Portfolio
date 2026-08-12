@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { assetUrl } from "./assets";
 
-const asset = (...pathSegments) =>
-  import.meta.env.BASE_URL + pathSegments.map(encodeURIComponent).join("/");
+const asset = (...pathSegments) => assetUrl(...pathSegments);
 
 const journeyMaps = [
   {
