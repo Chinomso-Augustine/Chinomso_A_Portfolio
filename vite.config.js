@@ -1,11 +1,19 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { cpSync, rmSync } from "node:fs";
+import { resolve } from "node:path";
 
 export default defineConfig({
   base: "./",
   plugins: [
-    react(),
     tailwindcss(),
+    {
+      name: "copy-static-assets",
+      writeBundle() {
+        const target = resolve("dist/src/assets");
+        rmSync(target, { recursive: true, force: true });
+        cpSync(resolve("src/assets"), target, { recursive: true });
+      },
+    },
   ],
 });
