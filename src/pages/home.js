@@ -49,21 +49,21 @@ const skills = [
 function projectCard(project) {
   return html`<a href="${project.href}" class="group overflow-hidden rounded-[8px] border border-[#26485a] bg-[#08131d] transition duration-300 hover:-translate-y-1 hover:border-[#4d7a93] hover:bg-[#0b1a26]">
     <div class="overflow-hidden border-b border-[#162f40] bg-[#0f2a3a]">
-      <img src="${project.image}" alt="${project.title}" class="h-72 w-full ${project.imageClass || "object-cover object-center"} bg-[#0f2a3a] p-0 transition duration-500 group-hover:scale-[1.03] sm:h-80 lg:h-[22rem]" />
+      <img src="${project.image}" alt="${project.title}" class="h-60 w-full ${project.imageClass || "object-cover object-center"} bg-[#0f2a3a] p-0 transition duration-500 group-hover:scale-[1.03] sm:h-72 lg:h-80" />
     </div>
-    <div class="p-6 sm:p-7">
+    <div class="p-5 sm:p-6">
       <div class="flex flex-wrap gap-2">
-        ${project.tags.map((tag) => `<span class="rounded-[8px] bg-[#102946] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#62a8ff]">${tag}</span>`).join("")}
+        ${project.tags.map((tag) => `<span class="rounded-[8px] bg-[#2b2414] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d6a84f]">${tag}</span>`).join("")}
       </div>
-      <h3 class="mt-6 text-3xl font-semibold tracking-tight text-[#f4f8fb]">${project.title}</h3>
-      <p class="mt-4 min-h-[4rem] text-[15px] leading-7 text-[#c4d3dc]">${project.description}</p>
+      <h3 class="mt-5 text-2xl font-semibold tracking-tight text-[#f4f8fb] sm:text-[1.7rem]">${project.title}</h3>
+      <p class="mt-3 min-h-[3.75rem] text-sm leading-6 text-[#c4d3dc]">${project.description}</p>
     </div>
   </a>`;
 }
 
 function skillGroup([title, items]) {
   return html`<article class="border border-[#26485a] bg-[#0f2a3a] p-5">
-    <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#7fc7e8]">${title}</h3>
+    <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">${title}</h3>
     <div class="mt-4 flex flex-wrap gap-2">
       ${items.map((skill) => `<span class="rounded-full border border-[#26485a] bg-[#071827] px-3 py-1.5 text-sm font-medium text-[#d8e6ee]">${skill}</span>`).join("")}
     </div>
@@ -76,7 +76,7 @@ export function homePage() {
       <main>
         <section class="mx-auto grid min-h-[88vh] max-w-[1180px] gap-10 px-5 pb-16 pt-32 sm:px-6 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
-            <p class="text-sm font-semibold text-[#86d8ff]">Chinomso Augustine - UI/UX Designer and UI Engineer</p>
+            <p class="text-sm font-semibold text-[#d6a84f]">Chinomso Augustine - UI/UX Designer and UI Engineer</p>
             <h1 class="mt-5 max-w-4xl text-5xl font-semibold leading-[0.93] tracking-tight text-[#f4f8fb] sm:text-6xl md:text-7xl">
               Designing thoughtful digital and physical experiences.
             </h1>
@@ -87,7 +87,7 @@ export function homePage() {
               <a href="#/" class="rounded-full bg-[#f4f8fb] px-5 py-3 text-sm font-semibold text-[#0f2a3a] transition hover:bg-[#d8e6ee]">View Projects</a>
               <a href="#/about" class="rounded-full border border-[#31566a] px-5 py-3 text-sm font-semibold text-[#f4f8fb] transition hover:bg-[#0f2a3a]">About Me</a>
             </div>
-            <p class="mt-12 text-xs font-semibold uppercase tracking-[0.18em] text-[#7fc7e8]">Scroll to explore</p>
+            <p class="mt-12 text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">Scroll to explore</p>
           </div>
           <figure class="overflow-hidden border border-[#26485a] bg-[#0f2a3a] p-3 shadow-[0_24px_70px_rgba(24,23,19,0.08)]">
             <img src="${img.profile}" alt="Chinomso Augustine portrait" class="h-[34rem] w-full object-cover object-[center_28%]" />
@@ -107,16 +107,16 @@ export function homePage() {
                 ["2", "Physical builds"],
                 ["1", "Healthcare redesign"],
               ]
-                .map(([value, label]) => `<div class="bg-[#0f2a3a] p-5"><p class="text-3xl font-semibold text-[#f4f8fb]">${value}</p><p class="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7fc7e8]">${label}</p></div>`)
+                .map(([value, label]) => `<div class="bg-[#0f2a3a] p-5"><p class="text-3xl font-semibold text-[#f4f8fb]">${value}</p><p class="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6a84f]">${label}</p></div>`)
                 .join("")}
             </div>
           </div>
-          <div class="mt-10 grid gap-7 lg:grid-cols-2">${projects.map(projectCard).join("")}</div>
+          <div class="mt-9 grid gap-6 lg:grid-cols-2">${projects.map(projectCard).join("")}</div>
         </section>
 
         <section class="mx-auto grid max-w-[1180px] gap-10 border-t border-[#26485a] px-5 py-14 sm:px-6 md:px-8 lg:grid-cols-[0.36fr_0.64fr]">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#7fc7e8]">Capabilities</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">Capabilities</p>
             <h2 class="mt-3 text-4xl font-semibold tracking-tight text-[#f4f8fb]">Design, tools, and code working together.</h2>
           </div>
           <div class="grid gap-4">${skills.map(skillGroup).join("")}</div>

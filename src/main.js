@@ -47,7 +47,7 @@ function siteNav() {
   return html`
     <header class="fixed inset-x-0 top-0 z-50 border-b border-[#26485a] bg-[#071827]/92 backdrop-blur-xl">
       <div class="mx-auto flex min-h-16 w-full max-w-[1180px] flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 md:px-8">
-        <a href="#/" class="shrink-0 text-sm font-semibold tracking-tight text-[#f4f8fb] hover:text-[#86d8ff]" aria-label="Chinomso Augustine home">
+        <a href="#/" class="shrink-0 text-sm font-semibold tracking-tight text-[#f4f8fb] hover:text-[#d6a84f]" aria-label="Chinomso Augustine home">
           Chinomso Augustine <span class="hidden font-medium text-[#9fb6c5] sm:inline">- Designer and UI Engineer</span>
         </a>
         <nav aria-label="Main navigation" class="w-full overflow-x-auto [-webkit-overflow-scrolling:touch] sm:w-auto">

@@ -36,7 +36,7 @@ function footer() {
     <footer class="mt-16 border-t border-[#26485a] bg-[#071827] text-[#f4f8fb]">
       <div class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-14 md:grid-cols-[0.9fr_1.1fr] md:px-8">
         <div>
-          <p class="text-sm uppercase tracking-[0.16em] text-[#8bc8e8]">Let's Build Something</p>
+          <p class="text-sm uppercase tracking-[0.16em] text-[#d6a84f]">Let's Build Something</p>
           <h2 class="mt-3 max-w-xl text-4xl font-semibold leading-[1.02] tracking-tight text-[#f4f8fb] md:text-5xl">Have a project worth designing?</h2>
           <p class="mt-5 max-w-lg text-sm leading-7 text-[#c4d3dc]">
             I am currently open to UI/UX design, product design, and front-end opportunities where thoughtful research and polished interfaces matter.
@@ -47,18 +47,18 @@ function footer() {
           </div>
         </div>
         <div>
-          <p class="text-sm uppercase tracking-[0.16em] text-[#8bc8e8]">Send me a message</p>
+          <p class="text-sm uppercase tracking-[0.16em] text-[#d6a84f]">Send me a message</p>
           <form data-contact-form class="mt-5 grid gap-3 sm:grid-cols-2">
             <input type="text" name="firstName" placeholder="First Name" required class="${inputClass()}" />
             <input type="text" name="lastName" placeholder="Last Name" required class="${inputClass()}" />
             <input type="email" name="email" placeholder="Email Address *" required class="${inputClass()} sm:col-span-2" />
-            <textarea name="message" placeholder="Message" required class="min-h-32 border border-[#31566a] bg-[#0a2030] px-4 py-3 text-sm text-[#f4f8fb] placeholder:text-[#8bc8e8] focus:border-[#f4f8fb] focus:outline-none sm:col-span-2"></textarea>
-            <button type="submit" class="h-11 rounded-full bg-[#8bc8e8] px-4 text-sm font-semibold text-[#071827] transition hover:bg-[#f4f8fb] sm:col-span-2">Send message</button>
+            <textarea name="message" placeholder="Message" required class="min-h-32 border border-[#31566a] bg-[#0a2030] px-4 py-3 text-sm text-[#f4f8fb] placeholder:text-[#d6a84f] focus:border-[#f4f8fb] focus:outline-none sm:col-span-2"></textarea>
+            <button type="submit" class="h-11 rounded-full bg-[#d6a84f] px-4 text-sm font-semibold text-[#071827] transition hover:bg-[#f4f8fb] sm:col-span-2">Send message</button>
           </form>
         </div>
       </div>
       <div class="border-t border-[#16384b]">
-        <div class="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-5 text-sm text-[#8bc8e8] md:flex-row md:items-center md:justify-between md:px-8">
+        <div class="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-5 text-sm text-[#d6a84f] md:flex-row md:items-center md:justify-between md:px-8">
           <p>Based in Davis, CA - Available remote and hybrid</p>
           <p>© 2026 Chinomso Augustine</p>
         </div>
@@ -68,7 +68,7 @@ function footer() {
 }
 
 function inputClass() {
-  return "h-11 border border-[#31566a] bg-[#0a2030] px-4 text-sm text-[#f4f8fb] placeholder:text-[#8bc8e8] focus:border-[#f4f8fb] focus:outline-none";
+  return "h-11 border border-[#31566a] bg-[#0a2030] px-4 text-sm text-[#f4f8fb] placeholder:text-[#d6a84f] focus:border-[#f4f8fb] focus:outline-none";
 }
 
 function handleContactSubmit(event) {
