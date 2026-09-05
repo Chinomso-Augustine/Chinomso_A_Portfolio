@@ -4,7 +4,6 @@ import { resumePage } from "./pages/resume.js";
 import { campusConnectPage } from "./projects/campus-connect.js";
 import { includeClinicPage } from "./projects/include-clinic.js";
 import { parkletPage } from "./projects/parklet.js";
-import { pathfinderPage } from "./projects/pathfinder.js";
 import { refillPage } from "./projects/refill.js";
 import { handleContactSubmit, html, openPreview } from "./shared.js";
 
@@ -16,7 +15,6 @@ const routes = {
   "/resume": resumePage,
   "/case1": campusConnectPage,
   "/refill": refillPage,
-  "/jobmadeeasy": pathfinderPage,
   "/parklet": parkletPage,
   "/student-run-clinic": includeClinicPage,
 };
@@ -37,7 +35,7 @@ function render() {
   root.innerHTML = `${pointerMarkup()}${siteNav()}${route()}`;
   root.querySelectorAll("[data-contact-form]").forEach((form) => form.addEventListener("submit", handleContactSubmit));
   root.querySelectorAll("[data-preview-src]").forEach((button) => {
-    button.addEventListener("click", () => openPreview(button.dataset.previewTitle, button.dataset.previewSrc, button.dataset.previewAlt));
+    button.addEventListener("click", () => openPreview(button.dataset.previewTitle, button.dataset.previewSrc, button.dataset.previewAlt, button.dataset.previewStyle));
   });
   updateActiveNav();
   window.scrollTo(0, 0);

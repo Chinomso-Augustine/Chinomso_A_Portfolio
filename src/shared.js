@@ -10,9 +10,11 @@ function a(...path) {
 
 const img = {
   profile: a("about-me", "Photos", "PP.JPG"),
+  aboutPortrait: a("about-me", "chinowithcamera.JPG"),
   resume: a("about-me", "My Resume.pdf"),
   include1: a("about-me", "Include1.JPG"),
   include2: a("about-me", "Include2.JPG"),
+  idsa: a("about-me", "IDSA.JPG"),
   nsbe: a("about-me", "NSBE.JPG"),
   colorstack: a("about-me", "Colorstack.JPG"),
   campus: a("campconnect", "Camp.png"),
@@ -20,7 +22,6 @@ const img = {
   services: a("campconnect", "Services .png"),
   providers: a("campconnect", "Providers.png"),
   fountain: a("Refil", "Fountain Graphic.png"),
-  pathfinder: a("other-images", "Laptop 1.png"),
   journeyOne: a("other-images", "journey-map-1.jpg"),
   journeyTwo: a("other-images", "journey-map-2.jpg"),
   parklet: a("Parklet", "Graphics.png"),
@@ -119,12 +120,17 @@ function previewButton(title, image, alt) {
   return `<button type="button" data-preview-title="${title}" data-preview-src="${image}" data-preview-alt="${alt}" class="group overflow-hidden border border-[#d9c9e6] bg-white p-3 text-left shadow-[0_16px_40px_rgba(58,25,78,0.06)] transition hover:-translate-y-1 hover:border-[#805b99]"><span class="block overflow-hidden bg-[#fbf7ff]"><img src="${image}" alt="${alt}" class="h-[15rem] w-full object-contain transition duration-300 group-hover:scale-[1.02]" /></span><span class="mt-3 block text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#805b99]">${title}</span><span class="mt-1 block text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9a7aae]">Click to expand</span></button>`;
 }
 
-function openPreview(title, src, alt) {
+function openPreview(title, src, alt, style = "default") {
   const modal = document.createElement("div");
-  modal.className = "fixed inset-0 z-[70] flex items-center justify-center bg-[#160720]/88 p-4 backdrop-blur-sm";
+  const isPlain = style === "plain";
+  modal.className = isPlain
+    ? "fixed inset-0 z-[70] flex items-center justify-center bg-black/55 p-0"
+    : "fixed inset-0 z-[70] flex items-center justify-center bg-[#160720]/88 p-4 backdrop-blur-sm";
   modal.setAttribute("role", "dialog");
   modal.setAttribute("aria-modal", "true");
-  modal.innerHTML = `<button type="button" class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white text-2xl leading-none text-[#4a2f68] shadow-[0_12px_30px_rgba(0,0,0,0.25)]" aria-label="Close preview">&times;</button><figure class="max-h-[88vh] w-full max-w-4xl overflow-auto bg-white p-4 shadow-[0_28px_80px_rgba(0,0,0,0.35)]"><figcaption class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4a2f68]">${title}</figcaption><img src="${src}" alt="${alt}" class="mx-auto max-h-[78vh] w-full object-contain" /></figure>`;
+  modal.innerHTML = isPlain
+    ? `<button type="button" class="absolute right-5 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-2xl leading-none text-white shadow-[0_10px_28px_rgba(0,0,0,0.25)]" aria-label="Close preview">&times;</button><img src="${src}" alt="${alt}" class="relative mx-auto max-h-[86vh] max-w-[86vw] object-contain" />`
+    : `<button type="button" class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white text-2xl leading-none text-[#4a2f68] shadow-[0_12px_30px_rgba(0,0,0,0.25)]" aria-label="Close preview">&times;</button><figure class="max-h-[88vh] w-full max-w-4xl overflow-auto bg-white p-4 shadow-[0_28px_80px_rgba(0,0,0,0.35)]"><figcaption class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#4a2f68]">${title}</figcaption><img src="${src}" alt="${alt}" class="mx-auto max-h-[78vh] w-full object-contain" /></figure>`;
   modal.addEventListener("click", (event) => {
     if (event.target === modal || event.target.closest("button")) modal.remove();
   });

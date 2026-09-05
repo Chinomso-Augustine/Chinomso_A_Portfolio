@@ -31,16 +31,15 @@ function sectionHeader(kicker, title, body = "") {
   </div>`;
 }
 
-function imageFrame(src, alt, caption, tall = false) {
-  return html`<figure class="overflow-hidden border border-[#d5c6ad]/35 bg-[#fffaf2] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
+function imageFrame(src, alt, caption, tall = false, fill = false, fillHeight = "") {
+  return html`<figure class="overflow-hidden rounded-[8px] border border-[#d5c6ad]/35 bg-[#fffaf2] shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
     <div class="flex items-center justify-center bg-[#e7eee2]">
-      <img src="${src}" alt="${alt}" class="${tall ? "max-h-[42rem]" : "max-h-[34rem]"} w-full object-contain" />
+      <img src="${src}" alt="${alt}" class="${fill ? `${fillHeight || (tall ? "h-[34rem]" : "h-80")} object-cover` : `${tall ? "max-h-[42rem]" : "max-h-[34rem]"} object-contain`} w-full" />
     </div>
-    <figcaption class="border-t border-[#d5c6ad] bg-[#eef3e9] px-3 py-2 text-xs text-[#53634f]">${caption}</figcaption>
   </figure>`;
 }
 
-function processStep({ number, title, body, image, alt, caption, reverse }) {
+function processStep({ number, title, body, image, alt, caption, reverse, fill = false, imageSpan = "md:col-span-8" }) {
   return html`<section class="border-t border-[#d5c6ad]/30 py-12">
     <div class="grid gap-7 md:grid-cols-12 md:items-start">
       <div class="md:col-span-4 ${reverse ? "md:order-2" : ""}">
@@ -48,8 +47,8 @@ function processStep({ number, title, body, image, alt, caption, reverse }) {
         <h3 class="mt-2 text-2xl font-semibold text-[#fffaf2]">${title}</h3>
         <p class="mt-3 text-[15px] leading-7 text-[#d5c6ad]">${body}</p>
       </div>
-      <div class="md:col-span-8 ${reverse ? "md:order-1" : ""}">
-        ${imageFrame(image, alt, caption, true)}
+      <div class="${imageSpan} ${reverse ? "md:order-1" : ""}">
+        ${imageFrame(image, alt, caption, true, fill, "h-[42rem]")}
       </div>
     </div>
   </section>`;
@@ -78,7 +77,7 @@ export function parkletPage() {
             </div>
             <a href="#/" class="mt-8 inline-flex h-11 items-center rounded-full bg-[#112f3a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#173f4d]">Back to Home</a>
           </div>
-          <figure class="overflow-hidden border border-[#d5c6ad]/35 bg-[#fffaf2] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
+          <figure class="overflow-hidden rounded-[8px] border border-[#d5c6ad]/35 bg-[#fffaf2] shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
             <img src="${images.hero}" alt="Rendered parklet concept on a sidewalk" class="h-80 w-full object-cover sm:h-[34rem]" />
           </figure>
         </div>
@@ -115,6 +114,7 @@ export function parkletPage() {
         image: images.sketch,
         alt: "Parklet concept sketches",
         caption: "Early form exploration and dimension studies",
+        imageSpan: "md:col-span-7",
       })}
       ${processStep({
         number: "02",
@@ -154,16 +154,15 @@ export function parkletPage() {
           "Final Design",
           "The final model communicates a parklet that can frame a sidewalk, offer different body postures, and create an inviting transition between street and storefront.",
         )}
-        <div class="mt-8 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          ${imageFrame(images.smallScale, "Small scale parklet model", "Small scale physical model")}
-          <div class="grid gap-4">
-            ${imageFrame(images.fdOne, "Final parklet model detail one", "Final model detail")}
-            ${imageFrame(images.fdTwo, "Final parklet model detail two", "Final model detail")}
-          </div>
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          ${imageFrame(images.fdOne, "Final parklet model detail one", "Final model detail", true, true)}
+          ${imageFrame(images.fdTwo, "Final parklet model detail two", "Final model detail", true, true)}
         </div>
-        <figure class="mt-4 overflow-hidden border border-[#d5c6ad]/35 bg-[#fffaf2] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
+        <div class="mt-4">
+          ${imageFrame(images.smallScale, "Small scale parklet model", "Small scale physical model", true, true)}
+        </div>
+        <figure class="mt-4 overflow-hidden rounded-[8px] border border-[#d5c6ad]/35 bg-[#fffaf2] shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
           <img src="${images.hero}" alt="Final rendered parklet concept" class="max-h-[42rem] w-full object-cover" />
-          <figcaption class="border-t border-[#d5c6ad] bg-[#eef3e9] px-3 py-2 text-xs text-[#53634f]">Final rendered concept in sidewalk context</figcaption>
         </figure>
       </section>
     </main>

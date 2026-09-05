@@ -1,38 +1,34 @@
 import { a, html, img } from "../shared.js";
 
 const photos = [
-  "Sanjith1.JPG",
-  "Sanjith2.JPG",
-  "Sanjith3.JPG",
-  "Baseball2.JPEG",
-  "DSC02840.JPG",
-  "Jovani1.JPG",
-  "Jovania2.JPG",
-  "Rachel1.JPG",
-  "Rachel2.JPG",
-  "Raj1.JPG",
-  "Saj1.JPG",
-  "Saj2.JPG",
-  "Saj3.jpg",
-  "Saj4.JPEG",
-  "Sanjith4.JPG",
-  "Sanjith5.JPG",
-  "baseball1.JPEG",
+  "Soccer1.JPG",
+  "Soccer2.JPG",
+  "Soccer3.JPG",
+  "product1.JPG",
+  "product2.JPG",
+  "product3.jpg",
+  "Grad1.JPG",
+  "Grad2.JPG",
+  "Grad4.JPG",
+  "Food1.PNG",
+  "Food2.PNG",
+  "Food3.PNG",
 ];
 
-function infoPanel(title, content) {
-  return html`<section class="border border-[#26485a] bg-[#0f2a3a] p-6">
-    <h2 class="text-2xl font-semibold tracking-tight text-[#f4f8fb]">${title}</h2>
-    <div class="mt-4 space-y-3 text-[15px] leading-7 text-[#c4d3dc]">${content}</div>
-  </section>`;
+function photoLabel(file) {
+  if (file.startsWith("Soccer")) return "Soccer photography";
+  if (file.startsWith("product")) return "Product photography";
+  if (file.startsWith("Grad")) return "Graduation photography";
+  if (file.startsWith("Food")) return "Food photography";
+  return "Photography work";
 }
 
-function clubCard(title, text, image, alt) {
-  return html`<article class="border border-[#26485a] bg-[#0f2a3a]">
-    <img src="${image}" alt="${alt}" class="h-52 w-full object-cover" />
+function clubCard(title, image, alt, text) {
+  return html`<article class="overflow-hidden border border-[#26485a] bg-[#0f2a3a]">
+    <img src="${image}" alt="${alt}" class="h-48 w-full object-cover" />
     <div class="p-4">
-      <h3 class="text-lg font-semibold text-[#f4f8fb]">${title}</h3>
-      <p class="mt-2 text-sm leading-7 text-[#c4d3dc]">${text}</p>
+      <h3 class="text-center text-lg font-semibold text-[#f4f8fb]">${title}</h3>
+      <p class="mt-2 text-center text-xs leading-5 text-[#c4d3dc]">${text}</p>
     </div>
   </article>`;
 }
@@ -40,58 +36,48 @@ function clubCard(title, text, image, alt) {
 export function aboutPage() {
   return html`
     <div class="min-h-screen bg-[#071827] text-[#f4f8fb]">
-      <section class="mx-auto grid max-w-[1180px] gap-10 px-5 pb-14 pt-32 sm:px-6 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-        <div>
-          <p class="text-sm font-semibold text-[#86d8ff]">About Me</p>
-          <h1 class="mt-4 text-5xl font-semibold leading-[0.95] tracking-tight text-[#f4f8fb] sm:text-6xl md:text-7xl">Chinomso Augustine</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-[#c4d3dc]">
-            I am a UI/UX Designer and UI Engineer studying at the University of California, Davis, majoring in Design with a minor in Computer Science.
-          </p>
-        </div>
-        <figure class="overflow-hidden border border-[#26485a] bg-[#0f2a3a] p-3 shadow-[0_24px_70px_rgba(24,23,19,0.08)]">
-          <img src="${img.profile}" alt="Chinomso Augustine portrait" class="h-[30rem] w-full object-cover object-center" />
+      <section class="mx-auto grid max-w-[1180px] gap-10 px-5 pb-14 pt-32 sm:px-6 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <figure class="overflow-hidden">
+          <img src="${img.aboutPortrait}" alt="Chinomso Augustine with a camera" class="h-auto w-full object-contain" />
         </figure>
+        <div class="text-[19px] leading-9 text-[#c4d3dc]">
+          <p>
+            I'm Chinomso, a product design student at UC Davis going into my 4th year. I have over two years of experience through clubs and projects.
+          </p>
+          <p class="mt-7">
+            Outside of academics, I keep myself busy by joining clubs. <br>
+            <br>Beyond clubs, I am a photographer shooting sports, graduations, weddings, restaurants, food, and products. I am that guy you always see everywhere: at soccer or basketball games taking pictures, at the UC Davis gym working out, at the College of Engineering IT office as an IT assistant, or from working at the dining hall for over a year. I am that face you see everywhere.
+         
+            </p>
+        </div>
       </section>
 
       <main class="mx-auto max-w-[1180px] space-y-10 px-5 pb-16 sm:px-6 md:px-8">
-        <section class="grid gap-6 border-t border-[#26485a] pt-10 lg:grid-cols-[0.36fr_0.64fr]">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#7fc7e8]">Profile</p>
-            <h2 class="mt-3 text-4xl font-semibold tracking-tight text-[#f4f8fb]">Design shaped by people, systems, and care.</h2>
+    
+        <section>
+          <h2 class="text-4xl font-semibold tracking-tight text-[#f4f8fb]">Clubs</h2>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            ${clubCard("#Include", img.include2, "#Include group picture", "I collaborate on client-based design projects and support club photography.")}
+            ${clubCard("NSBE", img.nsbe, "NSBE event", "As an Outreach Coordinator, I handle communication within the organization.")}
+            ${clubCard("ColorStack", img.colorstack, "ColorStack collaboration session", "As project manager, I lead a group project.")}
+            ${clubCard("IDSA", img.idsa, "IDSA club activity", "I explore industrial design through campus events and company tours.")}
           </div>
-          <p class="text-[16px] leading-8 text-[#c4d3dc]">
-            I focus on designing intuitive, user-centered applications that prioritize clarity, usability, and purpose. My work moves between digital interfaces, physical product concepts, photography, and front-end implementation.
-          </p>
         </section>
-
-        ${infoPanel(
-          "Community and Leadership",
-          html`<p>I stay involved in student communities where design, collaboration, and representation are central. These experiences strengthened how I communicate ideas and work across different teams.</p>
-          <div class="mt-5 grid gap-4 md:grid-cols-3">
-            ${clubCard("#Include", "At UC Davis, I collaborate on client-based projects and serve as one of the club photographers for events and board activities.", img.include1, "#Include club activity")}
-            ${clubCard("NSBE", "As an active member of the National Society of Black Engineers, I support communication efforts and participate in development and networking events.", img.nsbe, "NSBE event")}
-            ${clubCard("ColorStack", "As former Project Manager, I hosted work sessions with my cohort and led collaboration for projects supporting Black and Latinx students in STEM.", img.colorstack, "ColorStack collaboration session")}
-          </div>
-          <div class="mt-4 overflow-hidden border border-[#26485a] bg-[#0f2a3a]"><img src="${img.include2}" alt="#Include team and board moments" class="h-64 w-full object-cover" /></div>`,
-        )}
-
-        <div class="grid gap-6 md:grid-cols-2">
-          ${infoPanel("Athletics and Fitness", "<p>I am a former <strong>marathon runner</strong>, captain of my high school soccer and <strong>cross-country</strong> teams, and I competed in track and field. These experiences taught me discipline, teamwork, and perseverance.</p>")}
-          ${infoPanel("Healthcare Experience", "<p>I am a <strong>Certified Nursing Assistant (CNA)</strong>. Healthcare work strengthened my empathy, responsibility, and human-centered approach to problem-solving.</p>")}
-        </div>
 
         <section class="border-t border-[#26485a] pt-10">
           <div class="mb-5">
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#7fc7e8]">Photography</p>
-            <h2 class="mt-3 text-4xl font-semibold tracking-tight text-[#f4f8fb]">Photography Work</h2>
+            <h2 class="mt-3 text-4xl font-semibold tracking-tight text-[#f4f8fb]">Sample Photos</h2>
           </div>
-          <div class="overflow-hidden">
-            <div class="photography-marquee-track flex w-max gap-4">
-              ${[...photos, ...photos]
-                .map((file) => `<article class="group w-52 shrink-0 overflow-hidden border border-[#26485a] bg-[#0f2a3a] transition duration-300 hover:-translate-y-2 hover:shadow-xl sm:w-72 md:w-80"><img src="${a("about-me", "Photos", file)}" alt="Photography work" class="h-72 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-96" /></article>`)
-                .join("")}
-            </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            ${photos
+              .map((file) => {
+                const src = a("about-me", "Photos", file);
+                const label = photoLabel(file);
+                return `<button type="button" data-preview-style="plain" data-preview-title="${label}" data-preview-src="${src}" data-preview-alt="${label}" class="group overflow-hidden border border-[#26485a] bg-[#0f2a3a] text-left transition duration-300 hover:-translate-y-1 hover:border-[#4d7a93]"><img src="${src}" alt="${label}" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.03] sm:h-80" /></button>`;
+              })
+              .join("")}
           </div>
+          <p class="mt-6 text-center text-lg font-semibold leading-7 text-[#f4f8fb]">Feel free to explore more of my work on Instagram at chino_clickss.</p>
         </section>
       </main>
     </div>
