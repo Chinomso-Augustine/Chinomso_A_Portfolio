@@ -1,4 +1,4 @@
-import { a, html } from "../shared.js";
+import { a, caseStudyNav, html } from "../shared.js";
 
 const parkletAsset = (file) => a("Parklet", file);
 
@@ -165,6 +165,7 @@ export function parkletPage() {
           <img src="${images.hero}" alt="Final rendered parklet concept" class="max-h-[42rem] w-full object-cover" />
         </figure>
       </section>
+      ${caseStudyNav({ nextHref: "#/student-run-clinic", nextLabel: "Student Run Clinic", variant: "parklet" })}
     </main>
   </div>`;
 }

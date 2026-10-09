@@ -10,6 +10,13 @@ const projects = [
     imageClass: "object-cover",
   },
   {
+    tags: ["Product", "Accessibility", "Campus"],
+    title: "Accessible Water Fountain",
+    description: "A retrofit fountain mouthpiece designed around inclusive hydration, reusable bottles, and campus feasibility.",
+    image: img.fountain,
+    href: "#/refill",
+  },
+  {
     tags: ["Healthcare", "UI/UX", "Team"],
     title: "Student Run Clinic",
     description: "A collaborative redesign of a UC Davis student-run clinic website with research, wireframes, and high-fidelity homepage work.",
@@ -18,38 +25,32 @@ const projects = [
     imageClass: "object-cover object-top",
   },
   {
-    tags: ["Product", "Accessibility", "Campus"],
-    title: "Accessible Water Fountain",
-    description: "A retrofit fountain mouthpiece designed around inclusive hydration, reusable bottles, and campus feasibility.",
-    image: img.fountain,
-    href: "#/refill",
-  },
-  {
-    tags: ["Student Services", "SaaS", "UX"],
-    title: "CampusConnect",
-    description: "A trusted search-and-book hub that helps UC Davis students find, compare, and book peer services faster.",
-    image: img.campus,
-    href: "#/case1",
+    tags: ["AI & Robotics", "Front-End Development", "Startup"],
+    title: "Neuron Edge AI",
+    description: "Translating an unstructured company brief into a clear and scalable website",
+    image: img.neuronHomepage,
+    href: "#/neuron-edge-ai",
+    imageClass: "object-cover object-top",
   },
 ];
 
 const skills = [
   ["Design", ["Wireframing", "UX Research", "Personas", "User Flow", "Prototyping", "Accessibility"]],
-  ["Tools", ["Figma", "Illustrator", "Photoshop", "Lightroom", "Rhino 8", "Notion", "Miro"]],
+  ["Tools", ["Rhino 8", "AutoCAD", "Figma", "Illustrator", "Photoshop", "Lightroom", ]],
   ["Code", ["HTML", "Tailwind CSS", "JavaScript", "C", "C++"]],
 ];
 
 function projectCard(project) {
-  return html`<a href="${project.href}" class="group overflow-hidden rounded-[8px] border border-[#26485a] bg-[#08131d] transition duration-300 hover:-translate-y-1 hover:border-[#4d7a93] hover:bg-[#0b1a26]">
+  return html`<a href="${project.href}" class="group overflow-hidden rounded-[4px] border border-[#26485a] bg-[#08131d] transition duration-300 hover:-translate-y-1 hover:border-[#4d7a93] hover:bg-[#0b1a26]">
     <div class="overflow-hidden border-b border-[#162f40] bg-[#0f2a3a]">
-      <img src="${project.image}" alt="${project.title}" class="h-52 w-full ${project.imageClass || "object-cover object-center"} bg-[#0f2a3a] p-0 transition duration-500 group-hover:scale-[1.03] sm:h-60 lg:h-72" />
+      <img src="${project.image}" alt="${project.title}" class="h-30 w-full ${project.imageClass || "object-cover object-center"} bg-[#0f2a3a] p-0 transition duration-500 group-hover:scale-[1.03] sm:h-48 lg:h-56" />
     </div>
-    <div class="p-4 sm:p-5">
-      <div class="flex flex-wrap gap-2">
-        ${project.tags.map((tag) => `<span class="rounded-[8px] bg-[#2b2414] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d6a84f]">${tag}</span>`).join("")}
+    <div class="p-3 sm:p-4">
+      <div class="flex flex-wrap gap-1.5">
+        ${project.tags.map((tag) => `<span class="rounded-[8px] bg-[#2b2414] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#d6a84f]">${tag}</span>`).join("")}
       </div>
-      <h3 class="mt-4 text-2xl font-semibold tracking-tight text-[#f4f8fb] sm:text-[1.6rem]">${project.title}</h3>
-      <p class="mt-3 min-h-[3.75rem] text-sm leading-6 text-[#c4d3dc]">${project.description}</p>
+      <h3 class="mt-3 text-xl font-semibold tracking-tight text-[#f4f8fb] sm:text-2xl">${project.title}</h3>
+      <p class="mt-2 min-h-[3.25rem] text-[13px] leading-5 text-[#c4d3dc]">${project.description}</p>
     </div>
   </a>`;
 }
@@ -74,7 +75,7 @@ export function homePage() {
               Designing thoughtful digital and physical experiences.
             </h1>
             <p class="mt-6 max-w-2xl text-lg leading-8 text-[#c4d3dc]">
-I focus on designing intuitive, user-centered products that prioritize clarity, usability, and purpose. 
+ Focusing on designing intuitive, user-centered products that prioritize usability and purpose. 
             </p>
             <div class="mt-8 flex flex-wrap gap-3">
               <a href="#/" class="rounded-full bg-[#f4f8fb] px-5 py-3 text-sm font-semibold text-[#0f2a3a] transition hover:bg-[#d8e6ee]">View Projects</a>
@@ -92,14 +93,14 @@ I focus on designing intuitive, user-centered products that prioritize clarity, 
             <div class="grid grid-cols-1 gap-px border border-[#26485a] bg-[#26485a] sm:grid-cols-3">
               ${[
                 ["4", "Projects"],
-                ["2", "Digital products"],
-                ["2", "Physical builds"]
+                ["2", "Digital"],
+                ["2", "Physical"]
               ]
                 .map(([value, label]) => `<div class="bg-[#0f2a3a] p-5"><p class="text-3xl font-semibold text-[#f4f8fb]">${value}</p><p class="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6a84f]">${label}</p></div>`)
                 .join("")}
             </div>
 
-          <div class="mt-9 grid gap-6 lg:grid-cols-2">${projects.map(projectCard).join("")}</div>
+          <div class="mt-8 grid gap-4 lg:grid-cols-2">${projects.map(projectCard).join("")}</div>
         </section>
 
         <section class="mx-auto grid max-w-[1180px] gap-10 border-t border-[#26485a] px-5 py-14 sm:px-6 md:px-8 lg:grid-cols-[0.36fr_0.64fr]">

@@ -1,4 +1,4 @@
-import { html, img } from "../shared.js";
+import { caseStudyNav, html, img } from "../shared.js";
 
 const googleColors = ["#4285F4", "#DB4437", "#F4B400", "#0F9D58"];
 const projectTags = ["UI/UX Design", "Product Strategy", "Interaction Design"];
@@ -155,6 +155,7 @@ export function campusConnectPage() {
           </div>
         </div>
       </section>
+      ${caseStudyNav({ nextHref: "#/neuron-edge-ai", nextLabel: "Neuron Edge AI", variant: "campus" })}
     </main>
   </div>`;
 }

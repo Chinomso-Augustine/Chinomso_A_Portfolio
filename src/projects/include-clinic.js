@@ -1,4 +1,4 @@
-import { a, html, img } from "../shared.js";
+import { a, caseStudyNav, html, img } from "../shared.js";
 
 const includeAsset = (file) => a("Include Design", file);
 
@@ -222,6 +222,7 @@ export function includeClinicPage() {
           <span class="block overflow-hidden"><img src="${includeAsset("Clubimage.JPG")}" alt="Club group after the Student Run Clinic presentation" class="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02] sm:h-[26rem]" /></span>
         </button>
       </section>
+      ${caseStudyNav({ nextHref: "#/refill", nextLabel: "Accessible Water Fountain", variant: "clinic" })}
     </main>
   </div>`;
 }

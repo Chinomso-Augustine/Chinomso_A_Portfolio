@@ -1,4 +1,4 @@
-import { a, html } from "../shared.js";
+import { a, caseStudyNav, html } from "../shared.js";
 
 const asset = (file) => a("Refil", file);
 
@@ -172,6 +172,7 @@ export function refillPage() {
         ],
         imageLayout: "teamRow",
       })}
+      ${caseStudyNav({ nextHref: "#/case1", nextLabel: "CampusConnect", variant: "refill" })}
     </main>
   </div>`;
 }

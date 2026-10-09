@@ -9,6 +9,11 @@ body {
   overflow-x: hidden;
 }
 
+:focus-visible {
+  outline: 3px solid #8eeaf0;
+  outline-offset: 3px;
+}
+
 #root {
   overflow-x: hidden;
 }
@@ -18,7 +23,7 @@ h2,
 h3,
 h4 {
   font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .pointer-cursor,
@@ -67,6 +72,15 @@ h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   body,
   body a,
   body button,

@@ -26,6 +26,13 @@ const img = {
   journeyTwo: a("other-images", "journey-map-2.jpg"),
   parklet: a("Parklet", "Graphics.png"),
   clinicHero: a("Include Design", "HeroImage.png"),
+  neuronHomepage: a("neuron-edge-ai", "NEA Homepag.png"),
+  neuronOriginalSiteOne: a("neuron-edge-ai", "Old Site1.png"),
+  neuronOriginalSiteTwo: a("neuron-edge-ai", "Oldsite2.png"),
+  neuronNavigation: a("neuron-edge-ai", "Nav.png"),
+  neuronFinalTeam: a("neuron-edge-ai", "final1.png"),
+  neuronFinalBlogs: a("neuron-edge-ai", "final2.png"),
+  neuronFinalSolutions: a("neuron-edge-ai", "final3.png"),
 };
 
 function html(strings, ...values) {
@@ -120,6 +127,42 @@ function previewButton(title, image, alt) {
   return `<button type="button" data-preview-title="${title}" data-preview-src="${image}" data-preview-alt="${alt}" class="group overflow-hidden border border-[#d9c9e6] bg-white p-3 text-left shadow-[0_16px_40px_rgba(58,25,78,0.06)] transition hover:-translate-y-1 hover:border-[#805b99]"><span class="block overflow-hidden bg-[#fbf7ff]"><img src="${image}" alt="${alt}" class="h-[15rem] w-full object-contain transition duration-300 group-hover:scale-[1.02]" /></span><span class="mt-3 block text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#805b99]">${title}</span><span class="mt-1 block text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9a7aae]">Click to expand</span></button>`;
 }
 
+function caseStudyNav({ nextHref, nextLabel, variant = "navy" }) {
+  const variants = {
+    campus: {
+      button: "border-[#5f8fc8]/35 bg-white/10 text-[#f8fafd] hover:bg-white/15",
+      accent: "text-[#8ab4f8]",
+    },
+    clinic: {
+      button: "border-[#d9c9e6]/30 bg-white/8 text-[#f0d8ff] hover:bg-white/12",
+      accent: "text-[#caa8df]",
+    },
+    neuron: {
+      button: "border-[#1d3b70] bg-[#0b2558] text-white hover:border-[#ff5b00] hover:bg-[#102f63]",
+      accent: "text-[#ff5b00]",
+    },
+    parklet: {
+      button: "border-[#d5c6ad]/30 bg-white/8 text-[#fffaf2] hover:bg-white/12",
+      accent: "text-[#e7b07d]",
+    },
+    refill: {
+      button: "border-[#8eeaf0]/35 bg-white/10 text-[#f5fcfd] hover:bg-white/15",
+      accent: "text-[#8eeaf0]",
+    },
+    navy: {
+      button: "border-[#26485a] bg-[#0f2a3a] text-[#f4f8fb] hover:bg-[#173f4d]",
+      accent: "text-[#d6a84f]",
+    },
+  };
+  const theme = variants[variant] || variants.navy;
+  const buttonClass = `inline-flex h-10 items-center whitespace-nowrap rounded-full border px-4 text-sm font-semibold transition ${theme.button}`;
+
+  return html`<nav aria-label="Case study navigation" class="flex flex-wrap items-center gap-3 py-10">
+    <a href="#/" class="${buttonClass}">View all case studies</a>
+    <a href="${nextHref}" class="${buttonClass}"><span class="mr-2 ${theme.accent}">Next:</span>${nextLabel}</a>
+  </nav>`;
+}
+
 function openPreview(title, src, alt, style = "default") {
   const modal = document.createElement("div");
   const isPlain = style === "plain";
@@ -137,4 +180,4 @@ function openPreview(title, src, alt, style = "default") {
   document.body.appendChild(modal);
 }
 
-export { a, html, img, footer, handleContactSubmit, heroPage, imageCard, basicSection, chips, previewButton, openPreview };
+export { a, html, img, footer, handleContactSubmit, heroPage, imageCard, basicSection, chips, previewButton, caseStudyNav, openPreview };
