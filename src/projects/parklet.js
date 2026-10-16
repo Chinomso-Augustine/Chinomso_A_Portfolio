@@ -91,7 +91,11 @@ export function parkletPage() {
             ${sectionHeader(
               "Overview",
               "An additional study space for students",
-              "The design uses repeated cardboard to create enclosure, seating, shade, and a visual rhythm that feels architectural without becoming heavy.",
+              `Have you ever visited your favorite coffee shop to study, only to realize there’s no space left and wish you could create more? 
+              When an opportunity to design additional seating for a public space came up in my design class, 
+              I convinced my team to focus on Temple Coffee in Downtown Davis, my favorite study spot. 
+              Using Rhino 8 for 3D modeling, my team and I designed a cardboard structure that provides 
+              seating and shade while feeling architectural.`,
             )}
           </div>
           <div class="grid gap-4 sm:grid-cols-3 md:col-span-7">
@@ -110,7 +114,8 @@ export function parkletPage() {
       ${processStep({
         number: "01",
         title: "Sketching the spatial language",
-        body: "Early sketches explored curved, single, and furniture-like seatings that promotes comfort prior to final decision. Due to restricted requirements for the project, most of the ideas were ruled out.",
+        body: `Each member started with individual sketches that explores different ideas. Some of my sketches were inspired 
+        by objects around me such as my mouse. After modeling our top three, we selected one model to further iterate on.`,
         image: images.sketch,
         alt: "Parklet concept sketches",
         caption: "Early form exploration and dimension studies",
@@ -119,7 +124,8 @@ export function parkletPage() {
       ${processStep({
         number: "02",
         title: "Translating the concept into Rhino",
-        body: "The Rhino model helped test the overall footprint, user circulation, seating rhythm, and potential materials.",
+        body: `Collaborating as a team, we iterated our selected model over and over, applying our professor's feedback.
+        The iteration phase allowed us to test the overall user circulation, seating rhythm, and potential materials.`,
         image: images.rhino,
         alt: "Parklet model in Rhino",
         caption: "Digital model, plan, elevation, and perspective views",
@@ -128,7 +134,7 @@ export function parkletPage() {
       ${processStep({
         number: "03",
         title: "The Dimensions",
-        body: "A 7 by 20 foot parklet footprint organizes the pieces into zones for sitting, standing, and passing through while preserving a clear street-facing edge.",
+        body: `As a feasible solution that can be translated into reality, we included dimensions.`,
         image: images.floorplan,
         alt: "Parklet floor plan with dimensions",
         caption: "Dimensioned plan and module layout",
@@ -138,7 +144,10 @@ export function parkletPage() {
         ${sectionHeader(
           "Fabrication",
           "From digital model to physical prototype.",
-          "The model was broken into repeatable slices of cardboard, prepared for cutting, assembled by hand, and tested at small scale to understand proportion and rhythm.",
+          `Due to limited materials, we were only allowed to build one side of our model. 
+          With the cardboard pieces precisely cut, the fun part began. We started assembling the small-scale model first, followed by 
+          the full-scale model. After a few days, our model was ready for presentation.
+          `,
         )}
         <div class="mt-8 grid gap-4 md:grid-cols-2">
           ${imageFrame(images.printing, "Laser cutting parklet pieces", "Laser cutting repeated rib components", true)}
@@ -150,9 +159,11 @@ export function parkletPage() {
 
       <section class="border-t border-[#d5c6ad]/30 py-12">
         ${sectionHeader(
-          "Final Direction",
+          "Final Result",
           "Final Design",
-          "The final model communicates a parklet that can frame a sidewalk, offer different body postures, and create an inviting transition between street and storefront.",
+          `The final model communicated our idea perfectly. We created a model that extends public space for users to 
+          enjoy without fighting for space. Our model ensured to accommodate different users like those that stand 
+          while working, seats, and are on wheelchairs.`,
         )}
         <div class="mt-8 grid gap-4 md:grid-cols-2">
           ${imageFrame(images.fdOne, "Final parklet model detail one", "Final model detail", true, true)}
