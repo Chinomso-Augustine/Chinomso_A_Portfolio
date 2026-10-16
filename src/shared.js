@@ -11,7 +11,7 @@ function a(...path) {
 const img = {
   profile: a("about-me", "Photos", "PP.JPG"),
   aboutPortrait: a("about-me", "chinowithcamera.JPG"),
-  resume: a("about-me", "My Resume.pdf"),
+  resume: a("about-me", "Chinomso Augustine UX Resume copy.pdf"),
   include1: a("about-me", "Include1.JPG"),
   include2: a("about-me", "Include2.JPG"),
   idsa: a("about-me", "IDSA.JPG"),
