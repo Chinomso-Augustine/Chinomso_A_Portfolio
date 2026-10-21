@@ -172,7 +172,7 @@ export function refillPage() {
         ],
         imageLayout: "teamRow",
       })}
-      ${caseStudyNav({ nextHref: "#/case1", nextLabel: "CampusConnect", variant: "refill" })}
+      ${caseStudyNav({ nextHref: "#/neuron-edge-ai", nextLabel: "Neuron Edge AI", variant: "refill" })}
     </main>
   </div>`;
 }

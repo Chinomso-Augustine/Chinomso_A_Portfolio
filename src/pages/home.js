@@ -1,119 +1,179 @@
-import { footer, html, img } from "../shared.js";
+import { footer, html } from "../shared.js";
+import {
+  hero,
+  modelSection,
+  models,
+  notebookEntries,
+  notebookSection,
+  processHeading,
+  processSteps,
+  projects,
+  projectStats,
+  skillSection,
+  skills,
+} from "../data/home.js";
 
-const projects = [
-  {
-    tags: ["Industrial", "Fabrication", "Rhino"],
-    title: "Parklet Design",
-    description: "A modular streetside study space built through sketching, Rhino modeling, fabrication, and physical prototyping.",
-    image: img.parklet,
-    href: "#/parklet",
-    imageClass: "object-cover",
-  },
-  {
-    tags: ["Product", "Accessibility", "Campus"],
-    title: "Accessible Water Fountain",
-    description: "A retrofit fountain mouthpiece designed around inclusive hydration, reusable bottles, and campus feasibility.",
-    image: img.fountain,
-    href: "#/refill",
-  },
-  {
-    tags: ["Healthcare", "UI/UX", "Team"],
-    title: "Student Run Clinic",
-    description: "A collaborative redesign of a UC Davis student-run clinic website with research, wireframes, and high-fidelity homepage work.",
-    image: img.clinicHero,
-    href: "#/student-run-clinic",
-    imageClass: "object-cover object-top",
-  },
-  {
-    tags: ["AI & Robotics", "Front-End Development", "Startup"],
-    title: "Neuron Edge AI",
-    description: "Translating an unstructured company brief into a clear and scalable website",
-    image: img.neuronHomepage,
-    href: "#/neuron-edge-ai",
-    imageClass: "object-cover object-top",
-  },
-];
-
-const skills = [
-  ["Design", ["Wireframing", "UX Research", "Personas", "User Flow", "Prototyping", "Accessibility"]],
-  ["Tools", ["Rhino 8", "AutoCAD", "Figma", "Illustrator", "Photoshop", "Lightroom", ]],
-  ["Code", ["HTML", "Tailwind CSS", "JavaScript", "C", "C++"]],
-];
-
-function projectCard(project) {
-  return html`<a href="${project.href}" class="group overflow-hidden rounded-[4px] border border-[#26485a] bg-[#08131d] transition duration-300 hover:-translate-y-1 hover:border-[#4d7a93] hover:bg-[#0b1a26]">
-    <div class="overflow-hidden border-b border-[#162f40] bg-[#0f2a3a]">
-      <img src="${project.image}" alt="${project.title}" class="h-30 w-full ${project.imageClass || "object-cover object-center"} bg-[#0f2a3a] p-0 transition duration-500 group-hover:scale-[1.03] sm:h-48 lg:h-56" />
-    </div>
-    <div class="p-3 sm:p-4">
-      <div class="flex flex-wrap gap-1.5">
-        ${project.tags.map((tag) => `<span class="rounded-[8px] bg-[#2b2414] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#d6a84f]">${tag}</span>`).join("")}
-      </div>
-      <h3 class="mt-3 text-xl font-semibold tracking-tight text-[#f4f8fb] sm:text-2xl">${project.title}</h3>
-      <p class="mt-2 min-h-[3.25rem] text-[13px] leading-5 text-[#c4d3dc]">${project.description}</p>
-    </div>
-  </a>`;
-}
-
-function skillGroup([title, items]) {
-  return html`<article class="border border-[#26485a] bg-[#0f2a3a] p-5">
-    <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">${title}</h3>
-    <div class="mt-4 flex flex-wrap gap-2">
-      ${items.map((skill) => `<span class="rounded-full border border-[#26485a] bg-[#071827] px-3 py-1.5 text-sm font-medium text-[#d8e6ee]">${skill}</span>`).join("")}
-    </div>
-  </article>`;
-}
-
+// Page order. Each function below renders one section or one repeated item.
 export function homePage() {
   return html`
-    <div class="min-h-screen bg-[#071827] text-[#f4f8fb]">
-      <main>
-        <section class="mx-auto grid min-h-[88vh] max-w-[1180px] gap-10 px-5 pb-16 pt-32 sm:px-6 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-          <div>
-            <p class="text-sm font-semibold text-[#d6a84f]">Chinomso Augustine - UI/UX Designer and UI Engineer</p>
-            <h1 class="mt-5 max-w-4xl font-[Manrope] text-5xl font-semibold leading-[0.98] tracking-normal text-[#f4f8fb] sm:text-6xl md:text-7xl">
-              Designing thoughtful digital and physical experiences.
-            </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-[#c4d3dc]">
- Focusing on designing intuitive, user-centered products that prioritize usability and purpose. 
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="#/" class="rounded-full bg-[#f4f8fb] px-5 py-3 text-sm font-semibold text-[#0f2a3a] transition hover:bg-[#d8e6ee]">View Projects</a>
-              <a href="#/about" class="rounded-full border border-[#31566a] px-5 py-3 text-sm font-semibold text-[#f4f8fb] transition hover:bg-[#0f2a3a]">About Me</a>
-            </div>
-            <p class="mt-12 text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">Scroll to explore</p>
-          </div>
-          <figure class="overflow-hidden rounded-[8px] border border-[#26485a] bg-[#0f2a3a] shadow-[0_24px_70px_rgba(24,23,19,0.08)]">
-            <img src="${img.profile}" alt="Chinomso Augustine portrait" class="h-[34rem] w-full object-cover object-[center_28%]" />
-          </figure>
-        </section>
-
-        <section class="mx-auto max-w-[1180px] border-t border-[#26485a] px-5 py-14 sm:px-6 md:px-8">
-           
-            <div class="grid grid-cols-1 gap-px border border-[#26485a] bg-[#26485a] sm:grid-cols-3">
-              ${[
-                ["4", "Projects"],
-                ["2", "Digital"],
-                ["2", "Physical"]
-              ]
-                .map(([value, label]) => `<div class="bg-[#0f2a3a] p-5"><p class="text-3xl font-semibold text-[#f4f8fb]">${value}</p><p class="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d6a84f]">${label}</p></div>`)
-                .join("")}
-            </div>
-
-          <div class="mt-8 grid gap-4 lg:grid-cols-2">${projects.map(projectCard).join("")}</div>
-        </section>
-
-        <section class="mx-auto grid max-w-[1180px] gap-10 border-t border-[#26485a] px-5 py-14 sm:px-6 md:px-8 lg:grid-cols-[0.36fr_0.64fr]">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#d6a84f]">Skills</p>
-            <h2 class="mt-3 text-4xl font-semibold tracking-tight text-[#f4f8fb]">Design, tools, and code working together.</h2>
-          </div>
-          <div class="grid gap-4">${skills.map(skillGroup).join("")}</div>
-        </section>
-
-     
+    <div class="home-page">
+      <div data-home-background class="home-background" aria-hidden="true"></div>
+      <main class="home-content">
+        ${heroSection()}
+        ${projectsSection()}
+        ${processSection()}
+        ${skillsSection()}
+        ${notebookSectionMarkup()}
         ${footer()}
       </main>
     </div>
+  `;
+}
+
+function heroSection() {
+  return html`
+    <section class="home-container home-hero">
+      <div>
+        <p class="hero-eyebrow">${hero.eyebrow}</p>
+        <h1 class="hero-title">${hero.heading}</h1>
+        <p class="hero-introduction">${hero.introduction}</p>
+        <div class="hero-actions">
+          ${hero.links.map(({ label, href, variant }) => html`
+            <a href="${href}" class="home-button home-button--${variant}">${label}</a>
+          `).join("")}
+        </div>
+        <p class="hero-scroll-prompt">${hero.scrollPrompt}</p>
+      </div>
+      <figure class="hero-portrait">
+        <img src="${hero.image}" alt="${hero.imageAlt}" />
+      </figure>
+    </section>
+  `;
+}
+
+function projectsSection() {
+  return html`
+    <section class="home-container home-section">
+      <div class="project-stats">
+        ${projectStats.map(({ value, label }) => html`
+          <div class="project-stat">
+            <p class="project-stat-value">${value}</p>
+            <p class="project-stat-label">${label}</p>
+          </div>
+        `).join("")}
+      </div>
+      <div class="projects-grid">${projects.map(projectCard).join("")}</div>
+    </section>
+  `;
+}
+
+function projectCard({ title, description, href, image, imagePosition, tags }) {
+  const imageClass = imagePosition === "top" ? "project-image project-image--top" : "project-image";
+
+  return html`
+    <a href="${href}" class="project-card">
+      <div class="project-image-frame">
+        <img src="${image}" alt="${title}" class="${imageClass}" />
+      </div>
+      <div class="project-content">
+        <div class="project-tags">
+          ${tags.map((tag) => html`<span class="project-tag">${tag}</span>`).join("")}
+        </div>
+        <h3 class="project-title">${title}</h3>
+        <p class="project-description">${description}</p>
+      </div>
+    </a>
+  `;
+}
+
+function modelsSection() {
+  return html`
+    <section aria-labelledby="models-heading" class="notebook-models">
+      <h3 id="models-heading" class="notebook-models-heading">${modelSection.heading}</h3>
+      <div class="models-list">${models.map(modelPreview).join("")}</div>
+    </section>
+  `;
+}
+
+function modelPreview({ title, filename, hiddenObjects = [] }) {
+  const src = `${import.meta.env.BASE_URL}Models/${encodeURIComponent(filename)}`;
+
+  // These data attributes connect the markup to src/rhinoviewer.js.
+  return html`
+    <figure>
+      <div class="model-preview-heading">
+        <h4 class="model-title">${title}</h4>
+        <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
+      </div>
+      <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" aria-busy="true" class="rhino-viewer">
+        <p data-rhino-status role="status" class="rhino-viewer-status">${modelSection.loadingMessage}</p>
+      </div>
+      <figcaption class="model-instructions">${modelSection.instructions}</figcaption>
+    </figure>
+  `;
+}
+
+function processSection() {
+  return html`
+    <section aria-labelledby="process-heading" class="home-container home-section process-section">
+      <h2 id="process-heading" class="home-section-title">${processHeading}</h2>
+      <ol role="list" class="process-list">${processSteps.map(processStep).join("")}</ol>
+    </section>
+  `;
+}
+
+function processStep({ title, explanation }, index) {
+  return html`
+    <li class="process-row">
+      <span aria-hidden="true" class="process-number">${String(index + 1).padStart(2, "0")}</span>
+      <h3 class="process-title">${title}</h3>
+      <p class="process-explanation">${explanation}</p>
+    </li>
+  `;
+}
+
+function skillsSection() {
+  return html`
+    <section class="home-container home-section">
+      <div>
+        <p class="home-section-eyebrow">${skillSection.label}</p>
+        <h2 class="home-section-title skills-heading">${skillSection.heading}</h2>
+      </div>
+      <div class="skills-grid">${skills.map(skillGroup).join("")}</div>
+    </section>
+  `;
+}
+
+function skillGroup({ title, items }) {
+  return html`
+    <article class="skill-card">
+      <h3 class="skill-title">${title}</h3>
+      <div class="skill-list">
+        ${items.map((skill) => html`<span class="skill-tag">${skill}</span>`).join("")}
+      </div>
+    </article>
+  `;
+}
+
+function notebookSectionMarkup() {
+  return html`
+    <section id="notebook" aria-labelledby="notebook-heading" class="home-container home-section">
+      <p class="home-section-eyebrow">${notebookSection.label}</p>
+      <h2 id="notebook-heading" class="home-section-title notebook-heading">${notebookSection.heading}</h2>
+      <p class="notebook-description">${notebookSection.description}</p>
+      <div class="notebook-entries">${notebookEntries.map(notebookEntry).join("")}</div>
+      ${modelsSection()}
+    </section>
+  `;
+}
+
+function notebookEntry({ href, description, width, height }) {
+  return html`
+    <figure class="notebook-entry" style="--notebook-width: ${width / 2}pt; --notebook-aspect-ratio: ${width} / ${height};">
+      <iframe src="${href}#view=FitH&toolbar=0&navpanes=0" title="${description}" loading="lazy" class="notebook-document"></iframe>
+      <figcaption class="notebook-caption">
+        <a href="${href}" target="_blank" rel="noopener">${description}</a>
+      </figcaption>
+    </figure>
   `;
 }

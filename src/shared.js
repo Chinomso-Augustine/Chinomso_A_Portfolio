@@ -17,10 +17,6 @@ const img = {
   idsa: a("about-me", "IDSA.JPG"),
   nsbe: a("about-me", "NSBE.JPG"),
   colorstack: a("about-me", "Colorstack.JPG"),
-  campus: a("campconnect", "Camp.png"),
-  valueProp: a("campconnect", "VP.png"),
-  services: a("campconnect", "Services .png"),
-  providers: a("campconnect", "Providers.png"),
   fountain: a("Refil", "Fountain Graphic.png"),
   journeyOne: a("other-images", "journey-map-1.jpg"),
   journeyTwo: a("other-images", "journey-map-2.jpg"),
@@ -42,53 +38,14 @@ function html(strings, ...values) {
 function footer() {
   return html`
     <footer class="mt-16 border-t border-[#26485a] bg-[#071827] text-[#f4f8fb]">
-      <div class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-14 md:grid-cols-[0.9fr_1.1fr] md:px-8">
-        <div>
-          <p class="text-sm uppercase tracking-[0.16em] text-[#d6a84f]">Let's Build Something</p>
-          <h2 class="mt-3 max-w-xl text-4xl font-semibold leading-[1.02] tracking-tight text-[#f4f8fb] md:text-5xl">Have a project worth designing?</h2>
-          <p class="mt-5 max-w-lg text-sm leading-7 text-[#c4d3dc]">
-            I am currently open to UI/UX design, product design, and front-end opportunities where thoughtful research and polished interfaces matter.
-          </p>
-          <div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold">
-            <a href="mailto:chinomsoaugustine073@gmail.com" class="rounded-full bg-[#f4f8fb] px-5 py-3 text-[#0f2a3a] transition hover:bg-[#d8e6ee]">Get in touch</a>
-            <a href="https://www.linkedin.com/in/chinomso-augustine-ba9a29258/" target="_blank" rel="noreferrer" class="rounded-full border border-[#31566a] px-5 py-3 text-[#f4f8fb] transition hover:bg-white/10">LinkedIn</a>
-          </div>
-        </div>
-        <div>
-          <p class="text-sm uppercase tracking-[0.16em] text-[#d6a84f]">Send me a message</p>
-          <form data-contact-form class="mt-5 grid gap-3 sm:grid-cols-2">
-            <input type="text" name="firstName" placeholder="First Name" required class="${inputClass()}" />
-            <input type="text" name="lastName" placeholder="Last Name" required class="${inputClass()}" />
-            <input type="email" name="email" placeholder="Email Address *" required class="${inputClass()} sm:col-span-2" />
-            <textarea name="message" placeholder="Message" required class="min-h-32 border border-[#31566a] bg-[#0a2030] px-4 py-3 text-sm text-[#f4f8fb] placeholder:text-[#d6a84f] focus:border-[#f4f8fb] focus:outline-none sm:col-span-2"></textarea>
-            <button type="submit" class="h-11 rounded-full bg-[#d6a84f] px-4 text-sm font-semibold text-[#071827] transition hover:bg-[#f4f8fb] sm:col-span-2">Send message</button>
-          </form>
-        </div>
-      </div>
       <div class="border-t border-[#16384b]">
-        <div class="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-5 text-sm text-[#d6a84f] md:flex-row md:items-center md:justify-between md:px-8">
+        <div class="home-container flex w-full flex-col gap-3 py-5 text-sm text-[#d6a84f] md:flex-row md:items-center md:justify-between">
           <p>Based in Davis, CA - Available remote and hybrid</p>
           <p>© 2026 Chinomso Augustine</p>
         </div>
       </div>
     </footer>
   `;
-}
-
-function inputClass() {
-  return "h-11 border border-[#31566a] bg-[#0a2030] px-4 text-sm text-[#f4f8fb] placeholder:text-[#d6a84f] focus:border-[#f4f8fb] focus:outline-none";
-}
-
-function handleContactSubmit(event) {
-  event.preventDefault();
-  const formData = new FormData(event.currentTarget);
-  const firstName = String(formData.get("firstName") || "").trim();
-  const lastName = String(formData.get("lastName") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const message = String(formData.get("message") || "").trim();
-  const subject = encodeURIComponent(`Portfolio Contact - ${firstName} ${lastName}`.trim());
-  const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`);
-  window.location.href = `mailto:chinomsoaugustine073@gmail.com?subject=${subject}&body=${body}`;
 }
 
 function heroPage({ theme, eyebrow, title, subtitle, body, meta = [], back = true }) {
@@ -129,10 +86,6 @@ function previewButton(title, image, alt) {
 
 function caseStudyNav({ nextHref, nextLabel, variant = "navy" }) {
   const variants = {
-    campus: {
-      button: "border-[#5f8fc8]/35 bg-white/10 text-[#f8fafd] hover:bg-white/15",
-      accent: "text-[#8ab4f8]",
-    },
     clinic: {
       button: "border-[#d9c9e6]/30 bg-white/8 text-[#f0d8ff] hover:bg-white/12",
       accent: "text-[#caa8df]",
@@ -180,4 +133,4 @@ function openPreview(title, src, alt, style = "default") {
   document.body.appendChild(modal);
 }
 
-export { a, html, img, footer, handleContactSubmit, heroPage, imageCard, basicSection, chips, previewButton, caseStudyNav, openPreview };
+export { a, html, img, footer, heroPage, imageCard, basicSection, chips, previewButton, caseStudyNav, openPreview };

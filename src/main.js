@@ -1,22 +1,21 @@
 import { aboutPage } from "./pages/about.js";
 import { homePage } from "./pages/home.js";
-import { notebookPage } from "./pages/notebook.js";
 import { resumePage } from "./pages/resume.js";
-import { campusConnectPage } from "./projects/campus-connect.js";
 import { includeClinicPage } from "./projects/include-clinic.js";
 import { neuronEdgeAiPage } from "./projects/neuron-edge-ai.js";
 import { parkletPage } from "./projects/parklet.js";
 import { refillPage } from "./projects/refill.js";
-import { handleContactSubmit, html, openPreview } from "./shared.js";
+import { html, openPreview } from "./shared.js";
 
 const root = document.querySelector("#root");
+let disposeViewers = [];
+let disposeBackground = () => {};
+let renderVersion = 0;
 
 const routes = {
   "/": homePage,
   "/about": aboutPage,
-  "/notebook": notebookPage,
   "/resume": resumePage,
-  "/case1": campusConnectPage,
   "/refill": refillPage,
   "/parklet": parkletPage,
   "/student-run-clinic": includeClinicPage,
@@ -26,7 +25,6 @@ const routes = {
 const navItems = [
   ["Projects", "#/"],
   ["About Me", "#/about"],
-  ["Note book", "#/notebook"],
   ["Resume", "#/resume"],
   ["Contact", "mailto:chinomsoaugustine073@gmail.com"],
 ];
@@ -36,14 +34,45 @@ function path() {
 }
 
 function render() {
+  disposeBackground();
+  disposeBackground = () => {};
+  disposeViewers.forEach((dispose) => dispose());
+  disposeViewers = [];
+  const version = ++renderVersion;
   const route = routes[path()] || notFoundPage;
   root.innerHTML = `${pointerMarkup()}${siteNav()}${route()}`;
-  root.querySelectorAll("[data-contact-form]").forEach((form) => form.addEventListener("submit", handleContactSubmit));
   root.querySelectorAll("[data-preview-src]").forEach((button) => {
     button.addEventListener("click", () => openPreview(button.dataset.previewTitle, button.dataset.previewSrc, button.dataset.previewAlt, button.dataset.previewStyle));
   });
   updateActiveNav();
   window.scrollTo(0, 0);
+  const background = root.querySelector("[data-home-background]");
+  if (background) {
+    import("./home-background.js")
+      .then(({ default: mountHomeBackground }) => {
+        if (version !== renderVersion) return;
+        disposeBackground = mountHomeBackground(background);
+      })
+      .catch((error) => {
+        if (version === renderVersion) console.error("Could not start the homepage background:", error);
+      });
+  }
+  const containers = [...root.querySelectorAll("[data-rhino-viewer]")];
+  if (containers.length) {
+    import("./rhinoviewer.js")
+      .then(({ default: mountRhinoViewer }) => {
+        if (version !== renderVersion) return;
+        disposeViewers = containers.map((container) => mountRhinoViewer(container));
+      })
+      .catch((error) => {
+        if (version !== renderVersion) return;
+        console.error("Could not start the model viewers:", error);
+        containers.forEach((container) => {
+          container.setAttribute("aria-busy", "false");
+          container.querySelector("[data-rhino-status]").textContent = "Could not start the 3D preview. Please reload to try again.";
+        });
+      });
+  }
 }
 
 function siteNav() {
