@@ -21,7 +21,6 @@ export function homePage() {
       <main class="home-content">
         ${heroSection()}
         ${projectsSection()}
-        ${processSection()}
         ${skillsSection()}
         ${notebookSectionMarkup()}
         ${footer()}
