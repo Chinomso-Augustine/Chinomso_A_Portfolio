@@ -1,10 +1,11 @@
 import { footer, html } from "../shared.js";
 import {
   hero,
+  beyondProjects,
+  beyondSection,
+  inProgressProjects,
+  inProgressSection,
   modelSection,
-  models,
-  notebookEntries,
-  notebookSection,
   processHeading,
   processSteps,
   projects,
@@ -21,8 +22,9 @@ export function homePage() {
       <main class="home-content">
         ${heroSection()}
         ${projectsSection()}
+        ${inProgressSectionMarkup()}
+        ${beyondSectionMarkup()}
         ${skillsSection()}
-        ${notebookSectionMarkup()}
         ${footer()}
       </main>
     </div>
@@ -85,16 +87,105 @@ function projectCard({ title, description, href, image, imagePosition, tags }) {
   `;
 }
 
-function modelsSection() {
+function inProgressSectionMarkup() {
   return html`
-    <section aria-labelledby="models-heading" class="notebook-models">
-      <h3 id="models-heading" class="notebook-models-heading">${modelSection.heading}</h3>
-      <div class="models-list">${models.map(modelPreview).join("")}</div>
+    <section aria-labelledby="in-progress-heading" class="home-container home-section in-progress-section">
+      <h2 id="in-progress-heading" class="home-section-title">${inProgressSection.heading}</h2>
+      <p class="in-progress-subtitle">${inProgressSection.subtitle}</p>
+      <div class="projects-grid in-progress-grid">
+        ${inProgressProjects.map(inProgressProjectCard).join("")}
+      </div>
     </section>
   `;
 }
 
-function modelPreview({ title, filename, hiddenObjects = [] }) {
+function inProgressProjectCard({ title, category, description, status, image, previewInitials, previewStyle }) {
+  const preview = image
+    ? html`<img src="${image}" alt="${title} project preview" loading="lazy" class="project-image in-progress-image" />`
+    : html`
+        <div class="in-progress-placeholder in-progress-placeholder--${previewStyle}" role="img" aria-label="Preview placeholder for ${title}">
+          <span aria-hidden="true" class="in-progress-placeholder-mark">${previewInitials}</span>
+          <span class="in-progress-placeholder-label">Figma preview coming soon</span>
+        </div>
+      `;
+
+  return html`
+    <article class="project-card in-progress-card">
+      <div class="project-image-frame">${preview}</div>
+      <div class="project-content">
+        <div class="in-progress-meta">
+          <span class="project-tag in-progress-category">${category}</span>
+          <span class="in-progress-status"><span aria-hidden="true" class="in-progress-status-dot"></span>${status}</span>
+        </div>
+        <h3 class="project-title">${title}</h3>
+        <p class="project-description">${description}</p>
+      </div>
+    </article>
+  `;
+}
+
+function beyondSectionMarkup() {
+  return html`
+    <section aria-labelledby="beyond-heading" class="home-container home-section beyond-section">
+      <h2 id="beyond-heading" class="home-section-title">${beyondSection.heading}</h2>
+      <p class="beyond-subtitle">${beyondSection.subtitle}</p>
+      <div class="projects-grid beyond-grid">
+        ${beyondProjects.map(beyondProjectCard).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function beyondProjectCard(project) {
+  if (project.model) return beyondModelCard(project);
+
+  const imageClass = project.imageFit === "contain"
+    ? "project-image beyond-image beyond-image--contain"
+    : "project-image beyond-image";
+
+  return html`
+    <article class="project-card beyond-card">
+      <div class="project-image-frame beyond-image-frame">
+        <button
+          type="button"
+          class="beyond-image-button"
+          data-preview-title="${project.title}"
+          data-preview-src="${project.image}"
+          data-preview-alt="${project.title}"
+          data-preview-style="beyond"
+          aria-label="Expand image for ${project.title}"
+        >
+          <img src="${project.image}" alt="${project.title}" loading="lazy" class="${imageClass}" />
+          <span aria-hidden="true" class="beyond-image-expand">Expand image <span>↗</span></span>
+        </button>
+      </div>
+      <div class="project-content">
+        <div class="project-tags"><span class="project-tag">${project.category}</span></div>
+        <h3 class="project-title">${project.title}</h3>
+        <p class="project-description">${project.description}</p>
+        <a href="${project.href}" class="beyond-card-action">${project.action}<span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  `;
+}
+
+function beyondModelCard({ title, category, description, model, action }) {
+  const modelSrc = `${import.meta.env.BASE_URL}Models/${encodeURIComponent(model.filename)}`;
+
+  return html`
+    <article class="project-card beyond-card beyond-model-card">
+      <div class="project-image-frame beyond-model-frame">${modelPreview(model, "beyond-rhino-viewer")}</div>
+      <div class="project-content">
+        <div class="project-tags"><span class="project-tag">${category}</span></div>
+        <h3 class="project-title">${title}</h3>
+        <p class="project-description">${description}</p>
+        <a href="${modelSrc}" download="${model.filename}" class="beyond-card-action">${action}<span aria-hidden="true">↓</span></a>
+      </div>
+    </article>
+  `;
+}
+
+function modelPreview({ title, filename, hiddenObjects = [] }, viewerClass = "") {
   const src = `${import.meta.env.BASE_URL}Models/${encodeURIComponent(filename)}`;
 
   // These data attributes connect the markup to src/rhinoviewer.js.
@@ -104,7 +195,7 @@ function modelPreview({ title, filename, hiddenObjects = [] }) {
         <h4 class="model-title">${title}</h4>
         <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
       </div>
-      <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" aria-busy="true" class="rhino-viewer">
+      <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" aria-busy="true" class="rhino-viewer ${viewerClass}">
         <p data-rhino-status role="status" class="rhino-viewer-status">${modelSection.loadingMessage}</p>
       </div>
       <figcaption class="model-instructions">${modelSection.instructions}</figcaption>
@@ -112,7 +203,7 @@ function modelPreview({ title, filename, hiddenObjects = [] }) {
   `;
 }
 
-function processSection() {
+export function processSection() {
   return html`
     <section aria-labelledby="process-heading" class="home-container home-section process-section">
       <h2 id="process-heading" class="home-section-title">${processHeading}</h2>
@@ -154,25 +245,3 @@ function skillGroup({ title, items }) {
   `;
 }
 
-function notebookSectionMarkup() {
-  return html`
-    <section id="notebook" aria-labelledby="notebook-heading" class="home-container home-section">
-      <p class="home-section-eyebrow">${notebookSection.label}</p>
-      <h2 id="notebook-heading" class="home-section-title notebook-heading">${notebookSection.heading}</h2>
-      <p class="notebook-description">${notebookSection.description}</p>
-      <div class="notebook-entries">${notebookEntries.map(notebookEntry).join("")}</div>
-      ${modelsSection()}
-    </section>
-  `;
-}
-
-function notebookEntry({ href, description, width, height }) {
-  return html`
-    <figure class="notebook-entry" style="--notebook-width: ${width / 2}pt; --notebook-aspect-ratio: ${width} / ${height};">
-      <iframe src="${href}#view=FitH&toolbar=0&navpanes=0" title="${description}" loading="lazy" class="notebook-document"></iframe>
-      <figcaption class="notebook-caption">
-        <a href="${href}" target="_blank" rel="noopener">${description}</a>
-      </figcaption>
-    </figure>
-  `;
-}

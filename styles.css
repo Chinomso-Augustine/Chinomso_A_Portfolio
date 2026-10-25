@@ -303,23 +303,309 @@ h4 {
   line-height: 1.25rem;
 }
 
-/* 3D model previews; interaction code lives in src/rhinoviewer.js. */
-.notebook-models {
-  margin-top: 3rem;
+.in-progress-subtitle {
+  max-width: 42rem;
+  margin-top: 0.75rem;
+  color: var(--home-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.notebook-models-heading {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 2rem;
+.projects-grid.in-progress-grid {
+  grid-template-columns: 1fr;
+  margin-top: 1.75rem;
 }
 
-.models-list {
+.in-progress-card {
+  height: 100%;
+}
+
+.in-progress-image {
+  padding: 0.75rem;
+  object-fit: contain;
+}
+
+.in-progress-placeholder {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 7.5rem;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--preview-accent);
+}
+
+.in-progress-placeholder::before,
+.in-progress-placeholder::after {
+  position: absolute;
+  z-index: -1;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  content: "";
+  opacity: 0.2;
+}
+
+.in-progress-placeholder::before {
+  width: 8rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1rem currentColor;
+  opacity: 0.08;
+}
+
+.in-progress-placeholder::after {
+  width: 5rem;
+  border-radius: 1rem;
+  transform: rotate(-18deg);
+}
+
+.in-progress-placeholder--social {
+  --preview-accent: #8eeaf0;
+
+  background: radial-gradient(circle at 50% 35%, rgba(142, 234, 240, 0.12), transparent 55%), linear-gradient(135deg, #0d2432, #102b3a);
+}
+
+.in-progress-placeholder--dog {
+  --preview-accent: #d6a84f;
+
+  background: radial-gradient(circle at 70% 35%, rgba(214, 168, 79, 0.13), transparent 55%), linear-gradient(135deg, #1b2930, #30291e);
+}
+
+.in-progress-placeholder--pickleball {
+  --preview-accent: #a8d6b7;
+
+  background: radial-gradient(circle at 35% 45%, rgba(168, 214, 183, 0.12), transparent 55%), linear-gradient(135deg, #112c32, #172b29);
+}
+
+.in-progress-placeholder-mark {
   display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: rgba(7, 24, 39, 0.65);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
+.in-progress-placeholder-label {
+  color: var(--home-muted);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.in-progress-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.in-progress-category {
+  max-width: 100%;
+}
+
+.in-progress-status {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(142, 234, 240, 0.3);
+  border-radius: 9999px;
+  padding: 0.2rem 0.55rem;
+  background: rgba(142, 234, 240, 0.08);
+  color: #b9f2f5;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1rem;
+  white-space: nowrap;
+}
+
+.in-progress-status-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: #8eeaf0;
+  box-shadow: 0 0 0.5rem rgba(142, 234, 240, 0.55);
+}
+
+.beyond-subtitle {
+  max-width: 46rem;
+  margin-top: 0.75rem;
+  color: var(--home-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.projects-grid.beyond-grid {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 2rem auto 0;
+}
+
+.beyond-card {
+  height: 100%;
+}
+
+.beyond-image-frame {
+  height: clamp(10rem, 16vw, 13rem);
+}
+
+.beyond-card .project-content {
+  padding: 0.875rem;
+}
+
+.beyond-card .project-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.beyond-image.project-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.beyond-image.project-image.beyond-image--contain {
+  padding: 0.75rem;
+  background: #111b22;
+  object-fit: contain;
+}
+
+.beyond-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.beyond-image-expand {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(244, 248, 251, 0.2);
+  border-radius: 9999px;
+  padding: 0.35rem 0.625rem;
+  background: rgba(7, 24, 39, 0.86);
+  color: #f4f8fb;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.beyond-preview-overlay {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(7, 24, 39, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.beyond-preview-close {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid #31566a;
+  border-radius: 50%;
+  background: #0f2a3a;
+  color: #f4f8fb;
+  font-size: 1.75rem;
+  line-height: 1;
+  transition: background-color 150ms;
+}
+
+.beyond-preview-close:hover {
+  background: #173f4d;
+}
+
+.beyond-preview-figure {
+  width: min(100%, 74rem);
+  max-height: 88vh;
+  overflow: auto;
+  margin: 0;
+  border: 1px solid #26485a;
+  border-radius: 4px;
+  padding: 1rem;
+  background: #0f2a3a;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4);
+}
+
+.beyond-preview-caption {
+  margin: 0 3.5rem 1rem 0;
+  color: #d6a84f;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.beyond-preview-image {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  background: #071827;
+  object-fit: contain;
+}
+
+.beyond-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  color: var(--home-accent);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.beyond-model-frame {
+  height: auto;
+  padding: 0.75rem;
+}
+
+.beyond-model-frame figure {
+  margin: 0;
+}
+
+.beyond-rhino-viewer {
+  height: clamp(9rem, 14vw, 11rem);
+}
+
+.beyond-model-card .project-description {
+  min-height: 0;
+}
+
+/* 3D model previews; interaction code lives in src/rhinoviewer.js. */
 .model-preview-heading {
   display: flex;
   align-items: center;
@@ -450,57 +736,6 @@ h4 {
   line-height: 1.25rem;
 }
 
-/* Notebook documents */
-.notebook-heading {
-  margin-top: 0.75rem;
-}
-
-.notebook-description {
-  max-width: 42rem;
-  margin-top: 1rem;
-  color: var(--home-muted);
-  line-height: 2rem;
-}
-
-.notebook-entries {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.notebook-entry {
-  width: var(--notebook-width);
-  max-width: 100%;
-}
-
-.notebook-document {
-  display: block;
-  width: 100%;
-  aspect-ratio: var(--notebook-aspect-ratio);
-  border: 0;
-}
-
-.notebook-caption {
-  padding: 0.25rem;
-  color: var(--home-accent);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.notebook-caption a {
-  text-underline-offset: 0.2em;
-}
-
-.notebook-caption a:hover {
-  text-decoration: underline;
-}
-
 /* Homepage adjustments for wider screens */
 @media (min-width: 640px) {
   .home-page {
@@ -517,6 +752,18 @@ h4 {
 
   .project-image {
     height: 12rem;
+  }
+
+  .in-progress-placeholder {
+    min-height: 12rem;
+  }
+
+  .projects-grid.in-progress-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-grid.beyond-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .project-content {
@@ -559,6 +806,10 @@ h4 {
 
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid.in-progress-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
