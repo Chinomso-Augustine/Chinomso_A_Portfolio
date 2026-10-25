@@ -102,15 +102,6 @@ export const beyondSection = {
 
 export const beyondProjects = [
   {
-    title: "Cardboard Shoe Prototypes",
-    category: "Cardboard · Footwear",
-    description: "A hands-on series of cardboard footwear forms exploring silhouette, fit, and construction through quick iteration.",
-    image: a("Notebook", "Shoe Prototype.png"),
-    imageFit: "contain",
-    href: a("Notebook", "shoelace.pdf"),
-    action: "View shoe prototype notes",
-  },
-  {
     title: "Box",
     category: "Rhino 3D · Interactive Model",
     description: "Explore the Box model from Rhino in the browser, then download the source file to continue working with it.",
@@ -121,6 +112,25 @@ export const beyondProjects = [
       hiddenObjects: ["83cfcc56-69f7-46e5-8fe8-b537d8120e8e"],
     },
     action: "Download .3dm model",
+  },
+  {
+    title: "Step Stool",
+    category: "Rhino 3D · Interactive Model",
+    description: "Explore the Step Stool model from Rhino in the browser, then download the source file to continue working with it.",
+    model: {
+      title: "Step Stool",
+      filename: "newStep.3dm",
+    },
+    action: "Download .3dm model",
+  },
+  {
+    title: "Cardboard Shoe Prototypes",
+    category: "Cardboard · Footwear",
+    description: "A hands-on series of cardboard footwear forms exploring silhouette, fit, and construction through quick iteration.",
+    image: a("Notebook", "Shoe Prototype.png"),
+    imageFit: "contain",
+    href: a("Notebook", "shoelace.pdf"),
+    action: "View shoe prototype notes",
   },
 ];
 

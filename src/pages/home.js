@@ -144,7 +144,7 @@ function beyondProjectCard(project) {
     : "project-image beyond-image";
 
   return html`
-    <article class="project-card beyond-card">
+    <article class="project-card beyond-card beyond-image-card">
       <div class="project-image-frame beyond-image-frame">
         <button
           type="button"
@@ -193,7 +193,14 @@ function modelPreview({ title, filename, hiddenObjects = [] }, viewerClass = "")
     <figure>
       <div class="model-preview-heading">
         <h4 class="model-title">${title}</h4>
-        <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
+        <div class="model-preview-actions">
+          <select data-rhino-view aria-label="${title} display style" disabled class="model-view-select">
+            <option value="shaded">Shaded</option>
+            <option value="ghosted">Ghosted</option>
+          </select>
+          <button type="button" data-rhino-fullscreen aria-label="Expand ${title} card to full screen" class="home-button home-button--secondary home-button--compact model-fullscreen-button">Full screen</button>
+          <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
+        </div>
       </div>
       <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" aria-busy="true" class="rhino-viewer ${viewerClass}">
         <p data-rhino-status role="status" class="rhino-viewer-status">${modelSection.loadingMessage}</p>

@@ -21,7 +21,11 @@ function disposeObject(object) {
 
 export default function mountRhinoViewer(container) {
   const status = container.querySelector("[data-rhino-status]");
-  const resetButton = container.closest("figure").querySelector("[data-rhino-reset]");
+  const figure = container.closest("figure");
+  const resetButton = figure.querySelector("[data-rhino-reset]");
+  const viewSelect = figure.querySelector("[data-rhino-view]");
+  const fullscreenButton = figure.querySelector("[data-rhino-fullscreen]");
+  const modelCard = container.closest(".beyond-model-card");
   let disposed = false;
   let frame = 0;
   let radius = 0;
@@ -45,6 +49,7 @@ export default function mountRhinoViewer(container) {
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color("#0f2a3a");
+  const originalMaterialSettings = new WeakMap();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 1000);
   camera.up.set(0, 0, 1);
   camera.position.set(10, -10, 8);
@@ -61,6 +66,60 @@ export default function mountRhinoViewer(container) {
   const light = new THREE.DirectionalLight(0xffffff, 3);
   light.position.set(1, -2, 3);
   scene.add(light);
+
+  function setDisplayStyle(style) {
+    const ghosted = style === "ghosted";
+    scene.traverse((object) => {
+      if (!object.isMesh) return;
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      materials.filter(Boolean).forEach((material) => {
+        if (!originalMaterialSettings.has(material)) {
+          originalMaterialSettings.set(material, {
+            opacity: material.opacity,
+            transparent: material.transparent,
+            depthWrite: material.depthWrite,
+          });
+        }
+
+        const original = originalMaterialSettings.get(material);
+        material.opacity = ghosted ? original.opacity * 0.42 : original.opacity;
+        material.transparent = ghosted || original.transparent;
+        material.depthWrite = ghosted ? false : original.depthWrite;
+        material.needsUpdate = true;
+      });
+    });
+    requestRender();
+  }
+
+  function changeDisplayStyle() {
+    setDisplayStyle(viewSelect.value);
+  }
+  viewSelect.addEventListener("change", changeDisplayStyle);
+
+  function syncFullscreenButton() {
+    const isFullscreen = document.fullscreenElement === modelCard;
+    fullscreenButton.textContent = isFullscreen ? "Exit full screen" : "Full screen";
+    fullscreenButton.setAttribute(
+      "aria-label",
+      `${isFullscreen ? "Exit full screen for" : "Expand"} ${container.dataset.modelTitle}${isFullscreen ? "" : " card to full screen"}`,
+    );
+  }
+
+  function toggleFullscreen() {
+    const fullscreenAction = document.fullscreenElement === modelCard
+      ? document.exitFullscreen()
+      : modelCard.requestFullscreen();
+    fullscreenAction.catch(() => {
+      if (!disposed) setStatus("Full-screen mode is unavailable here.");
+    });
+  }
+
+  if (!modelCard?.requestFullscreen || !document.exitFullscreen) {
+    fullscreenButton.hidden = true;
+  } else {
+    fullscreenButton.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", syncFullscreenButton);
+  }
 
   // Render only when the view changes, keeping the rest of the homepage idle.
   function requestRender() {
@@ -159,11 +218,15 @@ export default function mountRhinoViewer(container) {
         setStatus("This model has no geometry to display.");
         return;
       }
-      model.position.sub(box.getCenter(new THREE.Vector3()));
+      const center = box.getCenter(new THREE.Vector3());
+      const centeredModel = new THREE.Group();
+      centeredModel.position.copy(center).negate();
+      centeredModel.add(model);
       radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, 0.001);
-      scene.add(model);
+      scene.add(centeredModel);
       fitModel();
       resetButton.disabled = false;
+      viewSelect.disabled = false;
       setStatus("");
     },
     (event) => {
@@ -183,6 +246,9 @@ export default function mountRhinoViewer(container) {
     observer.disconnect();
     cancelAnimationFrame(frame);
     resetButton.removeEventListener("click", fitModel);
+    viewSelect.removeEventListener("change", changeDisplayStyle);
+    fullscreenButton.removeEventListener("click", toggleFullscreen);
+    document.removeEventListener("fullscreenchange", syncFullscreenButton);
     document.removeEventListener("pointermove", moveInteraction);
     renderer.domElement.removeEventListener("pointercancel", endInteraction);
     window.removeEventListener("blur", endInteraction);
