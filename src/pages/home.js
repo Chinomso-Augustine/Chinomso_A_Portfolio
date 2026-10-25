@@ -185,7 +185,7 @@ function beyondModelCard({ title, category, description, model, action }) {
   `;
 }
 
-function modelPreview({ title, filename, hiddenObjects = [] }, viewerClass = "") {
+function modelPreview({ title, filename, hiddenObjects = [], initialZoom = 1 }, viewerClass = "") {
   const src = `${import.meta.env.BASE_URL}Models/${encodeURIComponent(filename)}`;
 
   // These data attributes connect the markup to src/rhinoviewer.js.
@@ -202,7 +202,7 @@ function modelPreview({ title, filename, hiddenObjects = [] }, viewerClass = "")
           <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
         </div>
       </div>
-      <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" aria-busy="true" class="rhino-viewer ${viewerClass}">
+      <div data-rhino-viewer data-model-src="${src}" data-model-title="${title}" data-hidden-objects="${hiddenObjects.join(",")}" data-initial-zoom="${initialZoom}" aria-busy="true" class="rhino-viewer ${viewerClass}">
         <p data-rhino-status role="status" class="rhino-viewer-status">${modelSection.loadingMessage}</p>
       </div>
       <figcaption class="model-instructions">${modelSection.instructions}</figcaption>

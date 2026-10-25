@@ -625,6 +625,23 @@ h4 {
   background: #071827;
 }
 
+.beyond-model-card:fullscreen,
+.beyond-model-card:fullscreen * {
+  cursor: auto;
+}
+
+.beyond-model-card:fullscreen button {
+  cursor: pointer;
+}
+
+.beyond-model-card:fullscreen .rhino-viewer canvas {
+  cursor: grab;
+}
+
+.beyond-model-card:fullscreen .rhino-viewer canvas:active {
+  cursor: grabbing;
+}
+
 .beyond-model-card:fullscreen .beyond-model-frame {
   display: flex;
   min-height: 0;
@@ -962,6 +979,28 @@ h4 {
     transform: translate(-50%, -50%);
     animation: fadeParticle 700ms ease-out forwards;
   }
+}
+
+body.rhino-fullscreen-active,
+body.rhino-fullscreen-active * {
+  cursor: auto !important;
+}
+
+body.rhino-fullscreen-active button {
+  cursor: pointer !important;
+}
+
+body.rhino-fullscreen-active .rhino-viewer canvas {
+  cursor: grab !important;
+}
+
+body.rhino-fullscreen-active .rhino-viewer canvas:active {
+  cursor: grabbing !important;
+}
+
+body.rhino-fullscreen-active .pointer-cursor,
+body.rhino-fullscreen-active .pointer-particle {
+  display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -102,14 +102,13 @@ export const beyondSection = {
 
 export const beyondProjects = [
   {
-    title: "Box",
+    title: "Interior Space practice",
     category: "Rhino 3D · Interactive Model",
-    description: "Explore the Box model from Rhino in the browser, then download the source file to continue working with it.",
+    description: "Explore the Interior Space practice model from Rhino in the browser, then download the source file to continue working with it.",
     model: {
-      title: "Box",
-      filename: "Box copy.3dm",
-      // Hide the oversized construction plane in the web preview.
-      hiddenObjects: ["83cfcc56-69f7-46e5-8fe8-b537d8120e8e"],
+      title: "Interior Space practice",
+      filename: "Interior Space practice.3dm",
+      initialZoom: 2,
     },
     action: "Download .3dm model",
   },

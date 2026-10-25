@@ -19,6 +19,38 @@ function disposeObject(object) {
   resources.forEach((resource) => resource.dispose());
 }
 
+function applyRhinoDisplayColors(model) {
+  const coloredMaterials = new Map();
+
+  model.traverse((object) => {
+    if (!object.isMesh) return;
+
+    const displayColor = object.userData.attributes?.drawColor;
+    if (!displayColor) return;
+
+    const color = new THREE.Color().setRGB(
+      displayColor.r / 255,
+      displayColor.g / 255,
+      displayColor.b / 255,
+      THREE.SRGBColorSpace,
+    );
+    const sourceMaterials = Array.isArray(object.material) ? object.material : [object.material];
+    const materials = sourceMaterials.map((sourceMaterial) => {
+      if (!sourceMaterial?.color) return sourceMaterial;
+
+      const key = `${sourceMaterial.uuid}:${color.getHexString()}`;
+      if (!coloredMaterials.has(key)) {
+        const coloredMaterial = sourceMaterial.clone();
+        coloredMaterial.color.copy(color);
+        coloredMaterials.set(key, coloredMaterial);
+      }
+      return coloredMaterials.get(key);
+    });
+
+    object.material = Array.isArray(object.material) ? materials : materials[0];
+  });
+}
+
 export default function mountRhinoViewer(container) {
   const status = container.querySelector("[data-rhino-status]");
   const figure = container.closest("figure");
@@ -30,6 +62,7 @@ export default function mountRhinoViewer(container) {
   let frame = 0;
   let radius = 0;
   let interacting = false;
+  const initialZoom = Math.max(Number(container.dataset.initialZoom) || 1, 0.1);
 
   function setStatus(message) {
     if (disposed) return;
@@ -98,6 +131,7 @@ export default function mountRhinoViewer(container) {
 
   function syncFullscreenButton() {
     const isFullscreen = document.fullscreenElement === modelCard;
+    document.body.classList.toggle("rhino-fullscreen-active", isFullscreen);
     fullscreenButton.textContent = isFullscreen ? "Exit full screen" : "Full screen";
     fullscreenButton.setAttribute(
       "aria-label",
@@ -155,7 +189,7 @@ export default function mountRhinoViewer(container) {
     if (!radius) return;
     const verticalFov = THREE.MathUtils.degToRad(camera.fov);
     const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
-    const distance = radius / Math.sin(Math.min(verticalFov, horizontalFov) / 2) * 1.15;
+    const distance = radius / Math.sin(Math.min(verticalFov, horizontalFov) / 2) * 1.15 / initialZoom;
     camera.up.set(0, 0, 1);
     camera.position.set(1, -1, 0.8).normalize().multiplyScalar(distance);
     camera.near = radius / 1000;
@@ -206,6 +240,7 @@ export default function mountRhinoViewer(container) {
       model.traverse((child) => {
         if (hiddenObjects.has(child.userData.attributes?.id)) child.visible = false;
       });
+      applyRhinoDisplayColors(model);
       model.updateMatrixWorld(true);
       const box = new THREE.Box3();
       model.traverseVisible((child) => {
