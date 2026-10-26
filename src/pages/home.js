@@ -194,10 +194,6 @@ function modelPreview({ title, filename, hiddenObjects = [], initialZoom = 1 }, 
       <div class="model-preview-heading">
         <h4 class="model-title">${title}</h4>
         <div class="model-preview-actions">
-          <select data-rhino-view aria-label="${title} display style" disabled class="model-view-select">
-            <option value="shaded">Shaded</option>
-            <option value="ghosted">Ghosted</option>
-          </select>
           <button type="button" data-rhino-fullscreen aria-label="Expand ${title} card to full screen" class="home-button home-button--secondary home-button--compact model-fullscreen-button">Full screen</button>
           <button type="button" data-rhino-reset disabled class="home-button home-button--secondary home-button--compact">${modelSection.resetLabel}</button>
         </div>

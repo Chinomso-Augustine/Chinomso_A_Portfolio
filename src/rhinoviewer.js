@@ -55,7 +55,6 @@ export default function mountRhinoViewer(container) {
   const status = container.querySelector("[data-rhino-status]");
   const figure = container.closest("figure");
   const resetButton = figure.querySelector("[data-rhino-reset]");
-  const viewSelect = figure.querySelector("[data-rhino-view]");
   const fullscreenButton = figure.querySelector("[data-rhino-fullscreen]");
   const modelCard = container.closest(".beyond-model-card");
   let disposed = false;
@@ -82,7 +81,6 @@ export default function mountRhinoViewer(container) {
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color("#0f2a3a");
-  const originalMaterialSettings = new WeakMap();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 1000);
   camera.up.set(0, 0, 1);
   camera.position.set(10, -10, 8);
@@ -99,35 +97,6 @@ export default function mountRhinoViewer(container) {
   const light = new THREE.DirectionalLight(0xffffff, 3);
   light.position.set(1, -2, 3);
   scene.add(light);
-
-  function setDisplayStyle(style) {
-    const ghosted = style === "ghosted";
-    scene.traverse((object) => {
-      if (!object.isMesh) return;
-      const materials = Array.isArray(object.material) ? object.material : [object.material];
-      materials.filter(Boolean).forEach((material) => {
-        if (!originalMaterialSettings.has(material)) {
-          originalMaterialSettings.set(material, {
-            opacity: material.opacity,
-            transparent: material.transparent,
-            depthWrite: material.depthWrite,
-          });
-        }
-
-        const original = originalMaterialSettings.get(material);
-        material.opacity = ghosted ? original.opacity * 0.42 : original.opacity;
-        material.transparent = ghosted || original.transparent;
-        material.depthWrite = ghosted ? false : original.depthWrite;
-        material.needsUpdate = true;
-      });
-    });
-    requestRender();
-  }
-
-  function changeDisplayStyle() {
-    setDisplayStyle(viewSelect.value);
-  }
-  viewSelect.addEventListener("change", changeDisplayStyle);
 
   function syncFullscreenButton() {
     const isFullscreen = document.fullscreenElement === modelCard;
@@ -238,7 +207,7 @@ export default function mountRhinoViewer(container) {
       }
       const hiddenObjects = new Set((container.dataset.hiddenObjects || "").split(","));
       model.traverse((child) => {
-        if (hiddenObjects.has(child.userData.attributes?.id)) child.visible = false;
+        if (hiddenObjects.has(child.userData.attributes?.id) || child.isLine) child.visible = false;
       });
       applyRhinoDisplayColors(model);
       model.updateMatrixWorld(true);
@@ -261,7 +230,6 @@ export default function mountRhinoViewer(container) {
       scene.add(centeredModel);
       fitModel();
       resetButton.disabled = false;
-      viewSelect.disabled = false;
       setStatus("");
     },
     (event) => {
@@ -281,7 +249,6 @@ export default function mountRhinoViewer(container) {
     observer.disconnect();
     cancelAnimationFrame(frame);
     resetButton.removeEventListener("click", fitModel);
-    viewSelect.removeEventListener("change", changeDisplayStyle);
     fullscreenButton.removeEventListener("click", toggleFullscreen);
     document.removeEventListener("fullscreenchange", syncFullscreenButton);
     document.removeEventListener("pointermove", moveInteraction);
