@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 public/Chinomso Augustine's Project1Sketch.pdf
+*.3dm.rhl
 
 # Editor directories and files
 .vscode/*
